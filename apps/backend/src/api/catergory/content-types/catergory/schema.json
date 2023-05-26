@@ -12,11 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nameEN": {
-      "type": "uid"
-    },
     "nameHK": {
-      "type": "uid"
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "nameEN": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "uid",
+      "targetField": "nameEN",
+      "required": true
     }
   }
 }
