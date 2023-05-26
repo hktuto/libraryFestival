@@ -1,0 +1,68 @@
+{
+  "kind": "singleType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titleEN": {
+      "type": "string"
+    },
+    "titleHK": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "contentEN": {
+      "type": "richtext"
+    },
+    "contentHK": {
+      "type": "richtext"
+    },
+    "hostEN": {
+      "type": "string"
+    },
+    "hostHK": {
+      "type": "string"
+    },
+    "targetEN": {
+      "type": "string"
+    },
+    "targetHK": {
+      "type": "string"
+    },
+    "quotaEN": {
+      "type": "string"
+    },
+    "quotaHK": {
+      "type": "string"
+    },
+    "programs": {
+      "displayName": "programs",
+      "type": "component",
+      "repeatable": true,
+      "component": "programs.programs"
+    },
+    "catergories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::catergory.catergory"
+    }
+  }
+}

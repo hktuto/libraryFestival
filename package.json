@@ -1,0 +1,14 @@
+{
+  "name": "library_festival",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sean Tsang",
+  "license": "MIT",
+  "private": true,
+  "workspaces":[
+    "apps/*"
+  ],
+  "scripts": {
+    "d": "pnpm -filter backend -filter client  run dev"
+  }
+}
