@@ -1,15 +1,14 @@
 <template>
     <NuxtLayout>
-        {{  data }}
-        {{ error }}
+        
     </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
 const { find } = useStrapi()
 const { categories } = useCategories()
-const { data, pending, refresh, error } = await useAsyncData(
-  'restaurant',
+const { data, refresh, error } = await useAsyncData(
+  'events',
   () => find('events', {
     filters: {
         categories: {
