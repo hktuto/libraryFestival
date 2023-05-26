@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_programs_slides",
+  "info": {
+    "displayName": "slides",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titleEN": {
+      "type": "string"
+    },
+    "titleHK": {
+      "type": "string"
+    },
+    "feature": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
