@@ -1,0 +1,16 @@
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <div class="menu">
+      <MenuItems />
+  </div>
+</template>
+
+<style scoped lang="scss">
+.menu{
+  
+  
+}
+</style>

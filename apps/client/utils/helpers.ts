@@ -1,3 +1,3 @@
-export const getStrapiData = (data:any) => {
+export function getStrapiData<T>(data:any):T {
     return data.data.attributes;
 }
