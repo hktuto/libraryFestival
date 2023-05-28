@@ -1,6 +1,6 @@
 
 
-export const useLang = () => {
+export const useLang = (obj:any) => {
     const locales = [
         {key:"EN", label:"ENG"},
         {key:"HK", label:"繁"},
@@ -19,9 +19,17 @@ export const useLang = () => {
         
     }
     
+    function t(key:string) {
+        return obj[key + currentLang.value];
+    }
+    
+
+    
     return {
         displayLang,
         locales ,
         currentLang,
+        changeLocale,
+        t
     }
 }

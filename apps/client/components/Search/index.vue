@@ -12,5 +12,6 @@
 .searchContainer{
   font-size: 24px;
   cursor: pointer;
+  line-height: 1;
 }
 </style>

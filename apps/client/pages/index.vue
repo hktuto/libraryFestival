@@ -1,6 +1,6 @@
 <template>
     <NuxtLayout>
-        
+      <slider />
     </NuxtLayout>
 </template>
 

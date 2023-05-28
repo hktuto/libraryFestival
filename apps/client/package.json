@@ -18,5 +18,8 @@
     "nuxt": "^3.5.1",
     "nuxt-icon": "^0.4.1",
     "sass": "^1.62.1"
+  },
+  "dependencies": {
+    "swiper": "^9.3.2"
   }
 }
