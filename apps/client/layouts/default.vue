@@ -21,8 +21,14 @@
   min-height: 100vh;
   overflow: auto;
   position: relative;
-  display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .content{
+    flex: 1 0 auto;
+    width: 100%;
+  }
 }
 
 </style>

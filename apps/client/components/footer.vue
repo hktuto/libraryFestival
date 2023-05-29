@@ -2,7 +2,7 @@
   <div class="footerContainer bgGradient">
     <div class="innerGrid">
       <div class="remark">
-        {{attr.remarkEN}}
+        {{ t('remark') }}
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@ import {Footer} from '~/models/footer'
 import {SingleResponse} from "~/models/strapi";
 const { find } = useStrapi()
 
-const {currentLang} = useLang()
+
 
 const attr = computed(() => getStrapiData<Footer>(data.value))
 
@@ -23,9 +23,14 @@ const { data, refresh, error } = await useAsyncData(
     'footerData',
     () => find<SingleResponse<Footer>>('footer')
 )
+const {currentLang, t} = useLang(attr.value)
 </script>
 
 <style lang="scss" scoped> 
+.footerContainer{
+  margin-top:2rem;
+  width: 100%;
+}
 .innerGrid{
   padding: var(--app-padding);
 }

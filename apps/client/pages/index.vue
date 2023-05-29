@@ -1,22 +1,22 @@
 <template>
     <NuxtLayout>
-      <slider />
+      <Illustration />
+      <slider :slides="data.data.attributes.slide"/>
     </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
 const { find } = useStrapi()
 const { categories } = useCategories()
+
 const { data, refresh, error } = await useAsyncData(
-  'events',
-  () => find('events', {
-    filters: {
-        categories: {
-            id:{
-                $eq: 2,
-            }
-        },
-    },
+  'homeData',
+  () => find('home',{
+    populate: {
+      'slide': {
+        populate:"*"
+      }
+    }
   })
 )
 
