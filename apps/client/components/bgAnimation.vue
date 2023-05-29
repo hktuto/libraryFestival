@@ -10,7 +10,7 @@
 
 <style scoped lang="scss">
 .animationContainer{
-  width: 60%;
+  width: 100%;
   max-width: 1024px;
   aspect-ratio: 1/1;
   position: fixed;
