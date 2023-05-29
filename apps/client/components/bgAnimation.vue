@@ -21,12 +21,10 @@
 .mesh {
   background-color: transparent;
   background-image:
-      radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
-      radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
-      radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
-      radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+      radial-gradient(at 33% 29%, hsla(49,100%,66%,1) 0px, transparent 50%),
+      radial-gradient(at 61% 26%, hsla(180,100%,57%,1) 0px, transparent 50%),
+      radial-gradient(at 87% 83%, hsla(235,100%,70%,1) 0px, transparent 50%),
+      radial-gradient(at 1% 98%, hsla(111,100%,77%,1) 0px, transparent 50%);
   animation: meshPosition 10s ease infinite;
   background-size: 300% 300%;
   &:after {
