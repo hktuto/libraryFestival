@@ -12,14 +12,7 @@ const spaceBetween = 10;
 function slideClickHandler(item:any) {
   console.log(item)
 }
-const onProgress = (e) => {
-  const [swiper, progress] = e.detail;
-  console.log(progress)
-};
 
-const onSlideChange = (e) => {
-  console.log('slide changed')
-}
 </script>
 
 <template>
@@ -34,8 +27,7 @@ const onSlideChange = (e) => {
           delay: 3000
         }"
         :pagination="false"
-        @progress="onProgress"
-        @slidechange="onSlideChange"
+       
     >
       <swiper-slide v-for="slide in slides" :key="slide.id" :class="{slide:true, cursor: slide.url}" @click="slideClickHandler(slide)">
           <img :src="url + slide.feature.data.attributes.url" alt="">
@@ -47,8 +39,8 @@ const onSlideChange = (e) => {
 
 <style scoped lang="scss">
 .slide{
+  width: 100%;
   aspect-ratio: 16/9;
-  background: #000;
   &.cursor{
     cursor: pointer;
   }

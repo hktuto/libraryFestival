@@ -2,6 +2,10 @@
     <NuxtLayout>
       <Illustration />
       <slider :slides="data.data.attributes.slide"/>
+      <Divider />
+      <CalendarList />
+      <Divider />
+      <EventGrid :events="data.data.attributes.events.data"/>
     </NuxtLayout>
 </template>
 
@@ -15,6 +19,9 @@ const { data, refresh, error } = await useAsyncData(
     populate: {
       'slide': {
         populate:"*"
+      },
+      events:{
+        populate: "*"
       }
     }
   })
