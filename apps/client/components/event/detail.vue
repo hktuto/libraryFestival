@@ -12,7 +12,8 @@ const { t } = useLang(props.event);
     <div class="featureImage">
       <img :src="url + event.photos.data[0].attributes.url" alt="">
     </div>
-    <div class="title bgGradient">
+    <div class="title">
+      <div class="bgGradient"></div>
       <div class="innerGrid">
         <div class="titleContainer">
           {{ t('title')  }}
@@ -45,6 +46,14 @@ const { t } = useLang(props.event);
 }
 .title {
   margin-bottom: calc(var(--app-padding) * 2);
+  position: relative;
+  .bgGradient{
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 48px;
+    width: 100%;
+  }
 }
 .titleContainer {
   width: fit-content;
@@ -55,7 +64,7 @@ const { t } = useLang(props.event);
   display: block;
   position: relative;
   padding-inline: 24px;
-  background: rgba(255, 241, 93, 0.5);
-  
+  padding-top: 48px;
+  background: rgba(255, 241, 93, 0.3);
 }
 </style>
