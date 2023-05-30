@@ -1,11 +1,6 @@
 <script setup lang="ts">
     const social = [
       {
-        name: "email",
-        icon:"material-symbols:mail",
-        href: ""
-      },
-      {
         name: "facebook",
         icon:"ion:social-facebook",
         href: ""
@@ -16,8 +11,8 @@
         href: ""
       },
       {
-        name: "twitter",
-        icon:"ion:logo-twitter",
+        name: "youtube",
+        icon:"ion:logo-youtube",
         href: ""
       },
     ]
