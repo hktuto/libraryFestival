@@ -7,10 +7,12 @@
   --text-body-color: #000;
   --text-title-color: #000;
   --g-color-1: #ffffff;
-  --g-color-2: #90d7e5;
-  --g-color-3: #9d96f1;
-  --g-color-4: #e196ea;
-  --g-color-5: #ffe3cc;
+  --g-color-2: #45ead7;
+  --g-color-3: #877fee;
+  --g-color-4: #f1499c;
+  --g-color-5: #e7d85c;
+  --g-color-6: #66f647;
+  --g-color-7: #45ead7;
   --g-center-x: var(--mouse-x, 50%);
   --g-center-y: var(--mouse-y, 50%);
 }
@@ -32,20 +34,31 @@ html, body {
 
 .bgGradient {
   overflow: hidden;
-  background: linear-gradient(var(--g-angle), var(--g-color-1), var(--g-color-2), var(--g-color-3), var(--g-color-4), var(--g-color-5), var(--g-color-1), var(--g-color-2), var(--g-color-3), var(--g-color-4), var(--g-color-5)) fixed;
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background-color:#99fff8;
+  background-image:
+          radial-gradient(at 64% 96%, hsla(44,66%,75%,1) 0px, transparent 50%),
+          radial-gradient(at 91% 8%, hsla(143,82%,70%,1) 0px, transparent 50%),
+          radial-gradient(at 25% 89%, hsla(218,67%,79%,1) 0px, transparent 50%),
+          radial-gradient(at 94% 38%, hsla(49,94%,79%,1) 0px, transparent 50%),
+          radial-gradient(at 61% 26%, hsla(46,96%,79%,1) 0px, transparent 50%),
+          radial-gradient(at 43% 10%, hsla(258,83%,66%,1) 0px, transparent 50%),
+          radial-gradient(at 58% 63%, hsla(331,99%,70%,1) 0px, transparent 50%);
+  background-size: 300vw 300vh;
+  animation: gradient 5s ease infinite;
 
 }
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 20%;
   }
-  50% {
+  25% {
     background-position: 100% 50%;
   }
+  50% {
+    background-position: 50% 70%;
+  }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 20%;
   }
 }

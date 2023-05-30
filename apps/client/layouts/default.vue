@@ -1,5 +1,6 @@
 <template>
   <div class="pageContainer">
+    <BgAnimation />
     <Header />
     <Share />
     <div class="content">
