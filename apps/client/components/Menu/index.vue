@@ -1,24 +1,34 @@
 <script setup lang="ts">
+  import {onClickOutside} from "@vueuse/core";
+  const menuPopoverEl = ref()
   const { t } = useLang({
     menuEN: "Menu",
     menuHK: "選單",
     menuCN: "选单"
   })
+  const popupOpened = ref(false)
+  function toggleMenu() {
+    console.log("toggleMenu", popupOpened.value)
+    popupOpened.value = !popupOpened.value
+  }
+  onClickOutside(menuPopoverEl, (event) => popupOpened.value = false)
 </script>
 
 <template>
-  <div class="menu">
-     <div class="menuToggleContainer">
-       <Icon name="material-symbols:menu" />
+  <div ref="menuPopoverEl" class="menu">
+     <div class="menuToggleContainer" @click.prevent="toggleMenu">
+       <Icon :name="popupOpened ?  'material-symbols:close' : 'material-symbols:menu'" />
        <div class="label">{{ t('menu') }}</div>
      </div>
-      <MenuItems />
+      <div :class="{menuPopOver:true, opened:popupOpened, bgGradient:true}">
+        <MenuItems />
+      </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .menu{
-  
+  z-index: 2;
   
 }
 .menuToggleContainer{
@@ -28,11 +38,31 @@
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  z-index: -1;
   .label{
     font-size: 18px;
   }
 }
 .menuItemsContainer{
   display: none;
+}
+.menuPopOver{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+  transition: all .5s ease-in-out;
+  transform: translateY(-100vh);
+  z-index: -1;
+  opacity: 0;
+  border-radius: 30px;
+  padding: 60px calc(var(--app-padding) * 2);
+  &.opened{
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 </style>

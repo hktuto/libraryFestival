@@ -23,6 +23,10 @@ export const useLang = (obj:any) => {
         return obj[key + currentLang.value];
     }
     
+    function tObj(key:string, localObj:any) {
+        return localObj[key + currentLang.value];
+    }
+    
 
     
     return {
@@ -30,6 +34,7 @@ export const useLang = (obj:any) => {
         locales ,
         currentLang,
         changeLocale,
-        t
+        t,
+        tObj
     }
 }

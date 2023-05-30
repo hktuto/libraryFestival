@@ -5,6 +5,7 @@ const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '10
 const columns = mapCurrent({ lg: 3 }, 1);
 const { currentLang } = useLang({})
 const calendarEl = ref();
+const router = useRouter()
 const calendarLang = computed(() => {
   return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
 })
@@ -12,6 +13,9 @@ const attrs = ref<any>([]);
 
 function eventClick(day:any){
   console.log(day) 
+  router.push({
+    path: '/program/' + day.id
+  })
 }
 
 onMounted(() => getEvents(calendarEl.value.pages))
@@ -83,6 +87,25 @@ async function getEvents(months:any[]) {
   :deep {
     .vc-week, .vc-weekdays{
       margin-bottom: var(--app-padding);
+    }
+    .vc-popover-content{
+      padding: var(--app-padding);
+    }
+  }
+}
+.eventList{
+  max-width: 200px;
+  max-height: 400px;
+  overflow: auto;
+  .eventItem {
+    width: 100%;
+    margin-block: var(--app-padding);
+    cursor: pointer;
+    &:hover, &:focus {
+      color: var(--primary-color);
+    }
+    + & {
+      border-top: 1px solid #eee;
     }
   }
 }
