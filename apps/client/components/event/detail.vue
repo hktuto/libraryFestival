@@ -20,7 +20,10 @@ const { t } = useLang(props.event);
       </div>
     </div>
   <div class="innerGrid">
-    {{event}}
+    <div class="eventContent" v-html="t('content')"></div>
+    <div class="eventContent" v-html="t('host')"></div>
+    <div class="eventContent" v-html="t('target')"></div>
+    <div class="eventContent" v-html="t('quota')"></div>
   </div>
   </div>
 </template>

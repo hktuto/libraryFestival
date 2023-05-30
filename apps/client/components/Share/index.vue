@@ -38,6 +38,7 @@
   align-items: center;
   border-radius: 4px;
   gap: var(--app-padding);
+  z-index: 2;
 }
 .socialContainer{
   width: 40px;
