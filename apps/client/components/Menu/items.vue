@@ -1,11 +1,12 @@
 <script setup lang="ts">
-
+const router = useRouter()
+const route = useRoute()
 type MenuItem = {
   labelEN: string,
   labelHK: string,
   url: string,
   opened: boolean,
-  children?: MenuItem[]
+  children: MenuItem[]
 }
 const menu = useState<MenuItem[]>('menuData', () => ([
   {
@@ -107,7 +108,17 @@ const menu = useState<MenuItem[]>('menuData', () => ([
 
 const {tObj} = useLang({})
 function itemClicked(item:MenuItem) {
-  
+  if(item.children.length > 0) {
+    item.opened = !item.opened;
+    return
+  }
+  if(item.url) {
+    router.push({path: item.url})
+  }
+}
+
+function isCurrentRoute(item: MenuItem) {
+  return route.fullPath === item.url;
 }
 
 
@@ -115,9 +126,14 @@ function itemClicked(item:MenuItem) {
 
 <template>
   <div class="menuContainer">
-      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened}" @click="itemClicked(item)">
-        {{ tObj('label', item)}}
+      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click="itemClicked(item)">
+        {{ tObj('label', item)}} 
 <!--        loop children -->
+        <div :class="{childrenContainer: true, opened: item.opened}">
+          <div v-for="child in item.children" class="menuItem child">
+            {{ tObj('label', child)}}
+          </div>
+        </div>
       </div>
   </div>
 </template>
@@ -125,13 +141,25 @@ function itemClicked(item:MenuItem) {
 <style scoped lang="scss">
 .menuItem{
   font-size: 1rem;
-  padding-block: calc(var(--app-padding) / 2);
+  padding-block: calc(var(--app-padding) / 4);
   cursor: pointer;
   &.hasChildren {
     &:before {
       content: ">"
       
     }
+  }
+  &.current{
+    font-weight: 700;
+  }
+  &.child{
+    padding-left: var(--app-padding);
+  }
+}
+.childrenContainer{
+  display:none;
+  &.opened{
+    display: block;
   }
 }
 </style>

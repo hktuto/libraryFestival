@@ -21,7 +21,9 @@
        <div class="label">{{ t('menu') }}</div>
      </div>
       <div :class="{menuPopOver:true, opened:popupOpened, bgGradient:true}">
-        <MenuItems />
+        <div class="menuScrollContainer">
+          <MenuItems />
+        </div>
       </div>
   </div>
 </template>
@@ -43,6 +45,7 @@
   .label{
     font-size: 18px;
   }
+  
 }
 .menuItemsContainer{
   display: none;
@@ -59,7 +62,12 @@
   z-index: -1;
   opacity: 0;
   border-radius: 30px;
-  padding: 60px calc(var(--app-padding) * 2);
+  padding: 60px calc(var(--app-padding) * 2) calc(var(--app-padding) * 2) calc(var(--app-padding) * 2);
+  .menuScrollContainer{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
   &.opened{
     opacity: 1;
     transform: translate(0);
