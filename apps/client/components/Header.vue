@@ -20,6 +20,7 @@
   grid-template-areas: 'menu menu menu empty';
   margin-top: 40px;
   overflow: visible;
+  z-index: 2;
   .headerLeft {
     position: relative;
     grid-area: menu;

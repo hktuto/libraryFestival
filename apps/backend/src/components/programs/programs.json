@@ -1,7 +1,8 @@
 {
   "collectionName": "components_programs_programs",
   "info": {
-    "displayName": "programs"
+    "displayName": "programs",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -39,6 +40,12 @@
       "type": "string"
     },
     "videoURL": {
+      "type": "string"
+    },
+    "displayTimeEN": {
+      "type": "string"
+    },
+    "displayTimeHK": {
       "type": "string"
     }
   }

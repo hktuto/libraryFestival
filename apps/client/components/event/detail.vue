@@ -9,7 +9,7 @@ const { t } = useLang({...props.event,
   tableHostEN:"Host", 
   tableTargetEN:"Target", 
   tableQuotaEN:"Quota",
-  tableHostHK:"對象",
+  tableHostHK:"講者/主持",
   tableTargetHK:"對象",
   tableQuotaHK:"名額",
 });
@@ -17,9 +17,12 @@ const { t } = useLang({...props.event,
 </script>
 
 <template>
-  <div class="detailContainer">
-    <div class="featureImage">
-      <img :src="url + event.photos.data[0].attributes.url" alt="">
+  <div class="detailContainer ">
+    <div class="featureContainer bgGradient" >
+      <div class="blurImage" :style="`background-image:url(${url + event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
+      <div class="featureImage bigGrid">
+        <img :src="url + event.photos.data[0].attributes.url" alt="">
+      </div>
     </div>
     <div class="title">
       <div class="bgGradient"></div>
@@ -31,41 +34,47 @@ const { t } = useLang({...props.event,
     </div>
   <div class="innerGrid">
     <Markdown class="eventContent" :source="t('content')" />
-    <table class="eventContent" >
-      <tr>
-        <td><div class="label">{{ t('tableHost') }}</div></td>
-        <td><div class="content" v-html="t('host')"></div></td>
-      </tr>
-      <tr>
-        <td><div class="label">{{ t('tableTarget') }}</div></td>
-        <td><div class="content" v-html="t('target')"></div></td>
-      </tr>
-      <tr>
-        <td><div class="label">{{ t('tableQuota') }}</div></td>
-        <td><div class="content" v-html="t('quota')"></div></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-    <EventDate :programs="event.programs" />
-    <div >
-      
-      
+    <div class="eventContent" >
+      <div class="label">{{ t('tableHost') }}</div>
+      <div class="content" v-html="t('host')"></div>
     </div>
+    <div class="eventContent" >
+      <div class="label">{{ t('tableTarget') }}</div>
+      <div class="content" v-html="t('target')"></div>
+    </div>
+    <EventDate :programs="event.programs" />
+    <div class="eventContent">
+      <div class="label">{{ t('tableQuota') }}</div>
+      <div class="content" v-html="t('quota')"></div>
+    </div>
+    
   </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.featureContainer{
+  margin-top: -100px;
+  isolation: isolate;
+  position: relative;
+  .blurImage{
+    position: absolute;
+    background-size: contain;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: -1;
 
+    image-rendering: auto;
+  }
+}
 .featureImage{
   width: 100%;
-  aspect-ratio: 16/6;
-  margin-top: -100px;
+  aspect-ratio: 16/9;
+  
   position: relative;
-  z-index: -1;
   overflow: hidden;
   img {
     width: 100%;
@@ -97,14 +106,20 @@ const { t } = useLang({...props.event,
   background: rgba(255, 241, 93, 0.3);
 }
 .eventContent{
-  font-size: 1.2rem;
-  line-height: 1.4;
   margin-bottom: var(--app-padding);
 }
-.label{
-  margin-right: 12px;
-}
-.content{
-  font-weight: 700;
+:deep {
+  .label{
+    font-size: 0.8rem;
+    margin-right: 12px;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .content{
+    font-weight: 700;
+  }
+  td{
+    vertical-align: top;
+  }
 }
 </style>

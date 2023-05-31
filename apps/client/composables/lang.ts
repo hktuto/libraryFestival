@@ -1,3 +1,4 @@
+import {FTPYStr, JTPYStr} from "~/utils/helpers";
 
 
 export const useLang = (obj:any) => {
@@ -20,11 +21,32 @@ export const useLang = (obj:any) => {
     }
     
     function t(key:string) {
-        return obj[key + currentLang.value];
+        if(currentLang.value !== 'CN') {
+            return obj[key + currentLang.value];
+        }
+        return TraditionalToSim(obj[key + "HK"])
     }
     
     function tObj(key:string, localObj:any) {
-        return localObj[key + currentLang.value];
+        if(currentLang.value !== 'CN') {
+            return localObj[key + currentLang.value];
+        }
+        return TraditionalToSim(localObj[key + "HK"])
+    }
+    
+    function TraditionalToSim(cc : string) {
+        var str = '';
+        var ss = JTPYStr();
+        var tt = FTPYStr();
+
+        for( var i=0 ; i < cc.length ; i++)
+        {
+            if( cc.charCodeAt(i) > 10000 && tt.indexOf( cc.charAt(i) ) != -1 )
+                str += ss.charAt( tt.indexOf( cc.charAt(i) ) );
+            else
+                str += cc.charAt(i);
+        }
+        return str;
     }
     
 

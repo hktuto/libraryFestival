@@ -27,6 +27,14 @@ html, body {
   box-sizing: border-box;
 }
 
+.bigGrid {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+
+}
+
 .innerGrid {
   width: 100%;
   max-width: 1440px;
