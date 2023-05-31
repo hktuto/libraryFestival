@@ -108,6 +108,7 @@ const menu = useState<MenuItem[]>('menuData', () => ([
 
 const {tObj} = useLang({})
 function itemClicked(item:MenuItem) {
+  console.log(item)
   if(item.children.length > 0) {
     item.opened = !item.opened;
     return
@@ -126,11 +127,11 @@ function isCurrentRoute(item: MenuItem) {
 
 <template>
   <div class="menuContainer">
-      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click="itemClicked(item)">
+      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click.stop="itemClicked(item)">
         {{ tObj('label', item)}} 
 <!--        loop children -->
-        <div :class="{childrenContainer: true, opened: item.opened}">
-          <div v-for="child in item.children" class="menuItem child">
+        <div :class="{childrenContainer: true, opened: item.opened}" > 
+          <div v-for="child in item.children" class="menuItem child" @click="itemClicked(child)">
             {{ tObj('label', child)}}
           </div>
         </div>
@@ -140,7 +141,7 @@ function isCurrentRoute(item: MenuItem) {
 
 <style scoped lang="scss">
 .menuItem{
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding-block: calc(var(--app-padding) / 4);
   cursor: pointer;
   &.hasChildren {

@@ -36,7 +36,7 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 8px 0 0 8px;
   gap: var(--app-padding);
   z-index: 2;
 }

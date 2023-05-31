@@ -1,10 +1,19 @@
 <script setup lang="ts">
 const {public:{strapi:{url}}} = useRuntimeConfig();
-
+import Markdown from 'vue3-markdown-it';
+import 'highlight.js/styles/monokai.css';
 const props = defineProps<{
   event:any
 }>();
-const { t } = useLang(props.event);
+const { t } = useLang({...props.event, 
+  tableHostEN:"Host", 
+  tableTargetEN:"Target", 
+  tableQuotaEN:"Quota",
+  tableHostHK:"對象",
+  tableTargetHK:"對象",
+  tableQuotaHK:"名額",
+});
+
 </script>
 
 <template>
@@ -21,10 +30,30 @@ const { t } = useLang(props.event);
       </div>
     </div>
   <div class="innerGrid">
-    <div class="eventContent" v-html="t('content')"></div>
-    <div class="eventContent" v-html="t('host')"></div>
-    <div class="eventContent" v-html="t('target')"></div>
-    <div class="eventContent" v-html="t('quota')"></div>
+    <Markdown class="eventContent" :source="t('content')" />
+    <table class="eventContent" >
+      <tr>
+        <td><div class="label">{{ t('tableHost') }}</div></td>
+        <td><div class="content" v-html="t('host')"></div></td>
+      </tr>
+      <tr>
+        <td><div class="label">{{ t('tableTarget') }}</div></td>
+        <td><div class="content" v-html="t('target')"></div></td>
+      </tr>
+      <tr>
+        <td><div class="label">{{ t('tableQuota') }}</div></td>
+        <td><div class="content" v-html="t('quota')"></div></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <EventDate :programs="event.programs" />
+    <div >
+      
+      
+    </div>
   </div>
   </div>
 </template>
@@ -58,7 +87,7 @@ const { t } = useLang(props.event);
 .titleContainer {
   width: fit-content;
   padding: var(--app-padding);
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   line-height: 1.2;
   font-weight: 700;
   display: block;
@@ -66,5 +95,16 @@ const { t } = useLang(props.event);
   padding-inline: 24px;
   padding-top: 48px;
   background: rgba(255, 241, 93, 0.3);
+}
+.eventContent{
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: var(--app-padding);
+}
+.label{
+  margin-right: 12px;
+}
+.content{
+  font-weight: 700;
 }
 </style>

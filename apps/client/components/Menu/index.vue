@@ -24,14 +24,15 @@
         <div class="menuScrollContainer">
           <MenuItems />
         </div>
+        <div class="headerBg bgGradient"></div>
       </div>
+      
   </div>
 </template>
 
 <style scoped lang="scss">
 .menu{
   z-index: 2;
-  
 }
 .menuToggleContainer{
   font-size: 24px;
@@ -42,8 +43,9 @@
   gap: 12px;
   cursor: pointer;
   z-index: -1;
+  
   .label{
-    font-size: 18px;
+    font-size: 1.6rem;
   }
   
 }
@@ -56,13 +58,15 @@
   top: 0;
   width: 100%;
   height: 400px;
-  overflow: auto;
+  overflow: visible;
   transition: all .5s ease-in-out;
   transform: translateY(-100vh);
   z-index: -1;
   opacity: 0;
   border-radius: 30px;
+  border: 1px solid #fff;
   padding: 60px calc(var(--app-padding) * 2) calc(var(--app-padding) * 2) calc(var(--app-padding) * 2);
+  
   .menuScrollContainer{
     width: 100%;
     height: 100%;
@@ -72,5 +76,18 @@
     opacity: 1;
     transform: translate(0);
   }
+}
+
+.headerBg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 1;
+  border-radius: 30px;
+  top: 0;
+  left:0;
+  transform: translate(0px, 5px);
 }
 </style>
