@@ -128,7 +128,7 @@ function isCurrentRoute(item: MenuItem) {
 <template>
   <div class="menuContainer">
       <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click.stop="itemClicked(item)">
-        {{ tObj('label', item)}} 
+        <Icon :name="item.opened ? 'material-symbols:keyboard-arrow-down-rounded' : 'ic:outline-keyboard-arrow-right'"/>{{ tObj('label', item) }} 
 <!--        loop children -->
         <div :class="{childrenContainer: true, opened: item.opened}" > 
           <div v-for="child in item.children" class="menuItem child" @click="itemClicked(child)">
@@ -144,17 +144,12 @@ function isCurrentRoute(item: MenuItem) {
   font-size: 1.5rem;
   padding-block: calc(var(--app-padding) / 4);
   cursor: pointer;
-  &.hasChildren {
-    &:before {
-      content: ">"
-      
-    }
-  }
+  
   &.current{
     font-weight: 700;
   }
   &.child{
-    padding-left: var(--app-padding);
+    padding-left: 1.5rem;
   }
 }
 .childrenContainer{

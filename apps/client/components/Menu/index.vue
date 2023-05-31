@@ -26,7 +26,6 @@
         </div>
         <div class="headerBg bgGradient"></div>
       </div>
-      
   </div>
 </template>
 
@@ -45,7 +44,7 @@
   z-index: -1;
   
   .label{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   
 }
@@ -57,7 +56,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 400px;
+  max-height: 100vh;
   overflow: visible;
   transition: all .5s ease-in-out;
   transform: translateY(-100vh);
@@ -66,7 +65,6 @@
   border-radius: 30px;
   border: 1px solid #fff;
   padding: 60px calc(var(--app-padding) * 2) calc(var(--app-padding) * 2) calc(var(--app-padding) * 2);
-  
   .menuScrollContainer{
     width: 100%;
     height: 100%;
