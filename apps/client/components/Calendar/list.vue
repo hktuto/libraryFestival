@@ -6,6 +6,7 @@ const columns = mapCurrent({ lg: 3 }, 1);
 const { currentLang } = useLang({})
 const calendarEl = ref();
 const router = useRouter()
+const { tObj } = useLang({})
 const calendarLang = computed(() => {
   return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
 })
@@ -16,6 +17,10 @@ function eventClick(day:any){
   router.push({
     path: '/program/' + day.id
   })
+}
+
+function dateStringToNumber(str:string):number{
+  return Number(str.replaceAll('-',''))
 }
 
 onMounted(() => getEvents(calendarEl.value.pages))
@@ -41,22 +46,17 @@ async function getEvents(months:any[]) {
     })
     for(const item of events.data){
       const { programs } = item.attributes as any
-      
-      for(const program of programs){
-        const { startDate, endDate } = program
-        const start = new Date(startDate)
-        const end = new Date(endDate)
-        const {t} = useLang(program)
-        const event = {
-          bar: true,
-          key: program.startDate,
+      const p  = programs.find((p:any) => dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+      console.log(p)
+      const event = {
+          dot: true,
+          key: p.startDate + p.titleEN,
           hideIndicator: true,
           customData: item,
           popover:true,
-          dates: new Date(program.startDate)
+          dates: new Date(p.startDate)
         }
         evs.push(event)
-      }
     }
   }
   //
@@ -68,11 +68,11 @@ async function getEvents(months:any[]) {
 <template>
   <div class="calendarListContainer innerGrid">
     <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="columns" :attributes='attrs' @did-move="getEvents" >
-      <template #day-popover="{ dayTitle, attributes}">
+      <template #day-popover="{ dayTitle, attributes }">
         {{ dayTitle }}
         <div class="eventList">
           <div v-for="{ key, customData } in attributes" :key="key" class="eventItem" @click="eventClick(customData)">
-            {{ customData.attributes.titleEN }}
+            {{ tObj('title', customData.attributes) }}
           </div>
         </div>
       </template>
@@ -104,7 +104,7 @@ async function getEvents(months:any[]) {
     &:hover, &:focus {
       color: var(--primary-color);
     }
-    + & {
+    & + & {
       border-top: 1px solid #eee;
     }
   }
