@@ -3,24 +3,28 @@
       {
         name: "facebook",
         icon:"ion:social-facebook",
-        href: ""
+        href: "https://www.facebook.com/readingisjoyful/"
       },
       {
         name: "Instagram",
         icon: "ion:logo-instagram",
-        href: ""
+        href: "https://www.instagram.com/readingisjoyful/"
       },
       {
         name: "youtube",
         icon:"ion:logo-youtube",
-        href: ""
+        href: "https://www.youtube.com/user/hkplgovhkchannel"
       },
     ]
+
+    function openlink(item:any) {
+      window.open(item.href, "_blank")
+    }
 </script>
 
 <template>
   <div class="shareContainer bgGradient">
-    <div v-for="item in social" :key="item.name" class="socialContainer">
+    <div v-for="item in social" :key="item.name" class="socialContainer" @click="openlink(item)">
       <Icon :name="item.icon" size="24px" ></Icon>
     </div>
   </div>
