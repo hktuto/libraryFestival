@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const {public:{strapi:{url}}} = useRuntimeConfig();
 import Markdown from 'vue3-markdown-it';
 import 'highlight.js/styles/monokai.css';
 const props = defineProps<{
@@ -19,9 +18,9 @@ const { t } = useLang({...props.event,
 <template>
   <div class="detailContainer ">
     <div class="featureContainer bgGradient" >
-      <div class="blurImage" :style="`background-image:url(${url + event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
+      <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
       <div class="featureImage bigGrid">
-        <img :src="url + event.photos.data[0].attributes.url" alt="">
+        <img :src="event.photos.data[0].attributes.url" alt="">
       </div>
     </div>
     <div class="title">

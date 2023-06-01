@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     devtools: true,
     modules: ['nuxt-icon', '@nuxtjs/strapi'],
     strapi: {
-        devtools: true
+        devtools: true,
+        url: "https://lib-fest-admin-mcgkz.ondigitalocean.app"
     },
     
 })

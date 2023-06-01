@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const {public:{strapi:{url}}} = useRuntimeConfig();
 const router = useRouter();
 const props = defineProps<{
   event: any,
@@ -17,7 +16,7 @@ function itemClick() {
 <template>
   <div class="eventItemContainer" @click="itemClick">
     <div class="featureImgContainer">
-      <img :src="url + event.photos.data[0].attributes.url" alt="">
+      <img :src="event.photos.data[0].attributes.url" alt="">
     </div>
     <div class="titleContainer">
       {{ t('title') }}

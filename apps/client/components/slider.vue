@@ -2,7 +2,6 @@
 import { register } from 'swiper/element/bundle';
 
 register();
-const {public:{strapi:{url}}} = useRuntimeConfig();
 const props = defineProps<{
   slides: any[]
 }>();
@@ -30,7 +29,7 @@ function slideClickHandler(item:any) {
        
     >
       <swiper-slide v-for="slide in slides" :key="slide.id" :class="{slide:true, cursor: slide.url}" @click="slideClickHandler(slide)">
-          <img :src="url + slide.feature.data.attributes.url" alt="">
+          <img :src="slide.feature.data.attributes.url" alt="">
       </swiper-slide>
       
     </swiper-container>
