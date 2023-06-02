@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it';
 import 'highlight.js/styles/monokai.css';
+
+const {public:{strapi:{url}}} = useRuntimeConfig();
+
+const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const props = defineProps<{
   event:any
 }>();
@@ -20,7 +24,7 @@ const { t } = useLang({...props.event,
     <div class="featureContainer bgGradient" >
       <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
       <div class="featureImage bigGrid">
-        <img :src="event.photos.data[0].attributes.url" alt="">
+        <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
       </div>
     </div>
     <div class="title">

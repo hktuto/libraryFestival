@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const router = useRouter();
+
+const {public:{strapi:{url}}} = useRuntimeConfig();
+
+const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const props = defineProps<{
   event: any,
   eventId: number
@@ -16,7 +20,7 @@ function itemClick() {
 <template>
   <div class="eventItemContainer" @click="itemClick">
     <div class="featureImgContainer">
-      <img :src="event.photos.data[0].attributes.url" alt="">
+      <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
     </div>
     <div class="titleContainer">
       {{ t('title') }}
