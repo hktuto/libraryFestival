@@ -46,7 +46,7 @@ const { t, tObj } = useLang({
 <style scoped lang="scss">
 .program {
   padding-block: var(--app-padding);
-  + & {
+  & + & {
     border-top: 1px solid #eee;
   }
   .label {
