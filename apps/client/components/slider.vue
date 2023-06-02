@@ -2,9 +2,14 @@
 import { register } from 'swiper/element/bundle';
 
 register();
+
 const props = defineProps<{
   slides: any[]
 }>();
+
+const {public:{strapi:{url}}} = useRuntimeConfig();
+
+const displayUrl = computed(() => url.includes('localhost') ? url : "")
 
 const spaceBetween = 10;
 
@@ -29,7 +34,7 @@ function slideClickHandler(item:any) {
        
     >
       <swiper-slide v-for="slide in slides" :key="slide.id" :class="{slide:true, cursor: slide.url}" @click="slideClickHandler(slide)">
-          <img :src="slide.feature.data.attributes.url" alt="">
+          <img :src="displayUrl + slide.feature.data.attributes.url" alt="">
       </swiper-slide>
       
     </swiper-container>

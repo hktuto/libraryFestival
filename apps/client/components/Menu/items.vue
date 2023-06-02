@@ -18,7 +18,7 @@ const menu = useState<MenuItem[]>('menuData', () => ([
   },{
     labelEN: "About Summer Library Festival",
     labelHK: "關於夏日圖書館節",
-    url:"/about",
+    url:"/page/about-summer-library-festival",
     opened:false,
     children: []
   },
