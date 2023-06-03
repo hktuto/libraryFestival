@@ -23,7 +23,7 @@ const { t } = useLang({...props.event,
   <div class="detailContainer ">
     <div class="featureContainer bgGradient" >
       <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
-      <div class="featureImage bigGrid">
+      <div class="featureImage innerGrid">
         <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
       </div>
     </div>
@@ -75,7 +75,7 @@ const { t } = useLang({...props.event,
 }
 .featureImage{
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/6;
   
   position: relative;
   overflow: hidden;

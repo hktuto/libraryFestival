@@ -30,7 +30,7 @@ const post = computed(() => data.value.data[0].attributes)
     <NuxtLayout name="detail">
         <div class="featureContainer bgGradient" >
             <div class="blurImage" :style="`background-image:url(${post.feature.data.attributes.formats.thumbnail.url})`"></div>
-            <div class="featureImage bigGrid">
+            <div class="featureImage innerGrid">
                 <img :src="displayUrl + post.feature.data.attributes.url" alt="">
             </div>
         </div>
@@ -69,7 +69,7 @@ const post = computed(() => data.value.data[0].attributes)
 }
 .featureImage{
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/6;
     
     position: relative;
     overflow: hidden;
