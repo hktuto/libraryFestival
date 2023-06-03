@@ -50,7 +50,7 @@ async function getEvents(months:any[]) {
       console.log(p)
       const event = {
           dot: true,
-          key: p.startDate + p.titleEN,
+          key: p.startDate + item.attributes.titleEN,
           hideIndicator: true,
           customData: item,
           popover:true,
@@ -59,6 +59,7 @@ async function getEvents(months:any[]) {
         evs.push(event)
     }
   }
+  console.log(evs)
   //
   attrs.value = evs
   // console.log(attrs.value)
@@ -106,6 +107,25 @@ async function getEvents(months:any[]) {
     }
     & + & {
       border-top: 1px solid #eee;
+    }
+  }
+}
+:deep {
+  .vc-pane-layout{
+    gap: 24px;
+  }
+  @media ( min-width: 1024px) {
+    .vc-pane{
+      &:first-child {
+        .vc-weeks{
+          opacity: 0.8;
+        }
+      }
+      &:last-child {
+        .vc-weeks{
+          opacity: 0.8;
+        }
+      }
     }
   }
 }

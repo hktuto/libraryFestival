@@ -34,9 +34,9 @@
     width: 100%;
     height: 100%;
     background-image: 
-      linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%),
-      linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%),
-      linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%);
+      linear-gradient(180deg, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 70%),
+      linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 70%),
+      linear-gradient(45deg, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 70%);
     z-index: 2;
   }
 }

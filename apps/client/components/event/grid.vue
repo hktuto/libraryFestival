@@ -16,8 +16,11 @@ const props = defineProps<{
 .grid{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: calc(var(--app-padding) * 3);
+  @media (max-width: 1280px){
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media (max-width: 768px){
     grid-template-columns: repeat(1, 1fr);
   }
