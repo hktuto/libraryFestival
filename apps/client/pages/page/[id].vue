@@ -68,16 +68,16 @@ const post = computed(() => data.value.data[0].attributes)
     }
 }
 .featureImage{
-    width: 100%;
-    aspect-ratio: 16/6;
-    
-    position: relative;
-    overflow: hidden;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  width: 100%;
+  aspect-ratio: 16/6;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  img {
+    height: 100%;
+    margin: 0 auto;
+  }
 }
 .title {
     margin-bottom: calc(var(--app-padding) * 2);

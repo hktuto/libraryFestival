@@ -76,13 +76,13 @@ const { t } = useLang({...props.event,
 .featureImage{
   width: 100%;
   aspect-ratio: 16/6;
-  
+  display: grid;
+  place-items: center;
   position: relative;
   overflow: hidden;
   img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    margin: 0 auto;
   }
 }
 .title {
