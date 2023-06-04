@@ -19,7 +19,6 @@ const {t} = useLang({
 
 <style scoped lang="scss">
 .header{
-  margin-block: 24px;
 }
 .postTitle{
   font-size: 2rem;

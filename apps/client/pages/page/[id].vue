@@ -2,6 +2,8 @@
 
 <script lang="ts" setup>
 import Markdown from 'vue3-markdown-it';
+import {mobileHelper} from "~/composables/mobile";
+const { isMobile } = mobileHelper()
 const route = useRoute();
 const {findOne } = useStrapi()
 const {public:{strapi:{url}}} = useRuntimeConfig();
@@ -55,7 +57,6 @@ const post = computed(() => data.value.data[0].attributes)
 
     <style scoped lang="scss">
 .featureContainer{
-  margin-top: 24px;
     isolation: isolate;
     position: relative;
     .blurImage{

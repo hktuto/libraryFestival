@@ -68,7 +68,6 @@ const post = computed(() => data.value.data[0].attributes)
 
     <style scoped lang="scss">
 .featureContainer{
-  margin-top: 24px;
     isolation: isolate;
     position: relative;
     .blurImage{

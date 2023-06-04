@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import {mobileHelper} from "~/composables/mobile";
 
+const { isMobile } = mobileHelper()
 </script>
 
 <template>
-  <div class="headerContainer innerGrid">
+  <div :class="{headerContainer:true, innerGrid:true, isMobile}">
     <div class="headerLeft bgGradient">
-      
       <Menu ></Menu>
       <Search ></Search>
       <Language />
@@ -20,6 +21,21 @@
   margin-top: 40px;
   overflow: visible;
   z-index: 2;
+  margin-bottom: 24px;
+  &.isMobile{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    grid-template-areas: 'menu menu menu menu';
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 2;
+    .headerLeft{
+      border-radius: 0;
+    }
+  }
   .headerLeft {
     position: relative;
     grid-area: menu;
@@ -32,7 +48,6 @@
     padding-inline: calc(var(--app-padding) * 2 );
     gap: var(--app-padding);
     overflow: visible;
-    border: 1px solid #fff;
   }
 }
 .headerBg{

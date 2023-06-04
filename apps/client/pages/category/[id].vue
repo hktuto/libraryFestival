@@ -55,7 +55,7 @@ const { data, refresh, error } = await useAsyncData(
 
 <style scoped lang="scss">
 .header{
-  margin-block: 24px;
+  margin-bottom: 24px;
 }
 .postTitle{
   font-size: 2rem;

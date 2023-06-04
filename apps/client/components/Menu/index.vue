@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import {onClickOutside} from "@vueuse/core";
+  import {mobileHelper} from "~/composables/mobile";
   const menuPopoverEl = ref()
+  const { isMobile } = mobileHelper()
   const { t } = useLang({
     menuEN: "Menu",
     menuHK: "選單",
@@ -16,12 +18,12 @@
 
 <template>
   <div ref="menuPopoverEl" class="menu">
-     <div class="menuToggleContainer" @click.prevent="toggleMenu">
+     <div :class="{menuToggleContainer:true, isMobile, opened:popupOpened}" @click.prevent="toggleMenu">
        <Icon :name="popupOpened ?  'material-symbols:close' : 'material-symbols:menu'" />
        <div class="label">{{ t('menu') }}</div>
      </div>
-      <div :class="{menuPopOver:true, opened:popupOpened, bgGradient:true}">
-        <div class="menuScrollContainer">
+      <div :class="{menuPopOver:true, opened:popupOpened, bgGradient:true, isMobile}">
+        <div :class="{menuScrollContainer:true, isMobile}">
           <MenuItems />
         </div>
 
@@ -42,7 +44,12 @@
   gap: 12px;
   cursor: pointer;
   z-index: -1;
-  
+  &.isMobile.opened{
+    position: fixed;
+    left: 24px;
+    top: 24px;
+    z-index: 3;
+  }
   .label{
     font-size: 1.4rem;
   }
@@ -65,6 +72,12 @@
   border-radius: 30px;
   border: 1px solid #fff;
   padding: 60px calc(var(--app-padding) * 2) calc(var(--app-padding) * 2) calc(var(--app-padding) * 2);
+  &.isMobile{
+    border-radius: 0px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
   .menuScrollContainer{
     width: 100%;
     height: 100%;

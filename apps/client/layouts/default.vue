@@ -1,17 +1,20 @@
 <template>
-  <div class="pageContainer">
+  <div :class="{pageContainer:true, isMobile}">
+    <slot name="beforeHeader" />
     <BgAnimation />
-    <Header />
-    <Share />
+    <Header class="header" />
+    <Share class="share" />
     <div class="content">
       <slot />
     </div>
-    <Footer />
+    <Footer class="footer" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import {mobileHelper} from "~/composables/mobile";
 
+const { isMobile } = mobileHelper()
 
 </script>
 
@@ -29,6 +32,15 @@
   .content{
     flex: 1 0 auto;
     width: 100%;
+  }
+  &.isMobile{
+    padding-bottom: 60px;
+    .Share{
+      order:1
+    }
+    .footer {
+      order: 3
+    }
   }
 }
 

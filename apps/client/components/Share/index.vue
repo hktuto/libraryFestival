@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import {mobileHelper} from "~/composables/mobile";
+
+const { isMobile } = mobileHelper()
     const social = [
       {
         name: "facebook",
@@ -23,7 +26,7 @@
 </script>
 
 <template>
-  <div class="shareContainer bgGradient">
+  <div :class="{shareContainer:true, bgGradient:true, isMobile}">
     <div v-for="item in social" :key="item.name" class="socialContainer" @click="openlink(item)">
       <Icon :name="item.icon" size="24px" ></Icon>
     </div>
@@ -43,6 +46,13 @@
   border-radius: 8px 0 0 8px;
   gap: var(--app-padding);
   z-index: 2;
+  &.isMobile{
+    position: relative;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: center;
+    z-index: 1;
+  }
 }
 .socialContainer{
   width: 40px;

@@ -1,8 +1,11 @@
 <template>
     <NuxtLayout>
-      <Illustration />
+      <template v-if="isMobile" #beforeHeader>
+        before header
+      </template>
+      <Illustration v-if="!isMobile" />
       <slider :slides="data.data.attributes.slide"/>
-      <Divider />
+      <Divider v-if="!isMobile" />
       <CalendarList />
       <Divider />
       <EventGrid :events="data.data.attributes.events.data"/>
@@ -10,9 +13,11 @@
 </template>
 
 <script lang="ts" setup>
+import {mobileHelper} from "#imports";
+
 const { find } = useStrapi()
 const { categories } = useCategories()
-
+const { isMobile } = mobileHelper()
 const { data, refresh, error } = await useAsyncData(
   'homeData',
   () => find('home',{

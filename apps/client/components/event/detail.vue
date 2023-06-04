@@ -62,7 +62,6 @@ const { t } = useLang({...props.event,
 
 <style scoped lang="scss">
 .featureContainer{
-  margin-top: 24px;
   isolation: isolate;
   position: relative;
   .blurImage{

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { useScreens } from 'vue-screen-utils';
+
+import {mobileHelper} from "~/composables/mobile";
+
 const { find } = useStrapi()
-const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' });
-const columns = mapCurrent({ lg: 3 }, 1);
+
+const { isMobile } = mobileHelper()
 const { currentLang } = useLang({})
 const calendarEl = ref();
 const router = useRouter()

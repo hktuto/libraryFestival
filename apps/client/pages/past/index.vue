@@ -48,7 +48,6 @@ function itemClick(item:any) {
   font-weight: 700;
 }
 .listContainer{
-  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--app-padding);
