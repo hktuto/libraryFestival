@@ -9,6 +9,7 @@ const { isMobile } = mobileHelper()
   <div :class="{pageContainer:true, isMobile}">
     <BgAnimation />
     <Header />
+    <Share :forceShow="true" />
     <div class="content">
       <slot />
     </div>

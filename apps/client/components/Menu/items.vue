@@ -114,6 +114,7 @@ function itemClicked(item:MenuItem) {
     return
   }
   if(item.url) {
+    console.log(item.url)
     router.push({path: item.url})
   }
 }
@@ -127,7 +128,7 @@ function isCurrentRoute(item: MenuItem) {
 
 <template>
   <div class="menuContainer">
-      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click.stop="itemClicked(item)">
+      <div v-for="item in menu" :key="item.url" :class="{menuItem:true, pointer: item.url, hasChildren: item.children.length > 0, opened: item.opened, current:isCurrentRoute(item)}" @click="itemClicked(item)">
         <Icon :name="item.opened ? 'material-symbols:keyboard-arrow-down-rounded' : 'ic:outline-keyboard-arrow-right'"/>{{ tObj('label', item) }} 
 <!--        loop children -->
         <div :class="{childrenContainer: true, opened: item.opened}" > 

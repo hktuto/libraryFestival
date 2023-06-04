@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import {useAsyncData} from "#imports";
+import {mobileHelper, useAsyncData} from "#imports";
 
 const router = useRouter()
 const { find, findOne } = useStrapi()
 const {public:{strapi:{url}}} = useRuntimeConfig();
 const route = useRoute()
+const {isMobile} = mobileHelper()
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const { data: cat } = await useAsyncData(
     'catData',
@@ -39,6 +40,14 @@ const { data, refresh, error } = await useAsyncData(
 
 <template>
   <NuxtLayout name="detail">
+    
+    <div  v-if="isMobile" class="innerGrid noPadding">
+      <div class="featureContainer" >
+        <div class="featureImage">
+          <img class="ill1 bgGradient" src="/images/home/desktop_left_bottom.png" alt="" />
+        </div>
+      </div>
+    </div>
     <div class="header innerGrid">
       <div class="postTitle">
         {{ tObj('name', cat.data[0].attributes)}}
@@ -60,5 +69,23 @@ const { data, refresh, error } = await useAsyncData(
 .postTitle{
   font-size: 2rem;
   font-weight: 700;
+}
+.ill1{
+  width: 100%;
+  transform: translate3d(0,0,0);
+  mix-blend-mode: multiply;
+}
+.mtImg{
+  width: 100%;
+}
+.mtContainer{
+  position: relative;
+  margin-top: 25px;
+}
+.ill2{
+  position: absolute;
+  width: 40%;
+  top: -19%;
+  right: 8%;
 }
 </style>

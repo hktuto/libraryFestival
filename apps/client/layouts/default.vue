@@ -34,7 +34,11 @@ const { isMobile } = mobileHelper()
     width: 100%;
   }
   &.isMobile{
+    
     padding-bottom: 60px;
+    .content{
+      margin-top: 24px;
+    }
     .Share{
       order:1
     }

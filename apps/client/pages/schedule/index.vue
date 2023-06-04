@@ -50,6 +50,7 @@ function itemClick(item:any) {
 
 <style scoped lang="scss">
 .header{
+  margin-top: 24px;
 }
 .postTitle{
   font-size: 2rem;

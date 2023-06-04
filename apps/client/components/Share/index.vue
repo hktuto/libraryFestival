@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import {mobileHelper} from "~/composables/mobile";
-
+const props = defineProps<{
+  forceShow: boolean
+}>()
 const { isMobile } = mobileHelper()
     const social = [
       {
@@ -26,7 +28,7 @@ const { isMobile } = mobileHelper()
 </script>
 
 <template>
-  <div :class="{shareContainer:true, bgGradient:true, isMobile}">
+  <div :class="{shareContainer:true, bgGradient:true, isMobile, forceShow}">
     <div v-for="item in social" :key="item.name" class="socialContainer" @click="openlink(item)">
       <Icon :name="item.icon" size="24px" ></Icon>
     </div>
@@ -52,6 +54,15 @@ const { isMobile } = mobileHelper()
     flex-flow: row nowrap;
     justify-content: center;
     z-index: 1;
+    &.forceShow{
+      width: auto;
+      position: absolute;
+      right: 0;
+      top: 24px;
+      z-index: 1;
+      flex-flow: column nowrap;
+      background: none;
+    }
   }
 }
 .socialContainer{

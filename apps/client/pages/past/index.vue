@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import {mobileHelper} from "#imports";
+
 const router = useRouter()
 const { find } = useStrapi()
 const {public:{strapi:{url}}} = useRuntimeConfig();
-
+const {isMobile} = mobileHelper()
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const { data, refresh, error } = await useAsyncData(
     'programData',
@@ -25,6 +27,14 @@ function itemClick(item:any) {
 
 <template>
   <NuxtLayout name="detail">
+    
+    <div v-if="isMobile" class="innerGrid noPadding">
+      <div class="featureContainer" >
+        <div class="featureImage ">
+          <img class="ill1 bgGradient" src="/images/home/desktop_left_bottom.png" alt="" />
+        </div>
+      </div>
+    </div>
     <div class="innerGrid">
       <div class="pageTitle">{{ t('title')}}</div>
     </div>
@@ -107,5 +117,24 @@ function itemClick(item:any) {
     height: 100%;
     z-index: -1;
   }
+}
+
+.ill1{
+  width: 100%;
+  transform: translate3d(0,0,0);
+  mix-blend-mode: multiply;
+}
+.mtImg{
+  width: 100%;
+}
+.mtContainer{
+  position: relative;
+  margin-top: 25px;
+}
+.ill2{
+  position: absolute;
+  width: 40%;
+  top: -19%;
+  right: 8%;
 }
 </style>

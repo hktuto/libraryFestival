@@ -85,7 +85,7 @@ async function getEvents(months:any[]) {
 
 <style scoped lang="scss">
 .calendarListContainer{
-  height: 400px;
+  height: auto;
   max-height: 80%;
   :deep {
     .vc-week, .vc-weekdays{
