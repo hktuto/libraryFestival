@@ -21,14 +21,19 @@ const { t } = useLang({...props.event,
 
 <template>
   <div class="detailContainer ">
-    <div class="featureContainer bgGradient" >
-      <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
-      <div class="featureImage innerGrid">
-        <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
+    <div class="innerGrid noPadding">
+      <div class="featureContainer bgGradient" >
+        <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
+        <div class="featureImage innerGrid">
+          <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
+        </div>
       </div>
     </div>
-    <div class="title">
-      <div class="bgGradient"></div>
+    
+    <div class="title ">
+      <div class="innerGrid noPadding">
+        <div class="bgGradient "></div>
+      </div>
       <div class="innerGrid">
         <div class="titleContainer">
           {{ t('title')  }}
@@ -57,7 +62,7 @@ const { t } = useLang({...props.event,
 
 <style scoped lang="scss">
 .featureContainer{
-  margin-top: -100px;
+  margin-top: 24px;
   isolation: isolate;
   position: relative;
   .blurImage{
@@ -123,5 +128,9 @@ const { t } = useLang({...props.event,
   td{
     vertical-align: top;
   }
+}
+
+.innerGrid.noPadding{
+  padding:0;
 }
 </style>

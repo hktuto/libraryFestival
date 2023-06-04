@@ -28,14 +28,18 @@ const post = computed(() => data.value.data[0].attributes)
 
 <template>
     <NuxtLayout name="detail">
+      <div class="innerGrid noPadding">
         <div class="featureContainer bgGradient" >
             <div class="blurImage" :style="`background-image:url(${post.feature.data.attributes.formats.thumbnail.url})`"></div>
             <div class="featureImage innerGrid">
                 <img :src="displayUrl + post.feature.data.attributes.url" alt="">
             </div>
         </div>
+      </div>
         <div class="title">
-            <div class="bgGradient"></div>
+          <div class="innerGrid noPadding">
+            <div class="bgGradient "></div>
+          </div>
             <div class="innerGrid">
                 <div class="titleContainer">
                 {{ t('title')  }}
@@ -51,7 +55,7 @@ const post = computed(() => data.value.data[0].attributes)
 
     <style scoped lang="scss">
 .featureContainer{
-    margin-top: -100px;
+  margin-top: 24px;
     isolation: isolate;
     position: relative;
     .blurImage{
@@ -100,5 +104,9 @@ const post = computed(() => data.value.data[0].attributes)
     padding-inline: 24px;
     padding-top: 48px;
     background: rgba(255, 241, 93, 0.3);
+}
+
+.innerGrid.noPadding{
+  padding:0;
 }
 </style>
