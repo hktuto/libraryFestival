@@ -11,7 +11,7 @@ const calendarLang = computed(() => {
   return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
 })
 const attrs = ref<any>([]);
-
+const emit = defineEmits(['update:attrs'])
 function eventClick(day:any){
   console.log(day) 
   router.push({
@@ -47,12 +47,11 @@ async function getEvents(months:any[]) {
     for(const item of events.data){
       const { programs } = item.attributes as any
       const p  = programs.find((p:any) => dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
-      console.log(p)
       const event = {
           dot: true,
           key: p.startDate + item.attributes.titleEN,
           hideIndicator: true,
-          customData: item,
+          customData: {event: item.attributes, program: p, id:item.id},
           popover:true,
           dates: new Date(p.startDate)
         }
@@ -62,6 +61,7 @@ async function getEvents(months:any[]) {
   console.log(evs)
   //
   attrs.value = evs
+  emit('update:attrs', evs);
   // console.log(attrs.value)
 }
 </script>
@@ -73,7 +73,7 @@ async function getEvents(months:any[]) {
         {{ dayTitle }}
         <div class="eventList">
           <div v-for="{ key, customData } in attributes" :key="key" class="eventItem" @click="eventClick(customData)">
-            {{ tObj('title', customData.attributes) }}
+            {{ tObj('title', customData.event) }}
           </div>
         </div>
       </template>
