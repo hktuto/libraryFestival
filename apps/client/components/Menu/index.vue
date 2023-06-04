@@ -24,7 +24,7 @@
         <div class="menuScrollContainer">
           <MenuItems />
         </div>
-        <div class="headerBg bgGradient"></div>
+
       </div>
   </div>
 </template>

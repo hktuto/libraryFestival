@@ -9,7 +9,6 @@
       <Menu ></Menu>
       <Search ></Search>
       <Language />
-      <div class="headerBg bgGradient"></div>
     </div>
   </div>
 </template>
