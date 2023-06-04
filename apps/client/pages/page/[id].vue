@@ -69,14 +69,13 @@ const post = computed(() => data.value.data[0].attributes)
 }
 .featureImage{
   width: 100%;
-  aspect-ratio: 16/6;
-  display: grid;
-  place-items: center;
+  aspect-ratio: 16/8;
   position: relative;
   overflow: hidden;
   img {
     height: 100%;
     margin: 0 auto;
+    display: block;
   }
 }
 .title {
