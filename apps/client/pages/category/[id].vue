@@ -16,7 +16,10 @@ const { data: cat } = await useAsyncData(
       }
     })
 )
-const { tObj } = useLang({})
+const { tObj , t} = useLang({
+  noResultEN:"No Result",
+  noResultHK:"未有活動"
+})
 const { data, refresh, error } = await useAsyncData(
     'catergories',
     () => find('events', {
@@ -41,8 +44,11 @@ const { data, refresh, error } = await useAsyncData(
         {{ tObj('name', cat.data[0].attributes)}}
       </div>
     </div>
-    <div class="gridContainer">
-      <EventGrid :events="data.data" />
+    <div class="gridContainer innerGrid">
+      <EventGrid v-if="data.data.length > 0" :events="data.data" />
+      <div v-else class="noResultContainer">
+        {{ t('noResult') }}
+      </div>
     </div>
   </NuxtLayout>
 </template>
