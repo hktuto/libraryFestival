@@ -15,11 +15,18 @@ const { data, refresh, error } = await useAsyncData(
             $eq: route.params.id
         }
     },
-    populate: "*"
+    populate: {
+      feature: {
+        populate:"*"
+      },
+      slides: {
+        populate:"*"
+      }
+    }
   })
 )
 
-const { t } = useLang(data.value.data[0].attributes);
+const { t, tObj } = useLang(data.value.data[0].attributes);
 
 const post = computed(() => data.value.data[0].attributes)
 
@@ -47,7 +54,13 @@ const post = computed(() => data.value.data[0].attributes)
             </div>
         </div>
         <div class="innerGrid">
-          <div class="content" v-html="t('content')"></div>
+            <Markdown class="eventContent" :source="t('content')" />
+          <div class="slides">
+            <div v-for="slide in post.slides" class="slide">
+              <img :src="slide.feature.data.attributes.url"/>
+              <div class="small">{{ tObj('title', slide) }}</div>
+            </div>
+          </div>
         </div>
     </NuxtLayout>
 </template>
@@ -109,24 +122,18 @@ const post = computed(() => data.value.data[0].attributes)
 .innerGrid.noPadding{
   padding:0;
 }
-.content{
-  font-size: 1.2rem;
-  line-height: 1.2;
-}
-:deep{
-  figure{
-    width: 45%;
-    float:left;
-    margin: 20px;
-    @media (max-width: 960px) {
-      width: 100%;
-      margin: 0 0;
-    }
-    figcaption{
-      padding: 12px;
-    }
+
+.slides{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--app-padding);
+  @media (max-width:  960px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .slide{
+    width: 100%;
     img{
-      width:100%;
+      width: 100%;
     }
   }
 }

@@ -8,7 +8,8 @@ const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const { data, refresh, error } = await useAsyncData(
     'programData',
     () => find('pasts', {
-      populate: "*"
+      populate: "*",
+      sort:"slug"
     })
 )
 const { tObj, t } = useLang({
