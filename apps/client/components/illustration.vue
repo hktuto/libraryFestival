@@ -20,6 +20,9 @@
     justify-content: flex-start;
     align-items: flex-end;
   }
+  .ill1{
+    transform: translate3d(0,0,0)
+  }
   .ill2 {
     width: 100%;
     mix-blend-mode: multiply;
