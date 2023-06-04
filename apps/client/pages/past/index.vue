@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Markdown from 'vue3-markdown-it';
 const router = useRouter()
 const { find } = useStrapi()
 const {public:{strapi:{url}}} = useRuntimeConfig();
