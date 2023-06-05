@@ -48,17 +48,20 @@ async function getEvents(months:any[]) {
     })
     for(const item of events.data){
       const { programs } = item.attributes as any
-      const p  = programs.find((p:any) => dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
-      const event = {
-          dot: true,
-          key: p.startDate + item.attributes.titleEN,
-          hideIndicator: true,
-          customData: {event: item.attributes, program: p, id:item.id},
-          popover:true,
-          dates: new Date(p.startDate)
+      const ps  = programs.filter((p:any) => dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+      for( const p of ps ) {
+        
+          const event = {
+              dot: true,
+              key: p.startDate + item.attributes.titleEN,
+              hideIndicator: true,
+              customData: {event: item.attributes, program: p, id:item.id},
+              popover:true,
+              dates: new Date(p.startDate)
+            }
+            evs.push(event)
         }
-        evs.push(event)
-    }
+      }
   }
   console.log(evs)
   //
