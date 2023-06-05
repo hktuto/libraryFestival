@@ -49,16 +49,21 @@ const { isMobile } = mobileHelper()
   gap: var(--app-padding);
   z-index: 2;
   &.isMobile{
-    position: relative;
+    position: fixed;
     width: 100%;
+    bottom: 0;
+    left: 0;
     flex-flow: row nowrap;
     justify-content: center;
-    z-index: 1;
+    top: initial;
+    z-index: 2;
     &.forceShow{
       width: auto;
       position: absolute;
       right: 0;
-      top: 24px;
+      top: 120px;
+      left: initial;
+      bottom: initial;
       z-index: 1;
       flex-flow: column nowrap;
       background: none;

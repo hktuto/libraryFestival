@@ -23,9 +23,6 @@ const { isMobile } = mobileHelper()
   z-index: 2;
   margin-bottom: 24px;
   &.isMobile{
-    position: fixed;
-    bottom: 0;
-    left:0;
     grid-template-areas: 'menu menu menu menu';
     width: 100%;
     padding: 0;

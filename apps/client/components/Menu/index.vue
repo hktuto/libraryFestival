@@ -48,7 +48,7 @@
     position: fixed;
     left: 24px;
     top: 24px;
-    z-index: 3;
+    z-index: 4;
   }
   .label{
     font-size: 1.4rem;
@@ -77,6 +77,8 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
+    border:none;
+    
   }
   .menuScrollContainer{
     width: 100%;
@@ -86,6 +88,7 @@
   &.opened{
     opacity: 1;
     transform: translate(0);
+    z-index: 3;
   }
 }
 

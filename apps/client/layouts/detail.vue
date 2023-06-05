@@ -33,7 +33,7 @@ const { isMobile } = mobileHelper()
     width: 100%;
   }
   &.isMobile{
-    padding-bottom: 60px;
+    //padding-bottom: 60px;
   }
 }
 
