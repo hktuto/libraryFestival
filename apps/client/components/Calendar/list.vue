@@ -4,7 +4,7 @@ import {mobileHelper} from "~/composables/mobile";
 
 const { find } = useStrapi()
 
-const { isMobile } = mobileHelper()
+const { isMobile, columns } = mobileHelper()
 const { currentLang } = useLang({})
 const calendarEl = ref();
 const router = useRouter()

@@ -50,7 +50,7 @@ const { data, refresh, error } = await useAsyncData(
     </div>
     <div class="header innerGrid">
       <div class="postTitle">
-        {{ tObj('name', cat.data[0].attributes)}}
+        {{ tObj('name', cat.data[0].attributes) }}
       </div>
     </div>
     <div class="gridContainer innerGrid">

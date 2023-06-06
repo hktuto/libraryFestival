@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it';
 import 'highlight.js/styles/monokai.css';
+import FeatureImage from "~/components/featureImage.vue";
 
 const {public:{strapi:{url}}} = useRuntimeConfig();
 
@@ -21,14 +22,7 @@ const { t } = useLang({...props.event,
 
 <template>
   <div class="detailContainer ">
-    <div class="innerGrid noPadding">
-      <div class="featureContainer bgGradient" >
-        <div class="blurImage" :style="`background-image:url(${event.photos.data[0].attributes.formats.thumbnail.url})`"></div>
-        <div class="featureImage innerGrid">
-          <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
-        </div>
-      </div>
-    </div>
+    <FeatureImage :img="event.photos.data[0].attributes.url" :blur-image="event.photos.data[0].attributes.formats.thumbnail.url" />
     
     <div class="title ">
       <div class="innerGrid noPadding">
@@ -61,33 +55,7 @@ const { t } = useLang({...props.event,
 </template>
 
 <style scoped lang="scss">
-.featureContainer{
-  isolation: isolate;
-  position: relative;
-  .blurImage{
-    position: absolute;
-    background-size: contain;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-    z-index: -1;
 
-    image-rendering: auto;
-  }
-}
-.featureImage{
-  width: 100%;
-  aspect-ratio: 16/8;
-  position: relative;
-  overflow: hidden;
-  img {
-    height: 100%;
-    margin: 0 auto;
-    display: block;
-  }
-}
 .title {
   margin-bottom: calc(var(--app-padding) * 2);
   position: relative;

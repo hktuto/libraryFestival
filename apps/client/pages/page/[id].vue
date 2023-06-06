@@ -3,6 +3,7 @@
 <script lang="ts" setup>
 import Markdown from 'vue3-markdown-it';
 import {mobileHelper} from "~/composables/mobile";
+import FeatureImage from "~/components/featureImage.vue";
 const { isMobile } = mobileHelper()
 const route = useRoute();
 const {findOne } = useStrapi()
@@ -30,14 +31,7 @@ const post = computed(() => data.value.data[0].attributes)
 
 <template>
     <NuxtLayout name="detail">
-      <div class="innerGrid noPadding">
-        <div class="featureContainer bgGradient" >
-            <div class="blurImage" :style="`background-image:url(${post.feature.data.attributes.formats.thumbnail.url})`"></div>
-            <div class="featureImage innerGrid">
-                <img :src="displayUrl + post.feature.data.attributes.url" alt="">
-            </div>
-        </div>
-      </div>
+        <FeatureImage :img="post.feature.data.attributes.url" :blur-image="post.feature.data.attributes.formats.thumbnail.url" />
         <div class="title">
           <div class="innerGrid noPadding">
             <div class="bgGradient "></div>
@@ -56,33 +50,7 @@ const post = computed(() => data.value.data[0].attributes)
 
 
     <style scoped lang="scss">
-.featureContainer{
-    isolation: isolate;
-    position: relative;
-    .blurImage{
-        position: absolute;
-        background-size: contain;
-        left: 0;
-        top:0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.5;
-        z-index: -1;
 
-        image-rendering: auto;
-    }
-}
-.featureImage{
-  width: 100%;
-  aspect-ratio: 16/8;
-  position: relative;
-  overflow: hidden;
-  img {
-    height: 100%;
-    margin: 0 auto;
-    display: block;
-  }
-}
 .title {
     margin-bottom: calc(var(--app-padding) * 2);
     position: relative;

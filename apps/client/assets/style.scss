@@ -20,6 +20,9 @@
 html, body {
   padding: 0;
   margin: 0;
+  @media (min-width: 640px) {
+    font-size: 22px;
+  }
 }
 
 * {
@@ -36,11 +39,22 @@ html, body {
 }
 
 .innerGrid {
+  --width: 1440px;
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--width);
   margin: 0 auto;
   position: relative;
   @media (max-width: 1520px) {
+    padding: 0 20px;
+  }
+}
+
+.smallGrid {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  @media (max-width: 1000px) {
     padding: 0 20px;
   }
 }

@@ -114,8 +114,7 @@ function itemClicked(item:MenuItem) {
     return
   }
   if(item.url) {
-    console.log(item.url)
-    router.push({path: item.url})
+    router.push(item.url)
   }
 }
 
