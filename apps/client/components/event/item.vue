@@ -32,6 +32,8 @@ function itemClick() {
 <style scoped lang="scss">
 .eventItemContainer{
   cursor: pointer;
+  display: grid;
+  grid-template-rows: min-content 1fr;
   &:hover {
     position: relative;
     .titleContainer{
@@ -57,7 +59,7 @@ function itemClick() {
 }
 .titleContainer{
   padding: var(--app-padding);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.2;
   display: block;
   position: relative;

@@ -140,6 +140,7 @@ function isCurrentRoute(item: MenuItem) {
 </template>
 
 <style scoped lang="scss">
+
 .menuItem{
   font-size: 1.5rem;
   padding-block: calc(var(--app-padding) / 4);
@@ -150,6 +151,7 @@ function isCurrentRoute(item: MenuItem) {
   }
   &.child{
     padding-left: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 .childrenContainer{
