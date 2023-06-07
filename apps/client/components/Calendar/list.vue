@@ -4,6 +4,10 @@ import {mobileHelper} from "~/composables/mobile";
 
 const { find } = useStrapi()
 
+const props = defineProps<{
+  forceColumn?: number
+}>()
+
 const { isMobile, columns } = mobileHelper()
 const { currentLang } = useLang({})
 const calendarEl = ref();
@@ -73,7 +77,7 @@ async function getEvents(months:any[]) {
 
 <template>
   <div class="calendarListContainer innerGrid">
-    <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="columns" :attributes='attrs' @did-move="getEvents" >
+    <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="forceColumn || columns" :attributes='attrs' @did-move="getEvents" >
       <template #day-popover="{ dayTitle, attributes }">
         {{ dayTitle }}
         <div class="eventList">

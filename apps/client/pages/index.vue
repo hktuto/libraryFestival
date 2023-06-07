@@ -11,9 +11,22 @@
       <Illustration v-if="!isMobile" />
       <img v-else class="ill1 bgGradient" src="/images/home/desktop_left_bottom.png" alt="">
       <Divider  v-if="isMobile"  />
+      <template v-if="!isMobile">
+        <div class="calendarRow innerGrid">
+          <div class="desktopSlideContainer">
+            <slider :slides="data.data.attributes.slide"/>
+          </div>
+          <div class="calendarContainer bgGradient">
+            <CalendarList :forceColumn="1" />
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        
       <slider :slides="data.data.attributes.slide"/>
       <Divider  />
-      <CalendarList />
+      <CalendarList :forceColumn="1" />
+      </template>
       <Divider />
       <EventGrid :events="data.data.attributes.events.data"/>
     </NuxtLayout>
@@ -60,5 +73,30 @@ const { data, refresh, error } = await useAsyncData(
   width: 40%;
   top: -19%;
   right: 8%;
+}
+
+.calendarRow{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: var(--app-padding);
+  
+}
+.desktopSlideContainer{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  .sliderContainer{
+    padding: 0 !important;
+  }
+  //width: 99%;
+}
+.calendarContainer {
+  width: 100%;
+  place-items: center;
+  display: grid;
+  .calendarListContainer{
+     width: 100%;
+    background: #fff;
+  }
 }
 </style>

@@ -20,7 +20,7 @@ function slideClickHandler(item:any) {
 </script>
 
 <template>
-  <div class="sliderContainer smallGrid">
+  <div class="sliderContainer innerGrid">
     
     <swiper-container
         :slides-per-view="1"
