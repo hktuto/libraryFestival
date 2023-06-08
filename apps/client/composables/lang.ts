@@ -8,7 +8,7 @@ export const useLang = (obj:any) => {
         {key:"CN", label:"簡"}
     ]
     const displayLang = computed(() => locales.filter(item => item.key !== currentLang.value));
-    const currentLang = useState('language',() => "EN");
+    const currentLang = useState('language',() => "HK");
     
     function changeLocale(key:string) {
         const res = locales.find(item => item.key === key);
@@ -16,7 +16,7 @@ export const useLang = (obj:any) => {
             currentLang.value = res.key
             return
         }
-        currentLang.value = "EN"
+        currentLang.value = "HK"
         
     }
     

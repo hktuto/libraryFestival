@@ -52,7 +52,9 @@ const post = computed(() => data.value.data[0].attributes)
             <Markdown class="eventContent" :source="t('content')" />
           <div class="slides">
             <div v-for="slide in post.slides" class="slide">
-              <img :src="slide.feature.data.attributes.url"/>
+              <div class="slideImgContainer">
+                <img :src="slide.feature.data.attributes.url"/>
+              </div>
               <div class="small">{{ tObj('title', slide) }}</div>
             </div>
           </div>
@@ -100,8 +102,14 @@ const post = computed(() => data.value.data[0].attributes)
   }
   .slide{
     width: 100%;
+    .slideImgContainer{
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #eee;
+    }
     img{
       width: 100%;
+      object-fit: cover;
     }
   }
 }

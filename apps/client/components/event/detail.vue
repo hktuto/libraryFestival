@@ -44,11 +44,12 @@ const { t } = useLang({...props.event,
       <div class="label">{{ t('tableTarget') }}</div>
       <div class="content" v-html="t('target')"></div>
     </div>
-    <EventDate :programs="event.programs" />
     <div class="eventContent">
       <div class="label">{{ t('tableQuota') }}</div>
       <div class="content" v-html="t('quota')"></div>
     </div>
+    <EventDate :programs="event.programs" />
+    
     
   </div>
   </div>
