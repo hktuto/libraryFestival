@@ -49,7 +49,10 @@ const { t } = useLang({...props.event,
       <div class="content" v-html="t('quota')"></div>
     </div>
     <EventDate :programs="event.programs" />
-    
+    <div v-if="event.remarkEN" class="eventContent">
+      <div class="label"></div>
+      <div class="content" v-html="t('remark')"></div>
+    </div>
     
   </div>
   </div>

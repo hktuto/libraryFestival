@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import {mobileHelper} from "~/composables/mobile";
 
-const { isMobile } = mobileHelper()
+const { isMobile, isFullSize } = mobileHelper()
 </script>
 
 <template>
   <div :class="{headerContainer:true, innerGrid:true, isMobile}">
     <div class="headerLeft bgGradient">
-      <Menu ></Menu>
+      <MenuFullWidth v-if="isFullSize" />
+      <Menu v-else></Menu>
       <Search ></Search>
       <Language />
     </div>
