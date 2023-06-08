@@ -47,13 +47,8 @@ const {tObj} = useLang({})
   &:hover, &.focus {
     background: var(--primary-color);
     color: #fff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   }
-  &.current {
-    color: var(--primary-color);
-    background: transparent;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  }
+
 }
 .hr{
   width: 1px;
