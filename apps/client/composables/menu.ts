@@ -66,19 +66,19 @@ export const useMenu =() => {
                 },{
                     labelEN:"Interactive Storytelling Device",
                     labelHK:"互動故事裝置",
-                    url:"/category/interactive_storytelling_device",
+                    url:"/program/11",
                     opened:false,
                     children:[]
                 },
             ]
         },
-        {
-            labelEN: "Online Programmes",
-            labelHK: "網上活動",
-            url:"/category/online_videos",
-            opened:false,
-            children: []
-        },
+        // {
+        //     labelEN: "Online Programmes",
+        //     labelHK: "網上活動",
+        //     url:"/category/online_videos",
+        //     opened:false,
+        //     children: []
+        // },
         {
             labelEN: "Live Stream",
             labelHK: "直播活動",
@@ -91,13 +91,14 @@ export const useMenu =() => {
             labelHK: "活動日程",
             url:"/schedule",
             children: []
-        },{
-            labelEN: "Library Resources Guide",
-            labelHK: "圖書館資源選介",
-            url:"/resources",
-            opened:false,
-            children: []
         },
+        // {
+        //     labelEN: "Library Resources Guide",
+        //     labelHK: "圖書館資源選介",
+        //     url:"/resources",
+        //     opened:false,
+        //     children: []
+        // },
         {
             labelEN: "Past Events",
             labelHK: "昔日活動",
