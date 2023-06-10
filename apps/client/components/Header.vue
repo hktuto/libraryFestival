@@ -5,6 +5,12 @@ const { isMobile, isFullSize } = mobileHelper()
 const props = defineProps<{
   hideLogo?: boolean
 }>()
+
+const router = useRouter()
+
+function goHome(){
+  router.push('/')
+}
 </script>
 
 <template>
@@ -14,7 +20,7 @@ const props = defineProps<{
       <Menu v-else>
         <template #afterIcon>
           <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
-            <img src="/images/logo.png" alt="logo" />
+            <img src="/images/logo.png" alt="logo" @click="goHome"/>
           </div>
         </template>
       </Menu>
@@ -22,7 +28,7 @@ const props = defineProps<{
       <Language />
     </div>
     <div v-if="!isMobile" class="logoContainer">
-      <img v-if="!hideLogo" src="/images/logo.png" alt="logo" />
+      <img v-if="!hideLogo" src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
   </div>
 </template>
@@ -59,6 +65,7 @@ const props = defineProps<{
     height: 40px;
     img{
       height: 100%;
+      cursor: pointer;
     }
   }
   .headerLeft {
