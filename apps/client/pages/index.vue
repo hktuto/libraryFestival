@@ -94,6 +94,7 @@ const { data, refresh, error } = await useAsyncData(
   width: 100%;
   place-items: center;
   display: grid;
+  overflow: visible;
   .calendarListContainer{
      width: 100%;
     background: #fff;

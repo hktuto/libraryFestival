@@ -30,6 +30,14 @@ const { t, tObj } = useLang({
         <div class="label">{{ t('tableLocation') }}</div>
         <div class="content mainColor" >{{tObj('location', program)}}</div>
       </div>
+      <div v-if="program.targetEN" class="eventContent" >
+        <div class="label">{{ t('tableTarget') }}</div>
+        <div class="content" v-html="tObj('target', program)"></div>
+      </div>
+      <div v-if="program.quotaEN" class="eventContent">
+        <div class="label">{{ t('tableQuota') }}</div>
+        <div class="content" v-html="tObj('quota', program)"></div>
+      </div>
       <div v-if="program.registerEN" class="eventContent">
         <div class="label">{{ t('tableRegister') }}</div>
         <div class="content" >{{tObj('register', program)}}</div>

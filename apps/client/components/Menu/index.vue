@@ -19,8 +19,11 @@
 <template>
   <div ref="menuPopoverEl" class="menu">
      <div :class="{menuToggleContainer:true, isMobile, opened:popupOpened}" @click.prevent="toggleMenu">
-       <Icon :name="popupOpened ?  'material-symbols:close' : 'material-symbols:menu'" />
+        <slot name="afterIcon" />
+      
+       
        <div class="label">{{ t('menu') }}</div>
+       <Icon :name="popupOpened ?  'material-symbols:close' : 'material-symbols:menu'" />
      </div>
       <div :class="{menuPopOver:true, opened:popupOpened, bgGradient:true, isMobile}">
         <div :class="{menuScrollContainer:true, isMobile}">
