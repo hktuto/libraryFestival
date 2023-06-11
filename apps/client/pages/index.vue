@@ -28,7 +28,8 @@
       <CalendarList :forceColumn="1" />
       </template>
       <Divider />
-      <EventGrid :events="data.data.attributes.events.data"/>
+      <CategoriesList />
+<!--      <EventGrid :events="data.data.attributes.events.data"/>-->
     </NuxtLayout>
 </template>
 

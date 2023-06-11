@@ -14,7 +14,8 @@ const { data: cat } = await useAsyncData(
         name: {
           $eq: route.params.id
         }
-      }
+      },
+      
     })
 )
 const { tObj , t} = useLang({
@@ -32,9 +33,22 @@ const { data, refresh, error } = await useAsyncData(
         }
       },
       populate: "*",
-      sort:"slug"
+      sort:"slug",
+      pagination:{
+        start: 0,
+        limit: -1
+      }
     })
 )
+
+onMounted(() => {
+  if(data.value && data.value.data.length === 1) {
+    const router = useRouter();
+    router.push({
+      path: (data.value as any).data[0].attributes.eventId as string
+    })
+  }
+})
 
 </script>
 

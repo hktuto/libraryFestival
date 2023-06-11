@@ -2,12 +2,13 @@
 const props = defineProps<{
   events: any[]
 }>();
+const sortedList = computed(() => props.events.sort((a:any,b:any) => a.attributes.order === null ? 1 : a.attributes.order < b.attributes.order? -1 : 1))
 </script>
 
 <template>
   <div class="gridContainer innerGrid">
     <div class="grid">
-    <event-item v-for="event in events" :key="event.id" :eventId="event.id" :event="event.attributes"/>
+    <event-item v-for="event in sortedList" :key="event.id" :eventId="event.id" :event="event.attributes"/>
     </div>
   </div>
 </template>
