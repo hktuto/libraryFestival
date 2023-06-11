@@ -57,6 +57,7 @@ function goHome(){
     // grid-area: empty;
     img{
       width: 100%;
+      cursor: pointer;
     }
   }
   .logoContainerSmall{
@@ -68,9 +69,10 @@ function goHome(){
     border-radius: 30px 0 0 30px;
     place-items: center;
     margin-block: -10px;
+    cursor: pointer;
     img{
       width: 100%;
-      cursor: pointer;
+      
     }
   }
   .headerLeft {

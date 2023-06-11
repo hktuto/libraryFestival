@@ -44,8 +44,9 @@ const { data, refresh, error } = await useAsyncData(
 onMounted(() => {
   if(data.value && data.value.data.length === 1) {
     const router = useRouter();
+    console.log(data.value.data[0])
     router.push({
-      path: (data.value as any).data[0].attributes.eventId as string
+      path: '/program/' + (data.value as any).data[0].id
     })
   }
 })

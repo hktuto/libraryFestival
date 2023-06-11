@@ -48,6 +48,21 @@ export const useLang = (obj:any) => {
         }
         return str;
     }
+
+    function SimToTraditional(cc : string) {
+        var str = '';
+        var tt = JTPYStr();
+        var ss = FTPYStr();
+
+        for( var i=0 ; i < cc.length ; i++)
+        {
+            if( cc.charCodeAt(i) > 10000 && tt.indexOf( cc.charAt(i) ) != -1 )
+                str += ss.charAt( tt.indexOf( cc.charAt(i) ) );
+            else
+                str += cc.charAt(i);
+        }
+        return str;
+    }
     
 
     
@@ -57,6 +72,7 @@ export const useLang = (obj:any) => {
         currentLang,
         changeLocale,
         t,
-        tObj
+        tObj,
+        SimToTraditional
     }
 }
