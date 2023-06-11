@@ -15,15 +15,16 @@ function goHome(){
 
 <template>
   <div :class="{headerContainer:true, innerGrid:true, isMobile, hideLogo}">
+    <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
+      <img src="/images/logo.png" alt="logo" @click="goHome"/>
+    </div>
     <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
       <MenuFullWidth v-if="isFullSize" />
       <Menu v-else>
       </Menu>
       <Search v-if="!isMobile"></Search>
       <Language v-if="!isMobile"/>
-      <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
-        <img src="/images/logo.png" alt="logo" @click="goHome"/>
-      </div>
+      
     </div>
     <div v-if="!isMobile" class="logoContainer">
       <img v-if="!hideLogo" src="/images/logo.png" alt="logo" @click="goHome"/>
@@ -41,6 +42,7 @@ function goHome(){
   margin-bottom: 24px;
   &.isMobile{
     grid-template-columns: 1fr;
+    grid-auto-rows: min-content min-content;
     // grid-template-areas: 'menu menu menu menu';
     width: 100%;
     padding: 0;
@@ -48,6 +50,7 @@ function goHome(){
     margin-bottom: 0;
     z-index: 2;
     gap: var(--app-padding);
+    
     .headerLeft{
       border-radius: 0;
     }
@@ -61,14 +64,11 @@ function goHome(){
     }
   }
   .logoContainerSmall{
-    width: 120px;
-    height: 60px;
+    margin: 10px auto;
+    width: 200px;
     display: grid;
-    background: #fff;
-    padding-left: 20px;
-    border-radius: 30px 0 0 30px;
+   
     place-items: center;
-    margin-block: -10px;
     cursor: pointer;
     img{
       width: 100%;
