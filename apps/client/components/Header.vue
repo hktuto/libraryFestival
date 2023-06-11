@@ -15,19 +15,19 @@ function goHome(){
 
 <template>
   <div :class="{headerContainer:true, innerGrid:true, isMobile, hideLogo}">
-    <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
+    <div v-if="!hideLogo" class="logoContainerSmall">
       <img src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
-    <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
-      <MenuFullWidth v-if="isFullSize" />
-      <Menu v-else>
-      </Menu>
-      <Search v-if="!isMobile"></Search>
-      <Language v-if="!isMobile"/>
-      
-    </div>
-    <div v-if="!isMobile" class="logoContainer">
-      <img v-if="!hideLogo" src="/images/logo.png" alt="logo" @click="goHome"/>
+    <div class="menuRow">
+      <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
+        <MenuFullWidth v-if="isFullSize" />
+        <Menu v-else>
+        </Menu>
+        <Search v-if="!isMobile"></Search>
+        <Language v-if="!isMobile"/>
+        
+      </div>
+      <div v-if="!isMobile" class="logoContainer"></div>
     </div>
   </div>
 </template>
@@ -35,14 +35,15 @@ function goHome(){
 <style scoped lang="scss">
 .headerContainer{
   display: grid;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr ;
+  grid-auto-rows: min-content min-content;
   margin-top: 40px;
   overflow: visible;
   z-index: 2;
   margin-bottom: 24px;
   &.isMobile{
     grid-template-columns: 1fr;
-    grid-auto-rows: min-content min-content;
+    
     // grid-template-areas: 'menu menu menu menu';
     width: 100%;
     padding: 0;
@@ -74,6 +75,10 @@ function goHome(){
       width: 100%;
       
     }
+  }
+  .menuRow{
+    display: grid;
+    grid-template-columns: 1fr min-content;
   }
   .headerLeft {
     position: relative;
