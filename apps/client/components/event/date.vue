@@ -11,6 +11,12 @@ const { t, tObj } = useLang({
   tableLocationHK:"地點",
   tableRegisterHK:"報名及查詢",
   tablePeriodHK:"報名期",
+  tableHostEN:"Host",
+  tableTargetEN:"Target",
+  tableQuotaEN:"Quota",
+  tableHostHK:"講者/主持",
+  tableTargetHK:"對象",
+  tableQuotaHK:"名額",
 });
 </script>
 
