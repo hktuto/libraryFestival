@@ -15,17 +15,15 @@ function goHome(){
 
 <template>
   <div :class="{headerContainer:true, innerGrid:true, isMobile, hideLogo}">
-    <div class="headerLeft bgGradient">
+    <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
       <MenuFullWidth v-if="isFullSize" />
       <Menu v-else>
-        <template #afterIcon>
-          <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
-            <img src="/images/logo.png" alt="logo" @click="goHome"/>
-          </div>
-        </template>
       </Menu>
-      <Search ></Search>
-      <Language />
+      <Search v-if="!isMobile"></Search>
+      <Language v-if="!isMobile"/>
+      <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
+        <img src="/images/logo.png" alt="logo" @click="goHome"/>
+      </div>
     </div>
     <div v-if="!isMobile" class="logoContainer">
       <img v-if="!hideLogo" src="/images/logo.png" alt="logo" @click="goHome"/>
@@ -62,9 +60,16 @@ function goHome(){
     }
   }
   .logoContainerSmall{
-    height: 40px;
+    width: 120px;
+    height: 60px;
+    display: grid;
+    background: #fff;
+    padding-left: 20px;
+    border-radius: 30px 0 0 30px;
+    place-items: center;
+    margin-block: -10px;
     img{
-      height: 100%;
+      width: 100%;
       cursor: pointer;
     }
   }
@@ -80,6 +85,10 @@ function goHome(){
     padding-inline: calc(var(--app-padding) * 2 );
     gap: var(--app-padding);
     overflow: visible;
+    &.isMobile {
+      grid-template-columns: 1fr  min-content;
+      padding-right: 0px;
+    }
   }
 }
 .headerBg{

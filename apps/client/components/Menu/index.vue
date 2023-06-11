@@ -29,7 +29,10 @@
         <div :class="{menuScrollContainer:true, isMobile}">
           <MenuItems />
         </div>
-
+        <div class="moreRow">
+          <Search v-if="isMobile"></Search>
+          <Language v-if="isMobile"/>
+        </div>
       </div>
   </div>
 </template>
@@ -58,6 +61,12 @@
   }
   
 }
+.moreRow{
+   width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--app-padding);
+}
 .menuItemsContainer{
   display: none;
 }
@@ -81,6 +90,8 @@
     width: 100vw;
     height: 100vh;
     border:none;
+    display: flex;
+    flex-flow: column nowrap;
     
   }
   .menuScrollContainer{
