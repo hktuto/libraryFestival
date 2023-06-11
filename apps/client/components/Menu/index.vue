@@ -102,7 +102,10 @@
   &.opened{
     opacity: 1;
     transform: translate(0);
-    z-index: 3;
+    
+    &.isMobile {
+      z-index: 3;
+    }
   }
 }
 
