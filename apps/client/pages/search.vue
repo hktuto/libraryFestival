@@ -18,7 +18,7 @@ async function search(){
   if(!keyword.value) return;
   loading.value = true;
   const key = SimToTraditional(keyword.value)
-  // TODO : implement search
+
   const data = await find('events',{
     filters:{
       $or:[
