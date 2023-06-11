@@ -19,8 +19,8 @@ const { data: cat } = await useAsyncData(
     })
 )
 const { tObj , t} = useLang({
-  noResultEN:"No Result",
-  noResultHK:"未有活動"
+  noResultEN:"coming soon",
+  noResultHK:"即將推出"
 })
 const { data, refresh, error } = await useAsyncData(
     'catergories',
