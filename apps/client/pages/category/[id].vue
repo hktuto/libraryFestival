@@ -33,7 +33,7 @@ const { data, refresh, error } = await useAsyncData(
         }
       },
       populate: "*",
-      sort:"slug",
+      sort:"order",
       pagination:{
         start: 0,
         limit: -1
