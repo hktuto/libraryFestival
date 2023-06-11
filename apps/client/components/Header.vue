@@ -18,16 +18,13 @@ function goHome(){
     <div v-if="!hideLogo" class="logoContainerSmall">
       <img src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
-    <div class="menuRow">
-      <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
-        <MenuFullWidth v-if="isFullSize" />
-        <Menu v-else>
-        </Menu>
-        <Search v-if="!isMobile"></Search>
-        <Language v-if="!isMobile"/>
-        
-      </div>
-      <div v-if="!isMobile" class="logoContainer"></div>
+    <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
+      <MenuFullWidth v-if="isFullSize" />
+      <Menu v-else>
+      </Menu>
+      <Search v-if="!isMobile"></Search>
+      <Language v-if="!isMobile"/>
+
     </div>
   </div>
 </template>
