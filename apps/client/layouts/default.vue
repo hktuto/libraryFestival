@@ -2,7 +2,7 @@
   <div :class="{pageContainer:true, isMobile}">
     <slot name="beforeHeader" />
     <BgAnimation />
-    <Header class="header" />
+    <Header class="header" :hideLogo="true"/>
     <Share class="share" />
     <div class="content">
       <slot />

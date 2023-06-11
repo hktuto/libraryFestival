@@ -2,15 +2,33 @@
 import {mobileHelper} from "~/composables/mobile";
 
 const { isMobile, isFullSize } = mobileHelper()
+const props = defineProps<{
+  hideLogo?: boolean
+}>()
+
+const router = useRouter()
+
+function goHome(){
+  router.push('/')
+}
 </script>
 
 <template>
-  <div :class="{headerContainer:true, innerGrid:true, isMobile}">
+  <div :class="{headerContainer:true, innerGrid:true, isMobile, hideLogo}">
     <div class="headerLeft bgGradient">
       <MenuFullWidth v-if="isFullSize" />
-      <Menu v-else></Menu>
+      <Menu v-else>
+        <template #afterIcon>
+          <div v-if="isMobile && !hideLogo" class="logoContainerSmall">
+            <img src="/images/logo.png" alt="logo" @click="goHome"/>
+          </div>
+        </template>
+      </Menu>
       <Search ></Search>
       <Language />
+    </div>
+    <div v-if="!isMobile" class="logoContainer">
+      <img v-if="!hideLogo" src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
   </div>
 </template>
@@ -18,25 +36,41 @@ const { isMobile, isFullSize } = mobileHelper()
 <style scoped lang="scss">
 .headerContainer{
   display: grid;
-  grid-template-areas: 'menu menu menu empty';
+  grid-template-columns: 1fr min-content;
   margin-top: 40px;
   overflow: visible;
   z-index: 2;
   margin-bottom: 24px;
   &.isMobile{
-    grid-template-areas: 'menu menu menu menu';
+    grid-template-columns: 1fr;
+    // grid-template-areas: 'menu menu menu menu';
     width: 100%;
     padding: 0;
     margin-top: 0;
     margin-bottom: 0;
     z-index: 2;
+    gap: var(--app-padding);
     .headerLeft{
       border-radius: 0;
     }
   }
+  .logoContainer{
+    width: 120px;
+    // grid-area: empty;
+    img{
+      width: 100%;
+    }
+  }
+  .logoContainerSmall{
+    height: 40px;
+    img{
+      height: 100%;
+      cursor: pointer;
+    }
+  }
   .headerLeft {
     position: relative;
-    grid-area: menu;
+    // grid-area: menu;
     min-height: 60px;
     border-radius: 30px;
     display: grid;
