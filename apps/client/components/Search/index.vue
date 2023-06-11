@@ -1,10 +1,19 @@
 <script setup lang="ts">
-
+  const opened = ref(false);
+  
+  function openDialog(){
+    opened.value = true;
+  }
+  
+  function closeDialog() {
+    opened.value = false;
+  }
 </script>
 
 <template>
   <div class="searchContainer">
-    <Icon name="material-symbols:search" />
+    <Icon name="material-symbols:search" @click="openDialog"/>
+    
   </div>
 </template>
 

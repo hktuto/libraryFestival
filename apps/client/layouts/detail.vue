@@ -2,14 +2,14 @@
 import {mobileHelper} from "~/composables/mobile";
 
 const { isMobile } = mobileHelper()
-
+const props = defineProps<{noShare:boolean}>();
 </script>
 
 <template>
   <div :class="{pageContainer:true, isMobile}">
     <BgAnimation />
     <Header />
-    <Share :forceShow="true" />
+    <Share v-if="!noShare" :forceShow="true" />
     <div class="content">
       <slot />
     </div>

@@ -13,8 +13,13 @@ const displayUrl = computed(() => url.includes('localhost') ? url : "")
 
 const spaceBetween = 10;
 
+const router = useRouter()
 function slideClickHandler(item:any) {
-  console.log(item)
+  if(item.url) {
+    router.push({
+      path: item.url
+    })
+  }
 }
 
 </script>

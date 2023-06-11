@@ -30,6 +30,7 @@ const {currentLang, t} = useLang(attr.value)
 .footerContainer{
   margin-top:2rem;
   width: 100%;
+  padding-bottom: calc( var(--app-padding) * 4);
 }
 .innerGrid{
   padding: var(--app-padding);
