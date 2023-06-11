@@ -57,7 +57,7 @@
     z-index: 4;
   }
   .label{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   
 }
