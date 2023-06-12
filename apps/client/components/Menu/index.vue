@@ -29,10 +29,7 @@
         <div :class="{menuScrollContainer:true, isMobile}">
           <MenuItems />
         </div>
-        <div class="moreRow">
-          <Search v-if="isMobile"></Search>
-          <Language v-if="isMobile"/>
-        </div>
+       
       </div>
   </div>
 </template>

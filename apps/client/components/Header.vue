@@ -22,8 +22,8 @@ function goHome(){
       <MenuFullWidth v-if="isFullSize" />
       <Menu v-else>
       </Menu>
-      <Search v-if="!isMobile"></Search>
-      <Language v-if="!isMobile"/>
+      <Search ></Search>
+      <Language />
 
     </div>
   </div>
@@ -83,14 +83,14 @@ function goHome(){
     min-height: 60px;
     border-radius: 30px;
     display: grid;
-    grid-template-columns: 1fr min-content min-content;
+    grid-template-columns: 1fr min-content min-content ; 
     justify-content: flex-start;
     align-items: center;
     padding-inline: calc(var(--app-padding) * 2 );
     gap: var(--app-padding);
     overflow: visible;
     &.isMobile {
-      grid-template-columns: 1fr  min-content;
+      grid-template-columns: 1fr  min-content min-content;
       padding-right: 0px;
     }
   }
