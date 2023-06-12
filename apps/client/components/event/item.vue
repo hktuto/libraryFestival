@@ -20,7 +20,7 @@ function itemClick() {
 <template>
   <div class="eventItemContainer" @click="itemClick">
     <div class="featureImgContainer">
-      <img :src="displayUrl + event.photos.data[0].attributes.url" alt="">
+      <img :src="displayUrl + event.photos.data[0].attributes.formats.small.url" alt="">
     </div>
     <div class="titleContainer">
       {{ t('title') }}
