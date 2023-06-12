@@ -61,7 +61,7 @@ const { isMobile } = mobileHelper()
       width: auto;
       position: absolute;
       right: 0;
-      top: 120px;
+      top: 220px;
       left: initial;
       bottom: initial;
       z-index: 1;
