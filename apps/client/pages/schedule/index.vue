@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import {locationFilter} from "~/utils/filter";
 const { find } = useStrapi();
 const {t, tObj } = useLang({
   nameEN:"Programme Schedule",
@@ -32,7 +33,12 @@ function dateStringToNumber(str:string):number{
   return Number(str.replaceAll('-',''))
 }
 
-async function search(){
+function withInStartEnd(targetDate:string, startDate:string, endDate:string):boolean {
+  return dateStringToNumber(targetDate) > dateStringToNumber(startDate) && dateStringToNumber(targetDate) < dateStringToNumber(endDate)
+}
+
+
+function makeFilters() {
   let filters:any = {
     $and:[]
   };
@@ -49,8 +55,42 @@ async function search(){
         }
     )
   }
+  
+  if(form.name) {
+    filters.$and.push({
+      $or:[
+        {
+          titleEN: {
+            $contains: form.name
+          }
+        },
+        {
+          titleHK: {
+            $contains: form.name
+          }
+        },
+        {
+          contentHK: {
+            $contains: form.name
+          }
+        },
+        {
+          contentHK: {
+            $contains: form.name
+          }
+        },
+      ]
+    }
+        
+    )
+  }
+
+  return filters
+}
+async function search(){
+  
   const res = await find('events',{
-    filters,
+    filters: makeFilters(),
     populate:{
       programs: {
         populate: "*"
@@ -65,12 +105,24 @@ async function search(){
   const allPrograms:any[]  = [];
   for(const item of res.data) {
     let { programs } = item.attributes as any
+    
     if(form.month ){
       const startDate = '2023-' + form.month + "-01"
       const endDate = '2023-' + form.month + '-' + dayjs(startDate).daysInMonth()
-      programs  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+      programs  = programs.filter((p:any) => {
+        if(!p.startDate || !p.endDate) return false;
+        return withInStartEnd(p.startDate, startDate, endDate) || withInStartEnd(p.endDate, startDate, endDate)
+      } ) ;
+    }
+    if(form.location){
+      programs = programs.filter((p:any) => {
+        if(!p.locationEN) return false;
+        return p.locationEN.includes(form.location) || p.locationHK.includes(form.location)
+      } ) ;
     }
     for( const p of programs ) {
+      
+      if(!p.startDate || !p.endDate) continue;
       const event = {
         titleEN: item.attributes.titleEN,
         titleHK: item.attributes.titleHK,
@@ -78,7 +130,6 @@ async function search(){
         locationEN: item.attributes.locationEN,
         ...p,
         id: item.id
-        
       }
       allPrograms.push(event)
     }
@@ -86,6 +137,9 @@ async function search(){
   allPrograms.sort( (a,b) => {
     return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
   });
+  if(form.location){
+    console.log(allPrograms)
+  }
   events.value = allPrograms
 }
 
@@ -104,6 +158,9 @@ onMounted(async() => await search());
         <input v-model="form.name" />
         <select v-model="form.month" >
           <option v-for="i in ['', '01','02','03','04','05','06','07','08','09','10','11','12']" :key="i" >{{i}}</option>
+        </select>
+        <select v-model="form.location" >
+          <option v-for="i in locationFilter.EN" :key="i" >{{i}}</option>
         </select>
         <button @click="search">Search</button>
       </div>
@@ -177,6 +234,7 @@ onMounted(async() => await search());
 td{
   padding-block: 12px;
   border-bottom: 1px solid #eee;
+  background-color: #eee;
 }
 .data{
   font-size: .8rem;
