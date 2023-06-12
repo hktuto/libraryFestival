@@ -74,7 +74,7 @@ const { t } = useLang({...props.event,
 .titleContainer {
   width: fit-content;
   padding: var(--app-padding);
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 1.2;
   font-weight: 700;
   display: block;
