@@ -91,7 +91,6 @@ function goHome(){
     overflow: visible;
     &.isMobile {
       grid-template-columns: 1fr  min-content min-content;
-      padding-right: 0px;
     }
   }
 }
