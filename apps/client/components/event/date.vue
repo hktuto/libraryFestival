@@ -46,7 +46,7 @@ const { t, tObj } = useLang({
       </div>
       <div v-if="program.registerEN" class="eventContent">
         <div class="label">{{ t('tableRegister') }}</div>
-        <div class="content" >{{tObj('register', program)}}</div>
+        <div class="content" v-html="tObj('register', program)"></div>
       </div>
       <div v-if="program.periodEN" class="eventContent">
         <div class="label">{{ t('tablePeriod') }}</div>
