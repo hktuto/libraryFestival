@@ -18,26 +18,26 @@ async function search(){
   if(!keyword.value) return;
   loading.value = true;
   let key = SimToTraditional(keyword.value)
-  key = key.toLowerCase()
+  key = key.toLowerCase();
   const data = await find('events',{
     filters:{
       $or:[
         {
           titleEN : {
-            $contains :keyword.value
+            $contains :key
           },
         },{
           titleHK : {
-            $contains :keyword.value
+            $contains :key
           },
         },
         {
           contentEN : {
-            $contains :keyword.value
+            $contains :key
           },
         },{
           contentHK : {
-            $contains :keyword.value
+            $contains :key
           },
         },
       ]
