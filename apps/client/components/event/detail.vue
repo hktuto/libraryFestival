@@ -35,7 +35,8 @@ const { t } = useLang({...props.event,
       </div>
     </div>
   <div class="innerGrid">
-    <Markdown class="eventContent" :source="t('content')" />
+    
+    <Markdown class="eventContent" :source="t('content')" html />
     <div v-if="event.hostEN" class="eventContent" >
       <div class="label">{{ t('tableHost') }}</div>
       <div class="content" v-html="t('host')"></div>
