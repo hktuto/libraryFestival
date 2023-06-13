@@ -55,14 +55,14 @@ async function getEvents(months:any[]) {
       console.log(programs)
       const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
       for( const p of ps ) {
-        
+          if(!p.startDate || !p.startDate) continue;
           const event = {
               bar: true,
               key: p.startDate + item.attributes.titleEN,
               hideIndicator: true,
               customData: {event: item.attributes, program: p, id:item.id},
               popover:true,
-              dates: new Date(p.startDate)
+              dates:{ start: new Date(p.startDate), end : new Date(p.endDate)}
             }
             evs.push(event)
         }
