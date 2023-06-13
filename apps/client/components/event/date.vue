@@ -28,6 +28,9 @@ const { t, tObj } = useLang({
   <div class="eventDateContainer">
 
     <div v-for="program in programs" :key="program.id" class="program" >
+      <div v-if="program.nameEN" class="eventContent">
+        <div class="content mainColor" >{{tObj('name', program)}}</div>
+      </div>
       <div v-if="program.displayTimeEN" class="eventContent">
         <div class="label">{{ t('tableDate') }}</div>
         <div class="content mainColor" >{{tObj('displayTime', program)}}</div>
