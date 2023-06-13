@@ -62,7 +62,7 @@ const { t, tObj } = useLang({
   color: var(--main-color);
 }
 .program {
-  --main-color: #8c168c;
+  
   padding-block: var(--app-padding);
   border-top: 1px solid var(--main-color);
   .label {
