@@ -51,7 +51,7 @@ export const useMenu =() => {
                     children:[]
                 },
                 {
-                    labelEN:"Story Theatres",
+                    labelEN:"Storytelling Theatres",
                     labelHK:"故事劇場",
                     url:"/category/onsite-story-theatres",
                     opened:false,
