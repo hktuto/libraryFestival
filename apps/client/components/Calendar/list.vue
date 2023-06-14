@@ -37,22 +37,43 @@ async function getEvents(months:any[]) {
     const endDate = month.id + "-" + month.monthComps.numDays
     const events = await find('events',{
       filters:{
-        programs : {
-          startDate:{
-            $gte: startDate,
-            $lte: endDate
-          }
-        }
+        $or:[
+            {
+              programs : {
+          
+                startDate:{
+                  $gte: startDate,
+                  $lte: endDate
+                }
+              }
+            },
+            {
+              programs : {
+          
+                endDate:{
+                  $gte: startDate,
+                  $lte: endDate
+                }
+              }
+            },
+          ]
+        
       },
       populate:{
         programs: {
           populate: "*"
         }
+      },
+      pagination:{
+        start: 0,
+        limit: -1
       }
     })
     for(const item of events.data){
       const { programs } = item.attributes as any
-      console.log(programs)
+      if(item.id === 44){
+        console.log("target", programs)
+      }
       const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
       for( const p of ps ) {
           if(!p.startDate || !p.startDate) continue;
