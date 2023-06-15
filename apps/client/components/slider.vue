@@ -30,12 +30,11 @@ function slideClickHandler(item:any) {
     <swiper-container
         :slides-per-view="1"
         :space-between="spaceBetween"
-        :centered-slides="true"
         :loop="true"
         :autoplay="{
           delay: 3000
         }"
-        :pagination="false"
+        :pagination="true"
        
     >
       <swiper-slide v-for="slide in slides" :key="slide.id" :class="{slide:true, cursor: slide.url}" @click="slideClickHandler(slide)">

@@ -67,6 +67,7 @@ const { isMobile } = mobileHelper()
       z-index: 1;
       flex-flow: column nowrap;
       background: none;
+      padding-right: 4px;
     }
   }
 }
