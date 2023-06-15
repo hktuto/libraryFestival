@@ -26,8 +26,16 @@ export const useLang = (obj:any) => {
         }
         return TraditionalToSim(obj[key + "HK"])
     }
+
+    function pureT(key:string) {
+        if(currentLang.value !== 'CN') {
+            return key;
+        }
+        return TraditionalToSim(key)
+    }
     
     function tObj(key:string, localObj:any) {
+        if(!key || !localObj[key + 'HK']) return "";
         if(currentLang.value !== 'CN') {
             return localObj[key + currentLang.value];
         }
@@ -73,6 +81,7 @@ export const useLang = (obj:any) => {
         changeLocale,
         t,
         tObj,
-        SimToTraditional
+        SimToTraditional,
+        pureT
     }
 }

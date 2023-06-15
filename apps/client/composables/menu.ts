@@ -86,13 +86,13 @@ export const useMenu =() => {
             opened:false,
             children: []
         },
-        // {
-        //     labelEN: "Programme Schedule",
-        //     opened:false,
-        //     labelHK: "活動日程",
-        //     url:"/schedule",
-        //     children: []
-        // },
+        {
+            labelEN: "Programme Schedule",
+            opened:false,
+            labelHK: "活動日程",
+            url:"/schedule",
+            children: []
+        },
         // {
         //     labelEN: "Library Resources Guide",
         //     labelHK: "圖書館資源選介",

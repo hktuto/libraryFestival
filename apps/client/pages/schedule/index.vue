@@ -2,13 +2,27 @@
 import dayjs from 'dayjs'
 import {locationFilter} from "~/utils/filter";
 const { find } = useStrapi();
-const {t, tObj } = useLang({
+const {t, tObj, currentLang, pureT } = useLang({
   nameEN:"Programme Schedule",
   nameHK:"活動日程",
   noResultEN:"No Result",
   noResultHK:"未有活動",
   detailEN:"Event Details",
-  detailHK:"了解詳情"
+  detailHK:"了解詳情",
+  searchEN:"Search",
+  searchHK:"搜尋",
+  keywordEN:"Keyword",
+  keywordHK:"關鍵字",
+  monthEN:"Month",
+  monthHK:"月份",
+  locationEN:"Location",
+  locationHK:"地點",
+  timeEN:"Time",
+  timeHK:"時間",
+  titleEN:"Title",
+  titleHK:"標題",
+  categoryEN:"Category",
+  categoryHK:"類別",
 })
 
 const events = ref<any[]>([]);
@@ -22,7 +36,10 @@ function itemClick(item:any) {
 }
 
 const form = reactive({
-  month: "",
+  month: {
+    start: null,
+    end: null
+  },
   day: "",
   name: "",
   category:"",
@@ -32,9 +49,11 @@ const form = reactive({
 function dateStringToNumber(str:string):number{
   return Number(str.replaceAll('-',''))
 }
-
+const calendarLang = computed(() => {
+  return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
+})
 function withInStartEnd(targetDate:string, startDate:string, endDate:string):boolean {
-  return dateStringToNumber(targetDate) > dateStringToNumber(startDate) && dateStringToNumber(targetDate) < dateStringToNumber(endDate)
+  return dateStringToNumber(targetDate) >= dateStringToNumber(startDate) && dateStringToNumber(targetDate) <= dateStringToNumber(endDate)
 }
 
 
@@ -42,14 +61,15 @@ function makeFilters() {
   let filters:any = {
     $and:[]
   };
-  if(form.month) {
-    const startDate = '2023-' + form.month + "-01"
-    const endDate = '2023-' + form.month + '-' + dayjs(startDate).daysInMonth()
+  if(form.month.start && form.month.end) {
+    const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
+    const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
     filters.$and.push(
         {
           programs : {
             startDate:{
               $gte: startDate,
+              $lte: endDate
             }
           }
         }
@@ -85,8 +105,22 @@ function makeFilters() {
     )
   }
 
+  if(form.category) {
+    filters.$and.push({
+      categories: {
+        id:{$eq: form.category}
+      }
+    })
+  }
+
   return filters
 }
+
+const locationOptions = computed( () => {
+  const arr = [...new Set(events.value.filter(i => i.locationEN).map((e:any) => e['location' + (currentLang.value === 'CN' ? 'HK' : currentLang.value)] ))]
+  arr.sort((a,b) => !a || !b ? 1 : a.localeCompare(b) )
+  return arr
+} ) 
 async function search(){
   
   const res = await find('events',{
@@ -106,9 +140,10 @@ async function search(){
   for(const item of res.data) {
     let { programs } = item.attributes as any
     
-    if(form.month ){
-      const startDate = '2023-' + form.month + "-01"
-      const endDate = '2023-' + form.month + '-' + dayjs(startDate).daysInMonth()
+    if(form.month.start && form.month.end ){
+      const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
+      const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
+      
       programs  = programs.filter((p:any) => {
         if(!p.startDate || !p.endDate) return false;
         return withInStartEnd(p.startDate, startDate, endDate) || withInStartEnd(p.endDate, startDate, endDate)
@@ -137,10 +172,22 @@ async function search(){
   allPrograms.sort( (a,b) => {
     return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
   });
-  if(form.location){
-    console.log(allPrograms)
-  }
+
   events.value = allPrograms
+}
+
+const { data } = await useAsyncData(
+    'allCategories',
+    () => find('catergories', {
+    })
+)
+
+function closeBtn(){
+  console.log("close")
+  form.month = {
+    start:null,
+    end:null
+  }
 }
 
 onMounted(async() => await search());
@@ -155,22 +202,48 @@ onMounted(async() => await search());
     </div>
     <div class="innerGrid">
       <div class="searchContainer">
-        <input v-model="form.name" />
-        <select v-model="form.month" >
-          <option v-for="i in ['', '01','02','03','04','05','06','07','08','09','10','11','12']" :key="i" >{{i}}</option>
-        </select>
-        <select v-model="form.location" >
-          <option v-for="i in locationFilter.EN" :key="i" >{{i}}</option>
-        </select>
-        <button @click="search">Search</button>
+        <div class="item">
+          <label for="keyword">{{t('keyword')}}</label>
+          <input id="keyword" v-model="form.name" @change="search"/>
+        </div>
+        <div class="item">
+          <label for="month">{{t('month')}}</label>
+          <VDatePicker v-model.range="form.month" mode="date" is-range :locale="calendarLang" @update:modelValue="search">
+            <template #default="{ inputValue, inputEvents, hidePopover }">
+              <div class="inputRow">
+
+                <input id="month" :value="inputValue.start ? dayjs(inputValue.start).format('YYYY-MM-DD'): '' " v-on="inputEvents.start"/>
+                <input id="month2"  :value="inputValue.end ? dayjs(inputValue.end).format('YYYY-MM-DD'): ''" v-on="inputEvents.end"/>
+                <div class="closeBtn" @click="closeBtn">X</div>
+              </div>
+             
+            </template>
+          </VDatePicker>
+        </div>
+        <div class="item">
+          <label for="category">{{t('category')}}</label>
+          <select id="category" v-model="form.category" :placeholder="t('category')" @change="search">
+            <option value=""></option>
+            <option v-for="item in data.data" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
+          </select>
+        </div>
+        <div class="item">
+          <label for="location">{{t('location')}}</label>
+          
+          <select id="location" v-model="form.location" :placeholder="t('location')" @change="search">
+            <option value=""></option>
+            <option v-for="i in locationOptions" :key="i" :value="i" >{{pureT(i)}}</option>
+          </select>
+        </div>
+        <button @click="search">{{  t('search') }}</button>
       </div>
       <div v-if="events.length > 0" class="eventList">
         <table style="width:100%">
           <thead>
           <tr>
-            <td width="20%">Time</td>
-            <td>Title</td>
-            <td>location</td>
+            <td width="20%">{{ t('time') }}</td>
+            <td>{{ t('title') }}</td>
+            <td>{{ t('location') }}</td>
             <td></td>
           </tr>
           </thead>
@@ -178,7 +251,7 @@ onMounted(async() => await search());
             <td class="date">{{item.startDate}} - <br/> {{item.endDate}}</td>
             <td class="title">{{tObj('title', item)}}</td>
             <td class="location">{{tObj('location', item)}}</td>
-            <td><button @click="$router.push({path:'/program/'+item.id})">{{t('detail')}}</button></td>
+            <td><button class="table" @click="$router.push({path:'/program/'+item.id})">{{t('detail')}}</button></td>
           </tr>
         </table>
       </div>
@@ -233,6 +306,7 @@ onMounted(async() => await search());
 }
 td{
   padding-block: 12px;
+  padding-inline: 12px;
   border-bottom: 1px solid #eee;
   background-color: #eee;
 }
@@ -242,5 +316,64 @@ td{
 .location{
   font-weight: 300;
 }
-
+.searchContainer{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  .item {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 6px;
+    font-size: 0.7rem;
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+}
+input, select {
+  width: 100%;
+  appearance: none;
+  font-size: 1rem;
+  line-height: 1.3;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  min-width: 100px;
+  padding-inline: 24px;
+  width:100%;
+  max-width: 400px;
+}
+.closeBtn{
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: auto;
+  flex: 1 0 24px;
+  border: 1px solid #eee;
+  display: grid;
+  place-items: center;
+}
+.inputRow{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 6px;
+  input{
+    // width: 160px;
+  }
+}
+button {
+  border: none;
+  padding: 6px 24px;
+  font-size: 1rem;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: #fff;
+  &.table{
+    background: #eee;
+    font-size: .8rem;
+    color: var(--primary-color);
+  }
+}
 </style>
