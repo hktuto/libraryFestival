@@ -30,11 +30,18 @@ function dateStringToNumber(str:string):number{
 }
 
 onMounted(() => getEvents(calendarEl.value.pages))
+
+function padWithLeadingZeros(num, totalLength) {
+  return String(num).padStart(totalLength, '0');
+}
+
+
 async function getEvents(months:any[]) {
   const evs = []
   for  (const month of months) {
-    const startDate = month.id + "-01"
-    const endDate = month.id + "-" + month.monthComps.numDays
+    console.log(month);
+    const startDate = month.prevMonthComps.year + "-" + padWithLeadingZeros(month.prevMonthComps.month, 2) + "-" + month.prevMonthComps.numDays
+    const endDate = month.nextMonthComps.year + "-"  + padWithLeadingZeros(month.nextMonthComps.month,2) + "-01"
     const events = await find('events',{
       filters:{
         $or:[
@@ -71,10 +78,9 @@ async function getEvents(months:any[]) {
     })
     for(const item of events.data){
       const { programs } = item.attributes as any
-      if(item.id === 44){
-        console.log("target", programs)
-      }
+ 
       const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+      
       for( const p of ps ) {
           if(!p.startDate || !p.startDate) continue;
           const event = {
