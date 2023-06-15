@@ -85,6 +85,7 @@ async function getEvents(months:any[]) {
           const event = {
               id: item.id,
               bar: true,
+              name: item.attributes.titleEN,
               key: p.startDate + item.attributes.titleEN,
               hideIndicator: true,
               customData: {event: item.attributes, program: p, id:item.id},
@@ -99,6 +100,7 @@ async function getEvents(months:any[]) {
         }
       }
   }
+  evs.sort( (a,b) => a.name.localeCompare(b.name) );
   attrs.value = evs
   emit('update:attrs', evs);
 
