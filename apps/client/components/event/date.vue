@@ -28,6 +28,9 @@ const { t, tObj } = useLang({
   <div class="eventDateContainer">
 
     <div v-for="program in programs" :key="program.id" class="program" >
+      <div v-if="program.nameEN" class="eventContent">
+        <div class="content mainColor" >{{tObj('name', program)}}</div>
+      </div>
       <div v-if="program.displayTimeEN" class="eventContent">
         <div class="label">{{ t('tableDate') }}</div>
         <div class="content mainColor" >{{tObj('displayTime', program)}}</div>
@@ -46,7 +49,7 @@ const { t, tObj } = useLang({
       </div>
       <div v-if="program.registerEN" class="eventContent">
         <div class="label">{{ t('tableRegister') }}</div>
-        <div class="content" >{{tObj('register', program)}}</div>
+        <div class="content" v-html="tObj('register', program)"></div>
       </div>
       <div v-if="program.periodEN" class="eventContent">
         <div class="label">{{ t('tablePeriod') }}</div>
@@ -62,7 +65,7 @@ const { t, tObj } = useLang({
   color: var(--main-color);
 }
 .program {
-  --main-color: #8c168c;
+  
   padding-block: var(--app-padding);
   border-top: 1px solid var(--main-color);
   .label {

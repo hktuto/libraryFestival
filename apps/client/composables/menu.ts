@@ -51,7 +51,7 @@ export const useMenu =() => {
                     children:[]
                 },
                 {
-                    labelEN:"Story Theatres",
+                    labelEN:"Storytelling Theatres",
                     labelHK:"故事劇場",
                     url:"/category/onsite-story-theatres",
                     opened:false,
@@ -85,13 +85,14 @@ export const useMenu =() => {
             url:"/category/live-stream",
             opened:false,
             children: []
-        },{
-            labelEN: "Programme Schedule",
-            opened:false,
-            labelHK: "活動日程",
-            url:"/schedule",
-            children: []
         },
+        // {
+        //     labelEN: "Programme Schedule",
+        //     opened:false,
+        //     labelHK: "活動日程",
+        //     url:"/schedule",
+        //     children: []
+        // },
         // {
         //     labelEN: "Library Resources Guide",
         //     labelHK: "圖書館資源選介",

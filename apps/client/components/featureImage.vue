@@ -42,6 +42,8 @@ const props = defineProps<{
   aspect-ratio: 16/8;
   position: relative;
   overflow: hidden;
+  // display: grid;
+  // place-items: center;
   @media (min-width: 960px) {
     aspect-ratio: initial;
     height: 480px;
@@ -49,8 +51,14 @@ const props = defineProps<{
   }
   img {
     height: 100%;
+    // width: 100%;
     margin: 0 auto;
     display: block;
+    object-fit: cover;
+    @media (max-width: 960px) {
+      width: 100%;
+      object-fit: contain;
+    }
   }
 }
 </style>

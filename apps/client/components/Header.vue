@@ -15,15 +15,15 @@ function goHome(){
 
 <template>
   <div :class="{headerContainer:true, innerGrid:true, isMobile, hideLogo}">
-    <div v-if="!hideLogo" class="logoContainerSmall">
+    <div v-if="!hideLogo" :class="{logoContainerSmall:true, isMobile}">
       <img src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
     <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
       <MenuFullWidth v-if="isFullSize" />
       <Menu v-else>
       </Menu>
-      <Search v-if="!isMobile"></Search>
-      <Language v-if="!isMobile"/>
+      <Search ></Search>
+      <Language />
 
     </div>
   </div>
@@ -63,11 +63,15 @@ function goHome(){
   }
   .logoContainerSmall{
     margin: 10px auto;
-    width: 200px;
+    width: 320px;
+    
     display: grid;
    
     place-items: center;
     cursor: pointer;
+    &.isMobile{
+      width: 200px;
+    }
     img{
       width: 100%;
       
@@ -83,15 +87,14 @@ function goHome(){
     min-height: 60px;
     border-radius: 30px;
     display: grid;
-    grid-template-columns: 1fr min-content min-content;
+    grid-template-columns: 1fr min-content min-content ; 
     justify-content: flex-start;
     align-items: center;
     padding-inline: calc(var(--app-padding) * 2 );
     gap: var(--app-padding);
     overflow: visible;
     &.isMobile {
-      grid-template-columns: 1fr  min-content;
-      padding-right: 0px;
+      grid-template-columns: 1fr  min-content min-content;
     }
   }
 }

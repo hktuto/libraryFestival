@@ -30,48 +30,80 @@ function dateStringToNumber(str:string):number{
 }
 
 onMounted(() => getEvents(calendarEl.value.pages))
+
+function padWithLeadingZeros(num, totalLength) {
+  return String(num).padStart(totalLength, '0');
+}
+
+
 async function getEvents(months:any[]) {
+  attrs.value = [];
   const evs = []
   for  (const month of months) {
-    const startDate = month.id + "-01"
-    const endDate = month.id + "-" + month.monthComps.numDays
+    const startDate = month.prevMonthComps.year + "-" + padWithLeadingZeros(month.prevMonthComps.month, 2) + "-" + month.prevMonthComps.numDays
+    const endDate = month.nextMonthComps.year + "-"  + padWithLeadingZeros(month.nextMonthComps.month,2) + "-01"
+
     const events = await find('events',{
       filters:{
-        programs : {
-          startDate:{
-            $gte: startDate,
-            $lte: endDate
-          }
-        }
+        $or:[
+            {
+              programs : {
+                startDate:{
+                  $gt: startDate,
+                  $lt: endDate
+                }
+              }
+            },
+            {
+              programs : {
+                endDate:{
+                  $gt: startDate,
+                  $lt: endDate
+                }
+              }
+            },
+          ]
       },
       populate:{
         programs: {
           populate: "*"
         }
+      },
+      pagination:{
+        start: 0,
+        limit: -1
       }
     })
     for(const item of events.data){
       const { programs } = item.attributes as any
-      console.log(programs)
+ 
       const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+      
       for( const p of ps ) {
-        
+          if(!p.startDate || !p.startDate) continue;
+
           const event = {
+              id: item.id,
               bar: true,
+              name: item.attributes.titleEN,
               key: p.startDate + item.attributes.titleEN,
               hideIndicator: true,
               customData: {event: item.attributes, program: p, id:item.id},
               popover:true,
-              dates: new Date(p.startDate)
+              dates:{ start: new Date(p.startDate), end : new Date(p.endDate)}
             }
-            evs.push(event)
+            // find id in evs
+            const index = evs.findIndex((e:any) => e.id === item.id)
+            if(index === -1){
+              evs.push(event)
+            }
         }
       }
   }
-  //
+  evs.sort( (a,b) => a.name.localeCompare(b.name) );
   attrs.value = evs
   emit('update:attrs', evs);
-  // console.log(attrs.value)
+
 }
 </script>
 

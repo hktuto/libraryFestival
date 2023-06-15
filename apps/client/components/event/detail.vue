@@ -35,7 +35,8 @@ const { t } = useLang({...props.event,
       </div>
     </div>
   <div class="innerGrid">
-    <Markdown class="eventContent" :source="t('content')" />
+    
+    <Markdown v-if="event.contentEN" class="eventContent" :source="t('content')" html />
     <div v-if="event.hostEN" class="eventContent" >
       <div class="label">{{ t('tableHost') }}</div>
       <div class="content" v-html="t('host')"></div>
@@ -74,7 +75,7 @@ const { t } = useLang({...props.event,
 .titleContainer {
   width: fit-content;
   padding: var(--app-padding);
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 1.2;
   font-weight: 700;
   display: block;
