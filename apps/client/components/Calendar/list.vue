@@ -78,6 +78,7 @@ async function getEvents(months:any[]) {
       for( const p of ps ) {
           if(!p.startDate || !p.startDate) continue;
           const event = {
+              id: item.id,
               bar: true,
               key: p.startDate + item.attributes.titleEN,
               hideIndicator: true,
@@ -85,7 +86,11 @@ async function getEvents(months:any[]) {
               popover:true,
               dates:{ start: new Date(p.startDate), end : new Date(p.endDate)}
             }
-            evs.push(event)
+            // find id in evs
+            const index = evs.findIndex((e:any) => e.id === item.id)
+            if(index === -1){
+              evs.push(event)
+            }
         }
       }
   }
