@@ -99,7 +99,6 @@ async function getEvents(months:any[]) {
         }
       }
   }
-  console.log(evs);
   attrs.value = evs
   emit('update:attrs', evs);
 
