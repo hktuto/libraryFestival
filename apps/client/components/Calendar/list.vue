@@ -37,34 +37,32 @@ function padWithLeadingZeros(num, totalLength) {
 
 
 async function getEvents(months:any[]) {
+  attrs.value = [];
   const evs = []
   for  (const month of months) {
-    console.log(month);
     const startDate = month.prevMonthComps.year + "-" + padWithLeadingZeros(month.prevMonthComps.month, 2) + "-" + month.prevMonthComps.numDays
     const endDate = month.nextMonthComps.year + "-"  + padWithLeadingZeros(month.nextMonthComps.month,2) + "-01"
+
     const events = await find('events',{
       filters:{
         $or:[
             {
               programs : {
-          
                 startDate:{
-                  $gte: startDate,
-                  $lte: endDate
+                  $gt: startDate,
+                  $lt: endDate
                 }
               }
             },
             {
               programs : {
-          
                 endDate:{
-                  $gte: startDate,
-                  $lte: endDate
+                  $gt: startDate,
+                  $lt: endDate
                 }
               }
             },
           ]
-        
       },
       populate:{
         programs: {
@@ -83,6 +81,7 @@ async function getEvents(months:any[]) {
       
       for( const p of ps ) {
           if(!p.startDate || !p.startDate) continue;
+
           const event = {
               id: item.id,
               bar: true,
@@ -100,10 +99,10 @@ async function getEvents(months:any[]) {
         }
       }
   }
-  //
+  console.log(evs);
   attrs.value = evs
   emit('update:attrs', evs);
-  // console.log(attrs.value)
+
 }
 </script>
 
