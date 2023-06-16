@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import {locationFilter} from "~/utils/filter";
+import { UseVirtualList } from '@vueuse/components'
 const { find } = useStrapi();
 const {t, tObj, currentLang, pureT, SimToTraditional } = useLang({
   nameEN:"Programme Schedule",
@@ -127,7 +127,7 @@ const locationOptions = computed( () => {
   return arr
 } ) 
 async function search(){
-  
+  events.value = []
   const res = await find('events',{
     filters: makeFilters(),
     populate:{
@@ -140,11 +140,9 @@ async function search(){
       limit:1000,
     }
   })
-  // console.log(res.data);
   const allPrograms:any[]  = [];
   for(const item of res.data) {
     let { programs } = item.attributes as any
-    console.log("org" , programs.length)
     if(form.month && form.month.start && form.month.end ){
       const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
       const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
@@ -197,7 +195,6 @@ const { data } = await useAsyncData(
 )
 
 function closeBtn(){
-  console.log("close")
   form.month = {
     start:null,
     end:null
@@ -252,7 +249,23 @@ onMounted(async() => await search());
         <button @click="search">{{  t('search') }}</button>
       </div>
       <div v-if="events.length > 0" class="eventList">
-        <table style="width:100%">
+        <div class="row">
+              <div class="date">{{ t('time') }}</div>
+              <div class="title">{{ t('title') }}</div>
+              <div class="location">{{ t('location') }}</div>
+              <div></div>
+            </div>
+        <UseVirtualList :list="events" :options="{itemHeight:90}" height="500px">
+          <template #="{data}">
+            <div class="row">
+              <div class="date">{{data.startDate}} - <br/> {{data.endDate}}</div>
+              <div class="title">{{tObj('title', data)}}</div>
+              <div class="location">{{tObj('location', data)}}</div>
+              <div><button class="table" @click="$router.push({path:'/program/'+data.postId})">{{t('detail')}}</button></div>
+            </div>
+          </template>
+        </UseVirtualList>
+        <!-- <table style="width:100%">
           <thead>
           <tr>
             <td width="20%">{{ t('time') }}</td>
@@ -267,7 +280,7 @@ onMounted(async() => await search());
             <td class="location">{{tObj('location', item)}}</td>
             <td><button class="table" @click="$router.push({path:'/program/'+item.postId})">{{t('detail')}}</button></td>
           </tr>
-        </table>
+        </table> -->
       </div>
       <div v-else class="noResult">
         {{ t('noResult') }}
@@ -317,6 +330,9 @@ onMounted(async() => await search());
       width: 100%;
     }
   }
+}
+table{
+  table-layout:fixed;
 }
 td{
   padding-block: 12px;
@@ -388,6 +404,17 @@ button {
     background: #eee;
     font-size: .8rem;
     color: var(--primary-color);
+  }
+}
+.row{
+  display: grid;
+  grid-template-columns: 20% 40% 20% 20%;
+  padding-block: 12px;
+  padding-inline: 12px;
+  background-color: #eee;
+  border-bottom: 1px solid #fff;
+  > * {
+    border-left: 1px solid #fff;
   }
 }
 </style>
