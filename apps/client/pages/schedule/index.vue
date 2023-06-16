@@ -81,7 +81,7 @@ function makeFilters() {
   
   if(form.name) {
     let key = SimToTraditional(form.name)
-    key = key.toLowerCase();
+    // key = key.toLowerCase();
     filters.$and.push({
       $or:[
         {
@@ -126,12 +126,15 @@ const locationOptions = computed( () => {
   arr.sort((a,b) => !a || !b ? 1 : a.localeCompare(b) )
   return arr
 } ) 
-async function search(){
+
+async function searchAll() {
   events.value = []
   const res = await find('events',{
-    filters: makeFilters(),
     populate:{
       programs: {
+        populate: "*",
+      },
+      categories: {
         populate: "*"
       }
     },
@@ -143,23 +146,6 @@ async function search(){
   const allPrograms:any[]  = [];
   for(const item of res.data) {
     let { programs } = item.attributes as any
-    if(form.month && form.month.start && form.month.end ){
-      const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
-      const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
-      
-      programs  = programs.filter((p:any) => {
-        if(!p.startDate || !p.endDate) return false;
-        return withInStartEnd(p.startDate, p.endDate, startDate, endDate)
-      } );
-    }
-    
-    if(form.location){
-      programs = programs.filter((p:any) => {
-        if(!p.locationEN) return false;
-        return p.locationEN.includes(form.location) || p.locationHK.includes(form.location)
-      } ) ;
-      
-    }
     for( const p of programs ) {
       
       if(!p.startDate || !p.endDate) continue;
@@ -171,6 +157,7 @@ async function search(){
         locationEN: item.attributes.locationEN,
         ...p,
         id: item.id +"-"+ p.id,
+        categories: item.attributes.categories.data || [],
         postId: item.id
       }
       const index = allPrograms.findIndex((e:any) => e.id === item.id +"-"+  p.id)
@@ -183,10 +170,104 @@ async function search(){
   allPrograms.sort( (a,b) => {
     return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
   });
-  
-
   events.value = allPrograms
 }
+
+const filteredEvents = computed(() => {
+  console.log('filteredEvents')
+  let startDate : string;
+  let endDate : string;
+  if(form.month && form.month.start && form.month.end){
+    startDate = dayjs(form.month.start).format('YYYY-MM-DD')
+    endDate = dayjs(form.month.end).format('YYYY-MM-DD')
+  }
+  const arr = events.value.filter((e:any) => {
+    let result = true;
+    if(form.name){
+      if(!e.titleEN) return false;
+      let key = SimToTraditional(form.name)
+      key = key.toLowerCase();
+      console.log(key, e.titleEN.toLowerCase(), e.titleHK.toLowerCase() )
+      result = e.titleEN.toLowerCase().includes(key) || e.titleHK.toLowerCase().includes(key)
+    }
+    if(form.month && form.month.start && form.month.end && result){
+      if(!e.startDate || !e.endDate) return false;
+      result = withInStartEnd(e.startDate, e.endDate, startDate, endDate)
+    }
+    if(form.category && result){
+      console.log(e)
+      if(!e.categories) return false;
+      result = e.categories.map((c:any) => c.id).includes(form.category)
+    }
+    if(form.location && result){
+      if(!e.locationEN) return false;
+      result = e.locationEN.includes(form.location) || e.locationHK.includes(form.location)
+    }
+    return result
+  })
+  return arr
+})
+// async function search(){
+//   events.value = []
+//   const res = await find('events',{
+//     filters: makeFilters(),
+//     populate:{
+//       programs: {
+//         populate: "*"
+//       }
+//     },
+//     pagination:{
+//       start:0,
+//       limit:1000,
+//     }
+//   })
+//   const allPrograms:any[]  = [];
+//   for(const item of res.data) {
+//     let { programs } = item.attributes as any
+//     if(form.month && form.month.start && form.month.end ){
+//       const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
+//       const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
+      
+//       programs  = programs.filter((p:any) => {
+//         if(!p.startDate || !p.endDate) return false;
+//         return withInStartEnd(p.startDate, p.endDate, startDate, endDate)
+//       } );
+//     }
+    
+//     if(form.location){
+//       programs = programs.filter((p:any) => {
+//         if(!p.locationEN) return false;
+//         return p.locationEN.includes(form.location) || p.locationHK.includes(form.location)
+//       } ) ;
+      
+//     }
+//     for( const p of programs ) {
+      
+//       if(!p.startDate || !p.endDate) continue;
+//       const event = {
+//         name: item.attributes.titleEN,
+//         titleEN: item.attributes.titleEN,
+//         titleHK: item.attributes.titleHK,
+//         locationHK: item.attributes.locationHK,
+//         locationEN: item.attributes.locationEN,
+//         ...p,
+//         id: item.id +"-"+ p.id,
+//         postId: item.id
+//       }
+//       const index = allPrograms.findIndex((e:any) => e.id === item.id +"-"+  p.id)
+//       if(index === -1  ){
+//         allPrograms.push(event)
+//       }
+//     }
+//   }
+//   allPrograms.sort( (a,b) => a.name.localeCompare(b.name));
+//   allPrograms.sort( (a,b) => {
+//     return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
+//   });
+  
+
+//   events.value = allPrograms
+// }
 
 const { data } = await useAsyncData(
     'allCategories',
@@ -201,7 +282,7 @@ function closeBtn(){
   }
 }
 
-onMounted(async() => await search());
+onMounted(async() => await searchAll());
 </script>
 
 <template>
@@ -215,11 +296,11 @@ onMounted(async() => await search());
       <div class="searchContainer">
         <div class="item">
           <label for="keyword">{{t('keyword')}}</label>
-          <input id="keyword" v-model="form.name" @change="search"/>
+          <input id="keyword" v-model="form.name"/>
         </div>
         <div class="item">
           <label for="month">{{t('month')}}</label>
-          <VDatePicker v-model.range="form.month" mode="date" is-range :locale="calendarLang" @update:modelValue="search">
+          <VDatePicker v-model.range="form.month" mode="date" is-range :locale="calendarLang" >
             <template #default="{ inputValue, inputEvents, hidePopover }">
               <div class="inputRow">
 
@@ -233,7 +314,7 @@ onMounted(async() => await search());
         </div>
         <div class="item">
           <label for="category">{{t('category')}}</label>
-          <select id="category" v-model="form.category" :placeholder="t('category')" @change="search">
+          <select id="category" v-model="form.category" :placeholder="t('category')">
             <option value=""></option>
             <option v-for="item in data.data" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
           </select>
@@ -241,21 +322,20 @@ onMounted(async() => await search());
         <div class="item">
           <label for="location">{{t('location')}}</label>
           
-          <select id="location" v-model="form.location" :placeholder="t('location')" @change="search">
+          <select id="location" v-model="form.location" :placeholder="t('location')" >
             <option value=""></option>
             <option v-for="i in locationOptions" :key="i" :value="i" >{{pureT(i)}}</option>
           </select>
         </div>
-        <button @click="search">{{  t('search') }}</button>
       </div>
-      <div v-if="events.length > 0" class="eventList">
+      <div v-if="filteredEvents.length > 0" class="eventList">
         <div class="row">
               <div class="date">{{ t('time') }}</div>
               <div class="title">{{ t('title') }}</div>
               <div class="location">{{ t('location') }}</div>
               <div></div>
             </div>
-        <UseVirtualList :list="events" :options="{itemHeight:90}" height="500px">
+        <UseVirtualList :list="filteredEvents" :options="{itemHeight:90}" height="500px">
           <template #="{data}">
             <div class="row">
               <div class="date">{{data.startDate}} - <br/> {{data.endDate}}</div>
