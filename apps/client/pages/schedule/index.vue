@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 import {locationFilter} from "~/utils/filter";
 const { find } = useStrapi();
-const {t, tObj, currentLang, pureT } = useLang({
+const {t, tObj, currentLang, pureT, SimToTraditional } = useLang({
   nameEN:"Programme Schedule",
   nameHK:"活動日程",
   noResultEN:"No Result",
@@ -77,26 +77,28 @@ function makeFilters() {
   }
   
   if(form.name) {
+    let key = SimToTraditional(form.name)
+    key = key.toLowerCase();
     filters.$and.push({
       $or:[
         {
           titleEN: {
-            $contains: form.name
+            $contains: key
           }
         },
         {
           titleHK: {
-            $contains: form.name
+            $contains: key
           }
         },
         {
           contentHK: {
-            $contains: form.name
+            $contains: key
           }
         },
         {
           contentHK: {
-            $contains: form.name
+            $contains: key
           }
         },
       ]
@@ -159,6 +161,7 @@ async function search(){
       
       if(!p.startDate || !p.endDate) continue;
       const event = {
+        name: item.attributes.titleEN,
         titleEN: item.attributes.titleEN,
         titleHK: item.attributes.titleHK,
         locationHK: item.attributes.locationHK,
@@ -166,12 +169,17 @@ async function search(){
         ...p,
         id: item.id
       }
-      allPrograms.push(event)
+      const index = allPrograms.findIndex((e:any) => e.id === item.id)
+      if(index === -1){
+        allPrograms.push(event)
+      }
     }
   }
+  allPrograms.sort( (a,b) => a.name.localeCompare(b.name));
   allPrograms.sort( (a,b) => {
     return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
   });
+  
 
   events.value = allPrograms
 }
