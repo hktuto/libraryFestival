@@ -62,7 +62,7 @@ function makeFilters() {
   let filters:any = {
     $and:[]
   };
-  if(form.month.start && form.month.end) {
+  if(form.month && form.month.start && form.month.end) {
     const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
     const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
     filters.$and.push(
@@ -145,7 +145,7 @@ async function search(){
   for(const item of res.data) {
     let { programs } = item.attributes as any
     console.log("org" , programs.length)
-    if(form.month.start && form.month.end ){
+    if(form.month && form.month.start && form.month.end ){
       const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
       const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
       
