@@ -52,8 +52,9 @@ function dateStringToNumber(str:string):number{
 const calendarLang = computed(() => {
   return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
 })
-function withInStartEnd(targetDate:string, startDate:string, endDate:string):boolean {
-  return dateStringToNumber(targetDate) >= dateStringToNumber(startDate) && dateStringToNumber(targetDate) <= dateStringToNumber(endDate)
+function withInStartEnd(targetStart:string, targetEnd:string, startDate:string, endDate:string):boolean {
+  
+  return dateStringToNumber(targetStart) <= dateStringToNumber(endDate) && dateStringToNumber(targetEnd) >= dateStringToNumber(startDate)
 }
 
 
@@ -68,8 +69,10 @@ function makeFilters() {
         {
           programs : {
             startDate:{
-              $gte: startDate,
               $lte: endDate
+            },
+            endDate:{
+              $gte: startDate
             }
           }
         }
@@ -141,21 +144,24 @@ async function search(){
   const allPrograms:any[]  = [];
   for(const item of res.data) {
     let { programs } = item.attributes as any
-    
+    console.log("org" , programs.length)
     if(form.month.start && form.month.end ){
       const startDate = dayjs(form.month.start).format('YYYY-MM-DD')
       const endDate = dayjs(form.month.end).format('YYYY-MM-DD')
       
       programs  = programs.filter((p:any) => {
         if(!p.startDate || !p.endDate) return false;
-        return withInStartEnd(p.startDate, startDate, endDate) || withInStartEnd(p.endDate, startDate, endDate)
+        return withInStartEnd(p.startDate, p.endDate, startDate, endDate)
       } ) ;
+      console.log("after date ", programs.length)
     }
+    
     if(form.location){
       programs = programs.filter((p:any) => {
         if(!p.locationEN) return false;
         return p.locationEN.includes(form.location) || p.locationHK.includes(form.location)
       } ) ;
+      
     }
     for( const p of programs ) {
       
