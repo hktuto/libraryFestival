@@ -94,7 +94,7 @@ async function getEvents(months:any[]) {
             }
             // find id in evs
             const index = evs.findIndex((e:any) => e.id === item.id)
-            if(index === -1){
+            if(index === -1 || (p.startDate !== evs[index].customData.program.startDate && p.endDate !== evs[index].customData.program.endDate) ){
               evs.push(event)
             }
         }
