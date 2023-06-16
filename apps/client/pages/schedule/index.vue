@@ -152,8 +152,7 @@ async function search(){
       programs  = programs.filter((p:any) => {
         if(!p.startDate || !p.endDate) return false;
         return withInStartEnd(p.startDate, p.endDate, startDate, endDate)
-      } ) ;
-      console.log("after date ", programs.length)
+      } );
     }
     
     if(form.location){
@@ -173,7 +172,8 @@ async function search(){
         locationHK: item.attributes.locationHK,
         locationEN: item.attributes.locationEN,
         ...p,
-        id: item.id +"-"+ p.id
+        id: item.id +"-"+ p.id,
+        postId: item.id
       }
       const index = allPrograms.findIndex((e:any) => e.id === item.id +"-"+  p.id)
       if(index === -1  ){
@@ -265,7 +265,7 @@ onMounted(async() => await search());
             <td class="date">{{item.startDate}} - <br/> {{item.endDate}}</td>
             <td class="title">{{tObj('title', item)}}</td>
             <td class="location">{{tObj('location', item)}}</td>
-            <td><button class="table" @click="$router.push({path:'/program/'+item.id})">{{t('detail')}}</button></td>
+            <td><button class="table" @click="$router.push({path:'/program/'+item.postId})">{{t('detail')}}</button></td>
           </tr>
         </table>
       </div>
