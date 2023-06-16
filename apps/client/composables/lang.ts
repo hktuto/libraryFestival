@@ -82,6 +82,7 @@ export const useLang = (obj:any) => {
         t,
         tObj,
         SimToTraditional,
+        TraditionalToSim,
         pureT
     }
 }
