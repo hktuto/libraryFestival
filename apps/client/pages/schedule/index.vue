@@ -174,7 +174,6 @@ async function searchAll() {
 }
 
 const filteredEvents = computed(() => {
-  console.log('filteredEvents')
   let startDate : string;
   let endDate : string;
   if(form.month && form.month.start && form.month.end){
@@ -188,7 +187,7 @@ const filteredEvents = computed(() => {
       let key = SimToTraditional(form.name)
       key = key.toLowerCase();
       console.log(key, e.titleEN.toLowerCase(), e.titleHK.toLowerCase() )
-      result = e.titleEN.toLowerCase().includes(key) || e.titleHK.toLowerCase().includes(key)
+      result = e.titleEN.toLowerCase().replace(/\n/g, ' ').includes(key) || e.titleHK.toLowerCase().replace(/\n/g, ' ').includes(key)
     }
     if(form.month && form.month.start && form.month.end && result){
       if(!e.startDate || !e.endDate) return false;
@@ -480,6 +479,7 @@ button {
   border-radius: 20px;
   background: var(--primary-color);
   color: #fff;
+  cursor: pointer;
   &.table{
     background: #eee;
     font-size: .8rem;
