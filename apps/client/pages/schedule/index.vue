@@ -167,10 +167,10 @@ async function search(){
         locationHK: item.attributes.locationHK,
         locationEN: item.attributes.locationEN,
         ...p,
-        id: item.id
+        id: item.id +"-"+ p.id
       }
-      const index = allPrograms.findIndex((e:any) => e.id === item.id)
-      if(index === -1){
+      const index = allPrograms.findIndex((e:any) => e.id === item.id +"-"+  p.id)
+      if(index === -1  ){
         allPrograms.push(event)
       }
     }
