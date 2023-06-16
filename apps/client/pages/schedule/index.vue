@@ -13,8 +13,8 @@ const {t, tObj, currentLang, pureT } = useLang({
   searchHK:"搜尋",
   keywordEN:"Keyword",
   keywordHK:"關鍵字",
-  monthEN:"Month",
-  monthHK:"月份",
+  monthEN:"Time",
+  monthHK:"時間",
   locationEN:"Location",
   locationHK:"地點",
   timeEN:"Time",
@@ -212,8 +212,8 @@ onMounted(async() => await search());
             <template #default="{ inputValue, inputEvents, hidePopover }">
               <div class="inputRow">
 
-                <input id="month" :value="inputValue.start ? dayjs(inputValue.start).format('YYYY-MM-DD'): '' " v-on="inputEvents.start"/>
-                <input id="month2"  :value="inputValue.end ? dayjs(inputValue.end).format('YYYY-MM-DD'): ''" v-on="inputEvents.end"/>
+                <input id="month" :value="inputValue.start ? dayjs(inputValue.start).format('YYYY-MM-DD'): '' " v-on="inputEvents.start" readonly/>
+                <input id="month2"  :value="inputValue.end ? dayjs(inputValue.end).format('YYYY-MM-DD'): ''" v-on="inputEvents.end" readonly/>
                 <div class="closeBtn" @click="closeBtn">X</div>
               </div>
              
