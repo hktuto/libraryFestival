@@ -10,7 +10,6 @@ export const useEvents = ()  => {
 
     async function getAllEvents() {
         loading.value = true;
-        console.log('getting all events');
         const res = await find<any[]>('events',{
             populate:{
                 programs: {
@@ -57,12 +56,10 @@ export const useEvents = ()  => {
         result.sort( (a,b) => {
             return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
         });
-        console.log(result);
         return result;
     }
 
     function sortForCalendar(events:any[]) {
-        console.log('sortForCalendar')
         const result:any[] = [];
         for( const item of events) {
             const {programs} = item.attributes;
@@ -78,7 +75,6 @@ export const useEvents = ()  => {
                 const endDate = dayjs(p.endDate);
                 const dateRange = endDate.diff(startDate, 'day');
                 let currentDate = startDate;
-                console.log(dateRange)
                 for(let i = -1; i < dateRange; i++) {
                     const currentDateString = currentDate.format('YYYY-MM-DD');
                     if(!calculatedPrograms[currentDateString]) {
