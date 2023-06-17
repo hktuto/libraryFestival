@@ -6,8 +6,7 @@
 
 <template>
   <div class="searchContainer">
-    <Icon name="material-symbols:search" @click="$router.push({path:'/search'})"/>
-    
+    <Icon name="material-symbols:search" @click="$router.push({path:'/schedule'})"/>
   </div>
 </template>
 
