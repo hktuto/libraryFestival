@@ -5,7 +5,7 @@ import { useEvents } from '~/composables/event';
 const { find } = useStrapi();
 const { allEvents,sortForSchedule, loading, calendarLang } = useEvents()
 
-const {categories} = useCategories()
+const {searchCategory} = useCategories()
 const {t, tObj, currentLang, pureT,TraditionalToSim } = useLang({
   nameEN:"Programme Schedule",
   nameHK:"活動日程",
@@ -150,7 +150,7 @@ function closeBtn(){
           <label for="category">{{t('category')}}</label>
           <select id="category" v-model="form.category" :placeholder="t('category')">
             <option value=""></option>
-            <option v-for="item in categories" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
+            <option v-for="item in searchCategory" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
           </select>
         </div>
         <div class="item">

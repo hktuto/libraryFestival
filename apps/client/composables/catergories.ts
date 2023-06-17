@@ -8,8 +8,11 @@ export const useCategories = () => {
         const { data } = await find<any>('catergories')
         categories.value = data
     })
+
+    const searchCategory = computed(() => categories.value.filter((category: any) => category.id !== 7 && category.id !== 8) )
     
     return {
-        categories
+        categories,
+        searchCategory
     }
 }
