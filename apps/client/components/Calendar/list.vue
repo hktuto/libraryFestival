@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import { useEvents } from "~/composables/event";
 import {mobileHelper} from "~/composables/mobile";
 
 const { find } = useStrapi()
@@ -13,15 +14,14 @@ const { currentLang } = useLang({})
 const calendarEl = ref();
 const router = useRouter()
 const { tObj } = useLang({})
-const calendarLang = computed(() => {
-  return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
-})
-const attrs = ref<any>([]);
+const {calendarLang,  allEvents, loading, sortForCalendar} = useEvents();
+
+const attrs = computed(() => sortForCalendar(allEvents.value));
 const emit = defineEmits(['update:attrs'])
-function eventClick(day:any){
-  console.log(day) 
+
+function eventClick(event:any){
   router.push({
-    path: '/program/' + day.id
+    path: '/program/' + event.id
   })
 }
 
@@ -29,87 +29,84 @@ function dateStringToNumber(str:string):number{
   return Number(str.replaceAll('-',''))
 }
 
-onMounted(() => getEvents(calendarEl.value.pages))
-
 function padWithLeadingZeros(num, totalLength) {
   return String(num).padStart(totalLength, '0');
 }
 
+// async function getEvents(months:any[]) {
+//   attrs.value = [];
+//   const evs = []
+//   for  (const month of months) {
+//     const startDate = month.prevMonthComps.year + "-" + padWithLeadingZeros(month.prevMonthComps.month, 2) + "-" + month.prevMonthComps.numDays
+//     const endDate = month.nextMonthComps.year + "-"  + padWithLeadingZeros(month.nextMonthComps.month,2) + "-01"
 
-async function getEvents(months:any[]) {
-  attrs.value = [];
-  const evs = []
-  for  (const month of months) {
-    const startDate = month.prevMonthComps.year + "-" + padWithLeadingZeros(month.prevMonthComps.month, 2) + "-" + month.prevMonthComps.numDays
-    const endDate = month.nextMonthComps.year + "-"  + padWithLeadingZeros(month.nextMonthComps.month,2) + "-01"
-
-    const events = await find('events',{
-      filters:{
-        $or:[
-            {
-              programs : {
-                startDate:{
-                  $gt: startDate,
-                  $lt: endDate
-                }
-              }
-            },
-            {
-              programs : {
-                endDate:{
-                  $gt: startDate,
-                  $lt: endDate
-                }
-              }
-            },
-          ]
-      },
-      populate:{
-        programs: {
-          populate: "*"
-        }
-      },
-      pagination:{
-        start: 0,
-        limit: -1
-      }
-    })
-    for(const item of events.data){
-      const { programs } = item.attributes as any
+//     const events = await find('events',{
+//       filters:{
+//         $or:[
+//             {
+//               programs : {
+//                 startDate:{
+//                   $gt: startDate,
+//                   $lt: endDate
+//                 }
+//               }
+//             },
+//             {
+//               programs : {
+//                 endDate:{
+//                   $gt: startDate,
+//                   $lt: endDate
+//                 }
+//               }
+//             },
+//           ]
+//       },
+//       populate:{
+//         programs: {
+//           populate: "*"
+//         }
+//       },
+//       pagination:{
+//         start: 0,
+//         limit: -1
+//       }
+//     })
+//     for(const item of events.data){
+//       const { programs } = item.attributes as any
  
-      const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
+//       const ps  = programs.filter((p:any) => p.startDate && dateStringToNumber(p.startDate) > dateStringToNumber(startDate) && dateStringToNumber(p.startDate) < dateStringToNumber(endDate) )  ;
       
-      for( const p of ps ) {
-          if(!p.startDate || !p.startDate) continue;
+//       for( const p of ps ) {
+//           if(!p.startDate || !p.startDate) continue;
 
-          const event = {
-              id: item.id,
-              bar: true,
-              name: item.attributes.titleEN,
-              key: p.startDate + item.attributes.titleEN,
-              hideIndicator: true,
-              customData: {event: item.attributes, program: p, id:item.id},
-              popover:true,
-              dates:{ start: new Date(p.startDate), end : new Date(p.endDate)}
-            }
-            // find id in evs
-            const index = evs.findIndex((e:any) => e.id === item.id)
-            if(index === -1 || (p.startDate !== evs[index].customData.program.startDate && p.endDate !== evs[index].customData.program.endDate) ){
-              evs.push(event)
-            }
-        }
-      }
-  }
-  evs.sort( (a,b) => a.name.localeCompare(b.name) );
-  attrs.value = evs
-  emit('update:attrs', evs);
+//           const event = {
+//               id: item.id,
+//               bar: true,
+//               name: item.attributes.titleEN,
+//               key: p.startDate + item.attributes.titleEN,
+//               hideIndicator: true,
+//               customData: {event: item.attributes, program: p, id:item.id},
+//               popover:true,
+//               dates:{ start: new Date(p.startDate), end : new Date(p.endDate)}
+//             }
+//             // find id in evs
+//             const index = evs.findIndex((e:any) => e.id === item.id)
+//             if(index === -1 || (p.startDate !== evs[index].customData.program.startDate && p.endDate !== evs[index].customData.program.endDate) ){
+//               evs.push(event)
+//             }
+//         }
+//       }
+//   }
+//   evs.sort( (a,b) => a.name.localeCompare(b.name) );
+//   attrs.value = evs
+//   emit('update:attrs', evs);
 
-}
+// }
 </script>
 
 <template>
   <div class="calendarListContainer innerGrid">
-    <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="forceColumn || columns" :attributes='attrs' @did-move="getEvents" >
+    <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="forceColumn || columns" :attributes='attrs'  >
       <template #day-popover="{ dayTitle, attributes }">
         {{ dayTitle }}
         <div class="eventList">
