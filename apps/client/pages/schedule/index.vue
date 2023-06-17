@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import { UseVirtualList } from '@vueuse/components'
+import { useEvents } from '~/composables/event';
 const { find } = useStrapi();
+const { allEvents,sortForSchedule, loading, calendarLang } = useEvents()
+
+const {categories} = useCategories()
 const {t, tObj, currentLang, pureT,TraditionalToSim } = useLang({
   nameEN:"Programme Schedule",
   nameHK:"活動日程",
@@ -27,16 +31,8 @@ const {t, tObj, currentLang, pureT,TraditionalToSim } = useLang({
   resetHK:"重設",
 })
 
-const events = ref<any[]>([]);
 
-
-const router = useRouter()
-function itemClick(item:any) {
-  router.push({
-    path: '/program/' + item.id
-  })
-}
-
+const events = computed(() => sortForSchedule(allEvents.value))
 const form = reactive({
   month: {
     start: null as any,
@@ -48,12 +44,20 @@ const form = reactive({
   location:""
 })
 
+function reset() {
+  form.name = ''
+  form.month = {
+    start: '',
+    end: ''
+  }
+  form.category = ''
+  form.location = ''
+}
+
 function dateStringToNumber(str:string):number{
   return Number(str.replaceAll('-',''))
 }
-const calendarLang = computed(() => {
-  return currentLang.value === 'EN'? 'en' : currentLang.value === 'HK' ? 'zh-hk' : 'zh-cn'
-})
+
 function withInStartEnd(targetStart:string, targetEnd:string, startDate:string, endDate:string):boolean {
   
   return dateStringToNumber(targetStart) <= dateStringToNumber(endDate) && dateStringToNumber(targetEnd) >= dateStringToNumber(startDate)
@@ -68,51 +72,6 @@ const locationOptions = computed( () => {
   return arr
 } ) 
 
-async function searchAll() {
-  events.value = []
-  const res = await find('events',{
-    populate:{
-      programs: {
-        populate: "*",
-      },
-      categories: {
-        populate: "*"
-      }
-    },
-    pagination:{
-      start:0,
-      limit:1000,
-    }
-  })
-  const allPrograms:any[]  = [];
-  for(const item of res.data) {
-    let { programs } = item.attributes as any
-    for( const p of programs ) {
-      
-      if(!p.startDate || !p.endDate) continue;
-      const event = {
-        name: item.attributes.titleEN,
-        titleEN: item.attributes.titleEN,
-        titleHK: item.attributes.titleHK,
-        locationHK: item.attributes.locationHK,
-        locationEN: item.attributes.locationEN,
-        ...p,
-        id: item.id +"-"+ p.id,
-        categories: item.attributes.categories.data || [],
-        postId: item.id
-      }
-      const index = allPrograms.findIndex((e:any) => e.id === item.id +"-"+  p.id)
-      if(index === -1  ){
-        allPrograms.push(event)
-      }
-    }
-  }
-  allPrograms.sort( (a,b) => a.name.localeCompare(b.name));
-  allPrograms.sort( (a,b) => {
-    return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
-  });
-  events.value = allPrograms
-}
 
 const filteredEvents = computed(() => {
   let startDate : string;
@@ -153,22 +112,6 @@ const filteredEvents = computed(() => {
   return arr
 })
 
-function reset() {
-  form.name = ''
-  form.month = {
-    start: '',
-    end: ''
-  }
-  form.category = ''
-  form.location = ''
-}
-
-
-const { data } = await useAsyncData(
-    'allCategories',
-    () => find('catergories', {
-    })
-)
 
 function closeBtn(){
   form.month = {
@@ -177,7 +120,6 @@ function closeBtn(){
   }
 }
 
-onMounted(async() => await searchAll());
 </script>
 
 <template>
@@ -211,7 +153,7 @@ onMounted(async() => await searchAll());
           <label for="category">{{t('category')}}</label>
           <select id="category" v-model="form.category" :placeholder="t('category')">
             <option value=""></option>
-            <option v-for="item in data.data" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
+            <option v-for="item in categories" :key="item.id" :value="item.id">{{ tObj('name', item.attributes) }}</option>
           </select>
         </div>
         <div class="item">
@@ -228,6 +170,7 @@ onMounted(async() => await searchAll());
 
       </div>
       <div v-if="filteredEvents.length > 0" class="eventList">
+       
         <div class="row">
               <div class=" ">{{ t('time') }}</div>
               <div class=" ">{{ t('title') }}</div>
@@ -351,7 +294,6 @@ input, select {
   min-width: 100px;
   padding-inline: 24px;
   width:100%;
-  max-width: 400px;
 }
 .closeBtn{
   display: block;
