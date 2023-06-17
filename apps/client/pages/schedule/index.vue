@@ -90,16 +90,13 @@ const filteredEvents = computed(() => {
     if(form.name && result){
       if(!e.titleEN) return false;
       const key = form.name.toLowerCase().replaceAll(" ", '');
-      if(e.postId === 50){
-        console.log(e.titleHK.toLowerCase().replace(/\n/g, ' ').replaceAll(" ", '') , key)
-      }
+      
       const enName = e.titleEN.toLowerCase().replace(/\n/g, ' ').replaceAll(" ", '');
       const hkName = e.titleHK.toLowerCase().replace(/\n/g, ' ').replaceAll(" ", '');
       const zhName = TraditionalToSim(e.titleHK).toLowerCase().replace(/\n/g, ' ').replaceAll(" ", '');
       result = enName.includes(key) || hkName.includes(key) || zhName.includes(key)
     }
     if(form.category && result){
-      console.log(e)
       if(!e.categories) return false;
       result = e.categories.map((c:any) => c.id).includes(form.category)
     }
@@ -332,10 +329,11 @@ button {
   display: grid;
   grid-template-columns: 20% 40% 20% 20%;
   padding-block: 12px;
-  padding-inline: 12px;
+  
   background-color: #eee;
   border-bottom: 1px solid #fff;
   > * {
+    padding-inline: 12px;
     border-left: 1px solid #fff;
   }
 }
