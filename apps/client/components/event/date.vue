@@ -18,6 +18,12 @@ const { t, tObj } = useLang({
   tableTargetHK:"對象",
   tableQuotaHK:"名額",
 });
+
+ const filterPrograms = computed(() => {
+   return props.programs.filter((program) => {
+     return program.nameEN || program.displayTimeEN || program.locationEN || program.targetEN || program.quotaEN || program.registerEN || program.periodEN
+   })
+ })
 </script>
 
 <template>
@@ -27,7 +33,7 @@ const { t, tObj } = useLang({
 <!--  </tr>-->
   <div class="eventDateContainer">
 
-    <div v-for="program in programs" :key="program.id" class="program" >
+    <div v-for="program in filterPrograms" :key="program.id" class="program" >
       <div v-if="program.nameEN" class="eventContent">
         <div class="content mainColor" >{{tObj('name', program)}}</div>
       </div>
