@@ -106,7 +106,7 @@ function padWithLeadingZeros(num, totalLength) {
 
 <template>
   <div class="calendarListContainer innerGrid">
-    <VCalendar ref="calendarEl" borderless transparent expanded :locale="calendarLang" :columns="forceColumn || columns" :attributes='attrs'  >
+    <VCalendar ref="calendarEl" borderless transparent expanded :locale="{id:calendarLang, firstDayOfWeek: 1}" :columns="forceColumn || columns" :attributes='attrs'  >
       <template #day-popover="{ dayTitle, attributes }">
         {{ dayTitle }}
         <div class="eventList">
