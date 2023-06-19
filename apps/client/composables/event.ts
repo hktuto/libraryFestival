@@ -78,7 +78,6 @@ export const useEvents = ()  => {
                 const endDate = dayjs(p.endDate);
                 const dateRange = endDate.diff(startDate, 'day');
                 let currentDate = startDate;
-                console.log(dateRange)
                 for(let i = -1; i < dateRange; i++) {
                     const currentDateString = currentDate.format('YYYY-MM-DD');
                     if(!calculatedPrograms[currentDateString]) {
