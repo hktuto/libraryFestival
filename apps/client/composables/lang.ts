@@ -13,10 +13,11 @@ export const useLang = (obj:any) => {
     function changeLocale(key:string) {
         const res = locales.find(item => item.key === key);
         if(res){
-            currentLang.value = res.key
+            localStorage.setItem('locale', res.key);
             return
         }
-        currentLang.value = "HK"
+        const locale = localStorage.getItem('locale') || 'HK';
+        currentLang.value = locale
         
     }
     
