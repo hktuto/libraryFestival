@@ -13,6 +13,12 @@ const { data, refresh, error } = await useAsyncData(
 )
 
 function itemClick(item:any){
+  if(item.name === 'interactive_storytelling_device') {
+    router.push({
+      path: '/program/11'
+    })
+    return
+  }
   router.push({
     path: '/category/' + item.name
   })

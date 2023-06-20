@@ -66,7 +66,7 @@ export const useMenu =() => {
                 },{
                     labelEN:"Interactive Storytelling Device",
                     labelHK:"互動故事裝置",
-                    url:"/category/interactive_storytelling_device",
+                    url:"/program/11",
                     opened:false,
                     children:[]
                 },
