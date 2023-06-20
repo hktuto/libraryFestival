@@ -78,7 +78,15 @@ export const useLang = (obj:any) => {
 
     onMounted(() => {
         if(route.query.lang) {
-            changeLocale(route.query.lang as string)
+            if(route.query.lang === TC) {
+                changeLocale('HK')
+            }
+            if(route.query.lang === SC) {
+                changeLocale('CN')
+            }
+            if(route.query.lang === EN) {
+                changeLocale('EN')
+            }
         }
     })
 
