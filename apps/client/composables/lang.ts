@@ -2,6 +2,7 @@ import {FTPYStr, JTPYStr} from "~/utils/helpers";
 
 
 export const useLang = (obj:any) => {
+    const route = useRoute();
     const locales = [
         {key:"EN", label:"ENG"},
         {key:"HK", label:"繁"},
@@ -74,6 +75,12 @@ export const useLang = (obj:any) => {
         return str;
     }
     
+
+    onMounted(() => {
+        if(route.query.lang) {
+            changeLocale(route.query.lang as string)
+        }
+    })
 
     
     return {
