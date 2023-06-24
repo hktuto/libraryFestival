@@ -18,9 +18,11 @@
     "nuxt": "^3.5.1",
     "nuxt-gtag": "^0.5.7",
     "nuxt-icon": "^0.4.1",
+    "nuxt-simple-sitemap": "^2.7.0",
     "sass": "^1.62.1"
   },
   "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
     "@popperjs/core": "^2.11.8",
     "@vueuse/components": "^10.1.2",
     "dayjs": "^1.11.8",

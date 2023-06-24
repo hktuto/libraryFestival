@@ -5,6 +5,14 @@ export default defineNuxtConfig({
     css:[
         '~/assets/style.scss'
     ],
+    nitro: {
+        prerender: {
+          crawlLinks: true,
+          routes: [
+            '/',
+          ]
+        }
+      },
     runtimeConfig:{
         
         public: {
@@ -26,7 +34,7 @@ export default defineNuxtConfig({
             }
     },
     devtools: true,
-    modules: ['nuxt-icon', '@nuxtjs/strapi', 'nuxt-gtag'],
+    modules: ['nuxt-icon', '@nuxtjs/strapi', 'nuxt-gtag', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
     gtag: {
         id: process.env.google_analytics_id
       },
