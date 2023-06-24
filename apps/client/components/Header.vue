@@ -11,6 +11,9 @@ const router = useRouter()
 function goHome(){
   router.push('/')
 }
+onMounted(()=>{
+  console.log('isMobile', isMobile.value)
+})
 </script>
 
 <template>
@@ -19,9 +22,13 @@ function goHome(){
       <img src="/images/logo.png" alt="logo" @click="goHome"/>
     </div>
     <div :class="{headerLeft:true, bgGradient:true, isMobile, hideLogo }">
+      <client-only>
+
       <MenuFullWidth v-if="isFullSize" />
       <Menu v-else>
       </Menu>
+      </client-only>
+      
       <Search ></Search>
       <Language />
 

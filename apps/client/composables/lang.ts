@@ -29,11 +29,10 @@ export const useLang = (obj:any) => {
 
     function changeLocale(key:string) {
         const res = locales.find(item => item.key === key);
-        console.log(res);
         if(res){
             localStorage.setItem('locale', res.key);
         }
-        const locale = localStorage.getItem('locale') || 'HK';
+        const locale = localStorage.getItem('locale') || 'HK' as any;
         currentLang.value = locale
         
     }
@@ -92,7 +91,6 @@ export const useLang = (obj:any) => {
     
 
     onMounted(() => {
-        console.log("Mounted")
         if(route.query.lang) {
             if(route.query.lang === "TC") {
                 changeLocale('HK')
