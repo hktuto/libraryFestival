@@ -16,9 +16,9 @@
     "@vueuse/core": "^10.1.2",
     "consola": "^3.1.0",
     "nuxt": "^3.5.1",
+    "nuxt-gtag": "^0.5.7",
     "nuxt-icon": "^0.4.1",
-    "sass": "^1.62.1",
-    "vue-gtag-next": "^1.14.0"
+    "sass": "^1.62.1"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

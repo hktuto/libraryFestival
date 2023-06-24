@@ -7,6 +7,12 @@ const { data, refresh, error } = await useAsyncData(
     populate: "*"
   })
 )
+
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: data.value.data.attributes.titleEN
+})
 </script>
 
 <template>

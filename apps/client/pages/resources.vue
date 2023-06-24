@@ -5,6 +5,11 @@ const {t} = useLang({
   labelHK: "圖書館資源選介",
 })
 
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: 'Library Resources Guide'
+})
 </script>
 
 <template>

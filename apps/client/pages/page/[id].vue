@@ -26,6 +26,11 @@ const { t } = useLang(data.value.data[0].attributes);
 
 const post = computed(() => data.value.data[0].attributes)
 
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: data.value.data.attributes.titleEN
+})
 </script>
 
 

@@ -52,6 +52,12 @@ async function search(){
   list.value = data.data as any
   loading.value = false;
 }
+
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: 'Search'
+})
 </script>
 
 <template>

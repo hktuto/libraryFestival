@@ -8,27 +8,27 @@
         </div>
 
       </template>
-      <Illustration v-if="!isMobile" />
+      <Illustration  v-if="!isMobile" />
       <img v-else class="ill1 bgGradient" src="/images/home/desktop_left_bottom.png" alt="">
       <Divider  v-if="isMobile"  />
       <template v-if="!isMobile">
         <div class="calendarRow innerGrid">
           <div class="desktopSlideContainer">
-            <slider :slides="data.data.attributes.slide"/>
+            <slider v-if="data" :slides="data.data.attributes.slide"/>
           </div>
           <div class="calendarContainer bgGradient">
-            <CalendarList :forceColumn="1" />
+            <CalendarList v-if="data" :forceColumn="1" />
           </div>
         </div>
       </template>
       <template v-else>
         
-      <slider :slides="data.data.attributes.slide"/>
+      <slider v-if="data" :slides="data.data.attributes.slide"/>
       <Divider  />
-      <CalendarList :forceColumn="1" />
+      <CalendarList v-if="data" :forceColumn="1" />
       </template>
       <Divider />
-      <CategoriesList />
+      <CategoriesList v-if="data" />
 <!--      <EventGrid :events="data.data.attributes.events.data"/>-->
     </NuxtLayout>
 </template>
@@ -52,6 +52,12 @@ const { data, refresh, error } = await useAsyncData(
     }
   })
 )
+
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: 'Home'
+})
 
 </script>
 

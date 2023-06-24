@@ -1,20 +1,26 @@
 import {isProduction} from "std-env";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr:false,
+    ssr:true,
     css:[
         '~/assets/style.scss'
     ],
     runtimeConfig:{
+        
         public: {
             google_analytics_id: process.env.google_analytics_id,
-            production_mode: isProduction
+            production_mode: isProduction,
+            
         }
     },
     devtools: true,
-    modules: ['nuxt-icon', '@nuxtjs/strapi'],
+    modules: ['nuxt-icon', '@nuxtjs/strapi', 'nuxt-gtag'],
+    gtag: {
+        id: process.env.google_analytics_id
+      },
     strapi: {
-        devtools: true,
+        // prefix: '/api',
+        devtools: false,
     },
     
 })

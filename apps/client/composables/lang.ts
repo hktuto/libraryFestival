@@ -9,8 +9,24 @@ export const useLang = (obj:any) => {
         {key:"CN", label:"簡"}
     ]
     const displayLang = computed(() => locales.filter(item => item.key !== currentLang.value));
-    const currentLang = useState('language',() => localStorage.getItem('locale') || 'HK');
+    const routeDefaultLang = computed(() => {
+        if(route.query.lang) {
+            if(route.query.lang === "TC") {
+                return 'HK'
+            }
+            if(route.query.lang === "SC") {
+                return 'CN'
+            }
+            if(route.query.lang === "EN") {
+                return 'EN'
+            }
+        }
+        return 'HK'
+    })
+    const currentLang = useState('language',() => routeDefaultLang.value);
     
+    
+
     function changeLocale(key:string) {
         const res = locales.find(item => item.key === key);
         console.log(res);
@@ -18,7 +34,6 @@ export const useLang = (obj:any) => {
             localStorage.setItem('locale', res.key);
         }
         const locale = localStorage.getItem('locale') || 'HK';
-        console.log(locale)
         currentLang.value = locale
         
     }
@@ -77,6 +92,7 @@ export const useLang = (obj:any) => {
     
 
     onMounted(() => {
+        console.log("Mounted")
         if(route.query.lang) {
             if(route.query.lang === "TC") {
                 changeLocale('HK')
@@ -87,6 +103,8 @@ export const useLang = (obj:any) => {
             if(route.query.lang === "EN") {
                 changeLocale('EN')
             }
+        } else {
+            changeLocale(localStorage.getItem('locale') || 'HK')
         }
     })
 

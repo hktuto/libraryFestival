@@ -117,6 +117,12 @@ function closeBtn(){
   }
 }
 
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: 'Schedule'
+})
+
 </script>
 
 <template>

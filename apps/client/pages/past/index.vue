@@ -23,6 +23,12 @@ function itemClick(item:any) {
     path: '/past/' + item.attributes.slug
   })
 }
+
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: 'Past Events'
+})
 </script>
 
 <template>

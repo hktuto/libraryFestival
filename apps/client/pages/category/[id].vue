@@ -51,6 +51,12 @@ onMounted(() => {
   }
 })
 
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival',
+  screen_name: cat.value.data[0].attributes.nameEN
+})
+
 </script>
 
 <template>
