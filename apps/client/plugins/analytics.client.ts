@@ -5,7 +5,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     if(config.public.production_mode) {
         nuxtApp.vueApp.use(VueGtag, {
             property: {
-                id: config.public.google_analytics_id
+                id: config.public.google_analytics_id,
+                params:{
+                    send_page_view: true,
+                }
             }
         })
     }
