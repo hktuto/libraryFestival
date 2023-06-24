@@ -18,7 +18,6 @@
     "nuxt": "^3.5.1",
     "nuxt-gtag": "^0.5.7",
     "nuxt-icon": "^0.4.1",
-    "nuxt-seo-kit": "^1.3.9",
     "sass": "^1.62.1"
   },
   "dependencies": {

@@ -58,6 +58,9 @@ gtag('event', 'screen_view', {
   app_name: 'Library Festival',
   screen_name: 'Search'
 })
+useSeoMeta({
+  title: 'Search',
+})
 </script>
 
 <template>

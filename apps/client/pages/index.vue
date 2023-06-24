@@ -59,6 +59,9 @@ gtag('event', 'screen_view', {
   screen_name: 'Home'
 })
 
+useSeoMeta({
+  title: 'Home',
+})
 </script>
 
 
