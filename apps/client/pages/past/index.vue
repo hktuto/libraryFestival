@@ -29,6 +29,11 @@ gtag('event', 'screen_view', {
   app_name: 'Library Festival',
   screen_name: 'Past Events'
 })
+
+const config = useRuntimeConfig()
+useSeoMeta({
+  title: config.public.siteName + " | " + 'Past Events',
+})
 </script>
 
 <template>

@@ -59,8 +59,9 @@ gtag('event', 'screen_view', {
   screen_name: 'Home'
 })
 
+const config = useRuntimeConfig()
 useSeoMeta({
-  title: 'Home',
+  title: config.public.siteName + " | " + 'Home',
 })
 </script>
 
