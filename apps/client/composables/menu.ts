@@ -44,6 +44,20 @@ export const useMenu =() => {
                     children:[]
                 },
                 {
+                    labelEN:"Parent-child Workshops",
+                    labelHK:"親子工作坊",
+                    url:"/category/parent-child-workshops",
+                    opened:false,
+                    children:[]
+                },
+                {
+                    labelEN:"Teens and Adults Workshops",
+                    labelHK:"青少年及成年人工作坊",
+                    url:"/category/teens-and-adults-workshops",
+                    opened:false,
+                    children:[]
+                },
+                {
                     labelEN:"Story Sharing Sessions",
                     labelHK:"故事分享會",
                     url:"/category/onsite-story-sharing-sessions",
@@ -72,13 +86,13 @@ export const useMenu =() => {
                 },
             ]
         },
-        // {
-        //     labelEN: "Online Programmes",
-        //     labelHK: "網上活動",
-        //     url:"/category/online_videos",
-        //     opened:false,
-        //     children: []
-        // },
+        {
+            labelEN: "Online Programmes",
+            labelHK: "網上活動",
+            url:"/category/online_videos",
+            opened:false,
+            children: []
+        },
         {
             labelEN: "Live Stream",
             labelHK: "直播活動",
