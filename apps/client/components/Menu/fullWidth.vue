@@ -67,7 +67,8 @@ const {tObj} = useLang({})
   flex-flow: column nowrap;
   gap: var(--app-padding);
   overflow: hidden;
-  max-width: 200%;
+  max-width: 320px;
+  width: 100vw;
   &.opened {
     transform: translateY(0);
   }
