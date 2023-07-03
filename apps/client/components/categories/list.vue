@@ -43,7 +43,7 @@ function itemClick(item:any){
 .grid{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: calc(var(--app-padding) * 3);
   @media (max-width: 1280px){
     grid-template-columns: repeat(2, 1fr);
