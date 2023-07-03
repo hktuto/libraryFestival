@@ -67,6 +67,7 @@ const {tObj} = useLang({})
   flex-flow: column nowrap;
   gap: var(--app-padding);
   overflow: hidden;
+  max-width: 200%;
   &.opened {
     transform: translateY(0);
   }
@@ -74,7 +75,7 @@ const {tObj} = useLang({})
     padding: var(--app-padding);
     color: #fff;
     transition: all .2s ease-in-out;
-    white-space: nowrap;
+    line-height: 1.2;
     &:hover, &.focus {
       background: var(--primary-color-light);
       color: #000;

@@ -44,6 +44,7 @@ const {tObj} = useLang({})
   display:none;
   &.opened{
     display: block;
+   
   }
 }
 </style>

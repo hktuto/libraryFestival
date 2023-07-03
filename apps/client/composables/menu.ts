@@ -6,7 +6,7 @@ export type MenuItem = {
     children: MenuItem[]
 }
 export const useMenu =() => {
-
+    const { find} = useStrapi()
     const router = useRouter()
     const route = useRoute()
     const menu = useState<MenuItem[]>('menuData', () => ([
@@ -107,13 +107,13 @@ export const useMenu =() => {
             url:"/schedule",
             children: []
         },
-        // {
-        //     labelEN: "Library Resources Guide",
-        //     labelHK: "圖書館資源選介",
-        //     url:"/resources",
-        //     opened:false,
-        //     children: []
-        // },
+        {
+            labelEN: "Library Resources Guide",
+            labelHK: "圖書館資源選介",
+            url:"#",
+            opened:false,
+            children: []
+        },
         {
             labelEN: "Past Events",
             labelHK: "昔日活動",
@@ -129,14 +129,42 @@ export const useMenu =() => {
             return
         }
         if(item.url) {
-            router.push(item.url)
+            if(item.url.startsWith('https')) {
+                // open in new tab
+                window.open(item.url, '_blank')
+            } else {
+                router.push(item.url)
+            }
         }
     }
-
+ 
     function isCurrentRoute(item: MenuItem) {
         return route.fullPath === item.url;
     }
+
+    async function getResources() {
+        const {data:{attributes:{resource}}} = await find('resource',{
+            populate:{
+                resource:{
+                    populate: "*"
+                }
+            }
+        });
+        const index = menu.value.findIndex(item => item.labelEN === 'Library Resources Guide')
+        menu.value[index].children = resource.map((item:any) => ({
+            labelEN: item.titleEN,
+            labelHK: item.titleHK,
+            url: 'https://' + item.file.data.attributes.url,
+            opened:false,
+            children: []
+        }))
+        console.log(resource)
+    }
     
+    onMounted(() => {
+        getResources()
+    })
+
     return {
         menu,
         itemClicked,
