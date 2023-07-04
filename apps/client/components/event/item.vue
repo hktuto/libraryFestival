@@ -2,7 +2,7 @@
 const router = useRouter();
 
 const {public:{strapi:{url}}} = useRuntimeConfig();
-
+const showDialog = ref(false);
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const props = defineProps<{
   event: any,
@@ -10,7 +10,10 @@ const props = defineProps<{
 }>();
 const { t } = useLang(props.event);
 function itemClick() {
-  console.log(props.event)
+  if(props.event.videoUrl){ 
+    showDialog.value = true;
+    return
+  }
   router.push({
     path: '/program/' + props.eventId
   })
@@ -26,6 +29,13 @@ function itemClick() {
       {{ t('title') }}
       <div class="bgGradient"></div>
     </div>
+    <Teleport v-if="showDialog" to="body">
+      <div class="backdrop" @click="showDialog = false">
+        <div class="iframeContainer">
+          <iframe v-if="event.videoUrl" :src="event.videoUrl + '?rel=0&autoplay=1&playsinline=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -72,5 +82,28 @@ function itemClick() {
     height: 100%;
     z-index: -1;
   }
+}
+
+.backdrop{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,.8);
+z-index: 100;
+display: flex;
+justify-content: center;
+align-items: center;
+.iframeContainer{
+  width: 100%;
+  max-width: 800px;
+  min-width: 280px;
+  aspect-ratio: 16 / 9;
+  iframe{
+    width: 100%;
+    height: 100%;
+  }
+}
 }
 </style>
