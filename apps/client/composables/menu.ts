@@ -154,7 +154,7 @@ export const useMenu =() => {
         menu.value[index].children = resource.map((item:any) => ({
             labelEN: item.titleEN,
             labelHK: item.titleHK,
-            url: 'https://' + item.file.data.attributes.url,
+            url: item.file.data.attributes.url,
             opened:false,
             children: []
         }))
