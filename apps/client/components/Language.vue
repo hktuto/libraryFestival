@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useLang} from '~/composables/lang';
+
 const { displayLang, currentLang, changeLocale } = useLang({})
 
 </script>

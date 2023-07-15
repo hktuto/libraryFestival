@@ -9,8 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import {useLang} from "~/composables/lang";
-import {getStrapiData} from "~/utils/helpers";
 import {Footer} from '~/models/footer'
 import {SingleResponse} from "~/models/strapi";
 const { find } = useStrapi()

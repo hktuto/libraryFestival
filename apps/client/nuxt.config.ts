@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     },
     devtools: true,
     modules: ['nuxt-icon', '@nuxtjs/strapi', 'nuxt-gtag', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
+    extends:['../../packages/i18n'],
     gtag: {
         id: process.env.google_analytics_id
       },

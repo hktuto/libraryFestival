@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "workspaces":[
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "d": "pnpm -filter backend -filter client  run dev"
