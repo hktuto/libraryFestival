@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+SC:wght@100;300;500;700;900&family=Noto+Sans+TC:wght@100;300;500;700;900&display=swap');
+
+body,html {
+  padding: 0;
+  margin:0;
+  font-family: 'Lato', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #8c168c;
+  --primary-color: #0d930d;
+  --primary-color-light: #43d243;
+  --app-padding: 12px;
+  --text-body-color: #000;
+  --text-title-color: #000;
+  --g-color-1: #ffffff;
+  --g-color-2: #45ead7;
+  --g-color-3: #877fee;
+  --g-color-4: #f1499c;
+  --g-color-5: #e7d85c;
+  --g-color-6: #66f647;
+  --g-color-7: #45ead7;
+  --g-center-x: var(--mouse-x, 50%);
+  --g-center-y: var(--mouse-y, 50%);
+}
+
+.pageContainer{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
