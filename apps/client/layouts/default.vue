@@ -65,7 +65,7 @@ const { data } = useAsyncData('popup',
 }
 .dialogContent{
   max-width: 640px;
-  width: 100%;
+  width: calc(100% - 48px);
   min-width: 260px;
   padding: calc(var(--app-padding) * 4);
   background: #fff;
