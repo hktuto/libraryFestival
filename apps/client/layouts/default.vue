@@ -27,7 +27,7 @@ const { find } = useStrapi()
 const { isMobile } = mobileHelper()
 const { tObj } = useLang({})
 
-const dialogOpened = ref(true);
+const dialogOpened = useState('dialogOpened', () => true);
 const { data } = useAsyncData('popup',
     () => find('popup')
 )
