@@ -1,8 +1,7 @@
 <template>
   <div class="footerContainer bgGradient">
     <div class="innerGrid">
-      <div class="remark">
-        {{ t('remark') }}
+      <div class="remark" v-html="t('remark')">
       </div>
     </div>
   </div>
