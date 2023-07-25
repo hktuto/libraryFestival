@@ -30,6 +30,13 @@ export const useMenu =() => {
             opened:false,
             children: [
                 {
+                    labelEN:"Interactive Storytelling Device",
+                    labelHK:"互動故事裝置",
+                    url:"/program/11",
+                    opened:false,
+                    children:[]
+                },
+                {
                     labelEN:"Exhibitions",
                     labelHK:"展覽",
                     url:"/category/exhibition",
@@ -75,12 +82,6 @@ export const useMenu =() => {
                     labelEN:"Subject Talks",
                     labelHK:"專題講座",
                     url:"/category/onsite-subject-talks",
-                    opened:false,
-                    children:[]
-                },{
-                    labelEN:"Interactive Storytelling Device",
-                    labelHK:"互動故事裝置",
-                    url:"/program/11",
                     opened:false,
                     children:[]
                 },
