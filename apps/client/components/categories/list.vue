@@ -8,7 +8,7 @@ const { data, refresh, error } = await useAsyncData(
     'allCategories',
     () => find('catergories', {
       populate: "*",
-      
+      sort:"order",
     })
 )
 
