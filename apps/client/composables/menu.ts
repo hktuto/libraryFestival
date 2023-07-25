@@ -37,6 +37,13 @@ export const useMenu =() => {
                     children:[]
                 },
                 {
+                    labelEN:"Summer Library Festival @ D‧PARK",
+                    labelHK:"夏日圖書館節 @ D‧PARK",
+                    url:"/category/Summer_Library_Festival_D_PARK",
+                    opened:false,
+                    children:[]
+                },
+                {
                     labelEN:"Exhibitions",
                     labelHK:"展覽",
                     url:"/category/exhibition",
