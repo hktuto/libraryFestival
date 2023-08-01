@@ -123,6 +123,13 @@ export const useMenu =() => {
             children: []
         },
         {
+            labelEN: "Mobile App Stickers",
+            labelHK: "手機貼圖",
+            url:"https://whatsticker.online/p/686403JwaFhlS/HK/zh",
+            opened:false,
+            children: []
+        },
+        {
             labelEN: "Past Events",
             labelHK: "昔日活動",
             url:"/past",
