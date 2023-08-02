@@ -53,7 +53,7 @@ useSeoMeta({
             </div>
         </div>
         <div class="innerGrid">
-            <Markdown class="eventContent" :source="t('content')" />
+            <Markdown class="eventContent" :source="t('content')" html/>
         </div>
     </NuxtLayout>
 </template>

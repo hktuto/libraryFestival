@@ -125,7 +125,7 @@ export const useMenu =() => {
         {
             labelEN: "Mobile App Stickers",
             labelHK: "手機貼圖",
-            url:"https://whatsticker.online/p/686403JwaFhlS/HK/zh",
+            url:"/page/mobile-app-stickers",
             opened:false,
             children: []
         },
