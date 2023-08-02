@@ -6,15 +6,17 @@ const booksRef = ref<HTMLElement>()
 
 const props = withDefaults(
     defineProps<{
-      width: any
+      width: any,
+      divided?: number
     }>(),
     {
-      width: 100
+      width: 100,
+      divided: 3
     }
 )
 function setBookSize () {
   const size = window.innerWidth;
-  bookHeight.value =  Math.floor(window.innerHeight / 4 - 24 * 4);
+  bookHeight.value =  Math.floor(window.innerHeight / props.divided - (24 * props.divided + 1) );
   loopTime.value = Math.floor(size * (props.width / 100) / (bookHeight.value / 6))
 }
 

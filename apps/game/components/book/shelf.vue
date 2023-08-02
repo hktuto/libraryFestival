@@ -1,10 +1,19 @@
-<script setup>
-
+<script lang="ts" setup>
+const props = withDefaults(
+    defineProps<{
+      width: any,
+      divided?: number
+    }>(),
+    {
+      width: 100,
+      divided: 3
+    }
+)
 </script>
 
 <template>
   <div class="bookRow">
-    <BookRow />
+    <BookRow v-bind="$props" />
     <BookRack />
   </div>
 </template>
@@ -18,6 +27,5 @@
   align-items: flex-start;
   overflow: hidden;
   position: relative;
- 
 }
 </style>

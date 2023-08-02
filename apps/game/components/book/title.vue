@@ -43,12 +43,14 @@
       word-break: break-all;
       color: #fff;
       width: 70%;
+      padding-inline: 24px;
       @media( max-width: 640px) {
         width: 100%;
       }
     }
     img{
       height: 70%;
+      max-height: 400px;
     }
   }
 }
