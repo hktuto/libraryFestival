@@ -106,6 +106,7 @@ const filteredEvents = computed(() => {
     }
     return result
   })
+  
   return arr
 })
 
@@ -187,7 +188,7 @@ useSeoMeta({
           <template #="{data}">
             <div class="row">
               <div class="date">{{data.startDate}} - <br/> {{data.endDate}}</div>
-              <div class="title">{{tObj('title', data)}}</div>
+              <div class="title">{{ tObj('title', data) }} <br/> <small>{{ tObj('name', data) }}</small></div>
               <div class="location">{{tObj('location', data)}}</div>
               <div><button class="table" @click="$router.push({path:'/program/'+data.postId})">{{t('detail')}}</button></div>
             </div>

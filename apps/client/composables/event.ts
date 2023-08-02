@@ -47,8 +47,9 @@ export const useEvents = ()  => {
                     categories: event.attributes.categories.data || [],
                     postId: event.id
                 }
+                
                 const programEvents = result.findIndex((e:any) => e.id === event.id +"-"+  program.id);
-                if(programEvents === -1) {
+                if(programEvents === -1 && newEvent.startDate && newEvent.endDate) {
                     result.push(newEvent)
                 }
             }
@@ -57,7 +58,6 @@ export const useEvents = ()  => {
         result.sort( (a,b) => {
             return Number(new Date(a.startDate)) - Number(new Date(b.startDate));
         });
-        console.log(result);
         return result;
     }
 

@@ -173,7 +173,7 @@ export const useMenu =() => {
             opened:false,
             children: []
         }))
-        console.log(resource)
+        
     }
     
     onMounted(() => {
