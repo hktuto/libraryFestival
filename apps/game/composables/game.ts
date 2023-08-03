@@ -124,10 +124,7 @@ export const useGame = () => {
 
 
     const currentLevel = useState('currentLevel',() => "sing-0");
-    const currentLevelObject = computed(() => {
-        const [level,subLevel] = currentLevel.value.split('-');
-        return levels.value[level];
-    });
+
     
     const levelObject = computed(() => {
         const [level,subLevel] = currentLevel.value.split('-');
@@ -152,6 +149,5 @@ export const useGame = () => {
         levelObject,
         nextLevel,
         currentLevel,
-        currentLevelObject
     }
 }

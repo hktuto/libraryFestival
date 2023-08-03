@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { currentLevelObject } = useGame()
+const { levelObject } = useGame()
 </script>
 
 <template>
@@ -10,10 +10,10 @@ const { currentLevelObject } = useGame()
         </div>
         <div class="logo">
             <img src="/images/logo_purple.svg" alt="logo" />
-            <span class="characterDesc">{{ currentLevelObject.description }}</span>
+            <span class="characterDesc">{{ levelObject.description }}</span>
         </div>
         <div class="character">
-            <img :src="currentLevelObject.img" alt="character" />
+            <img :src="levelObject.img" alt="character" />
         </div>
         <div class="bottomContainer">
             <div class="optionsContainer">
