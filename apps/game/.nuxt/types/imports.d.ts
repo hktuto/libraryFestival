@@ -93,6 +93,7 @@ declare global {
   const useCssVars: typeof import('vue')['useCssVars']
   const useError: typeof import('../../../../node_modules/nuxt/dist/app')['useError']
   const useFetch: typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']
+  const useGame: typeof import('../../composables/game')['useGame']
   const useHead: typeof import('@unhead/vue')['useHead']
   const useHeadSafe: typeof import('@unhead/vue')['useHeadSafe']
   const useLazyAsyncData: typeof import('../../../../node_modules/nuxt/dist/app')['useLazyAsyncData']
@@ -227,6 +228,7 @@ declare module 'vue' {
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useError: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']>
+    readonly useGame: UnwrapRef<typeof import('../../composables/game')['useGame']>
     readonly useHead: UnwrapRef<typeof import('@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('@unhead/vue')['useHeadSafe']>
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useLazyAsyncData']>
@@ -355,6 +357,7 @@ declare module '@vue/runtime-core' {
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useError: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']>
+    readonly useGame: UnwrapRef<typeof import('../../composables/game')['useGame']>
     readonly useHead: UnwrapRef<typeof import('@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('@unhead/vue')['useHeadSafe']>
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useLazyAsyncData']>
