@@ -128,6 +128,11 @@ export const useGame = () => {
     
     const levelObject = computed(() => {
         const [level,subLevel] = currentLevel.value.split('-');
+        return levels.value[level];
+    });
+
+    const subLevelObject = computed(() => {
+        const [level,subLevel] = currentLevel.value.split('-');
         return levels.value[level].subLevels[subLevel];
     });
 
@@ -149,5 +154,6 @@ export const useGame = () => {
         levelObject,
         nextLevel,
         currentLevel,
+        subLevelObject,
     }
 }

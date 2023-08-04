@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { levelObject } = useGame()
+const { levelObject, subLevelObject } = useGame()
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const { levelObject } = useGame()
         </div>
         <div class="bottomContainer">
             <div class="optionsContainer">
-
+                <GameSublevel :answers="subLevelObject.answer" />
             </div>
             <div class="selectedContainer">
 
@@ -41,7 +41,7 @@ const { levelObject } = useGame()
     display: grid;
     grid-template-rows: 1fr 1fr;
     .optionsContainer{
-        overflow: auto;
+        overflow: visible;
     }
     .selectedContainer{
         background: #EBCFAC;
