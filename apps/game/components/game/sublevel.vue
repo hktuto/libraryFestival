@@ -21,12 +21,12 @@ function selectedChange(obj:any, value: boolean) {
 
 <template>
     <div class="booksOptions">
-        <img class="betweenImg" v-for="i in 3" :key="i"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
-        <template v-for="(answer, index) in answers" :key="answer">
+        <img v-once class="betweenImg" v-for="i in 3" :key="i"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
+        <template v-once v-for="(answer, index) in answers" :key="answer">
           <GameBook  :data="answer" @selectedChange="(bool) => selectedChange(answer, bool)" />
           <img class="betweenImg"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         </template>
-      <img class="betweenImg" v-for="i in 3" :key="i"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
+      <img v-once class="betweenImg" v-for="i in 3" :key="i"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
     </div>
     <div class="selectedContainer">
       <div class="selectedBooks">
