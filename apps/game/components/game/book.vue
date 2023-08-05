@@ -1,12 +1,15 @@
 <script lang="ts" setup>
+import {Option} from "../../composables/game";
+
 const props = defineProps<{
-    data: any
+    data: Option
 }>();
 const selected = ref(false);
 const emit = defineEmits<{
     selectedChange: (value: boolean) => void
 }>();
 function toggleSelected() {
+  if(!props.data.correct) retun;
   selected.value = !selected.value;
   emit('selectedChange', selected.value);
 }
