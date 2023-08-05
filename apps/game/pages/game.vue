@@ -16,12 +16,7 @@ const { levelObject, subLevelObject } = useGame()
             <img :src="levelObject.img" alt="character" />
         </div>
         <div class="bottomContainer">
-            <div class="optionsContainer">
-                <GameSublevel :answers="subLevelObject.answer" />
-            </div>
-            <div class="selectedContainer">
-
-            </div>
+          <GameSublevel :answers="subLevelObject.answer" />
         </div>
     </div>
 
@@ -71,9 +66,7 @@ const { levelObject, subLevelObject } = useGame()
         height: 100%;
     }
 }
-.selectedContainer{
-    background: #EBCFAC;
-}
+
 .character{
     position: absolute;
     height:70%;

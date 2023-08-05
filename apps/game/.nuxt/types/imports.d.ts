@@ -66,6 +66,7 @@ declare global {
   const preloadRouteComponents: typeof import('../../../../node_modules/nuxt/dist/app')['preloadRouteComponents']
   const provide: typeof import('vue')['provide']
   const proxyRefs: typeof import('vue')['proxyRefs']
+  const randomColor: typeof import('../../utils/color')['randomColor']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
@@ -201,6 +202,7 @@ declare module 'vue' {
     readonly preloadRouteComponents: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['preloadRouteComponents']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
+    readonly randomColor: UnwrapRef<typeof import('../../utils/color')['randomColor']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
@@ -330,6 +332,7 @@ declare module '@vue/runtime-core' {
     readonly preloadRouteComponents: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['preloadRouteComponents']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
+    readonly randomColor: UnwrapRef<typeof import('../../utils/color')['randomColor']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>

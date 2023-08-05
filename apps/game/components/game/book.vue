@@ -1,31 +1,28 @@
 <script lang="ts" setup>
 const props = defineProps<{
-    label: string
+    data: any
 }>();
 const selected = ref(false);
 
-const radomColor = () => {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    return "#" + randomColor;
-}
+
 
 </script>
 
 <template>
-    <div :class="{book:true, selected}" :style="`--color:${radomColor()}`" >
+    <div :class="{book:true, selected}" :style="`--hue:${data.hue}`" >
         <div class="bookHeader" ></div>
-        <div class="bookName">{{ props.label }}</div>
+        <div class="bookName">{{ data.label }}</div>
         <div class="bookBottom" ></div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .bookHeader,.bookBottom{
-    background: var(--color);
+    background: hsl( var(--hue), 70%, 50%);
     height: 12px;
 }
 .book{
-    background: var(--color);
+    background: hsl( var(--hue), 70%, 50%);
     padding: 12px;
     display: flex;
     flex-flow: row nowrap;
