@@ -1,49 +1,34 @@
 <script lang="ts" setup>
 import {randomColor} from "../../utils/color";
-
-type option = {
-  label: string,
-  correct: boolean,
-  hue: string
-}
+import {Option} from "../../composables/game";
 
 const props = defineProps<{
-    answers: string[],
-    selected: option[]
+    answers: Option[],
 }>()
-
+const selected = ref<option[]>([])
 const options = ref<any[]>([])
 
-function init() {
-  options.value = props.answers.map((answer) => {
-    return {
-      label: answer,
-      correct: true,
-      hue: randomColor()
-    }
-  })
+function selectedChange(obj:any, value: boolean) {
+  if(value) {
+    selected.value.push(obj)
+  } else {
+    selected.value = selected.value.filter((item) => item !== obj)
+  }
 }
 
-function itemSelected(answer, index) {
-  
-}
-
-function itemUnselected(answer, index) {
-  
-}
-
-watch(() => props.answers, () => {
-  init()
-}, { immediate: true })
 
 </script>
 
 <template>
     <div class="booksOptions">
-        <GameBook v-for="(answer, index) in options" :key="answer" :data="answer" @selected="itemSelected(answer, index)" @unSelected="itemUnselected(answer, index)" />
+        <GameBook v-for="(answer, index) in answers" :key="answer" :data="answer" @selectedChange="(bool) => selectedChange(answer, bool)" />
     </div>
     <div class="selectedContainer">
-  
+      <div class="selectedBooks">
+        <div class="selectedBook" v-for="item in selected" :key="item.label" >
+          {{item.label}}
+        </div>
+      </div>
     </div>
 </template>
 
@@ -52,9 +37,9 @@ watch(() => props.answers, () => {
 
  .booksOptions{
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 46px);
-    overflow: visible;
+     display: flex;
+     flex-flow: row nowrap;
+     overflow: auto;
     position: relative;
     justify-content: center;
     align-items: flex-end;

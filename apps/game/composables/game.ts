@@ -1,3 +1,11 @@
+import {randomColor} from "../utils/color";
+
+
+export type Option = {
+    label: string,
+    correct: boolean,
+    hue: number
+}
 
 
 export const useGame = () => {
@@ -122,6 +130,35 @@ export const useGame = () => {
         }
     }));
 
+    const otherBooks = useState('otherBooks',() => [
+        "微表情心理學：入門觀察攻略",
+        "你是誰？我是誰？解讀人心的筆跡秘密",
+        "好孕天天練",
+        "香港談食錄：中餐百味",
+        "給生活多一顆糖",
+        "世界名人故事繪本",
+        "不一樣的星級住家飯",
+        "劍擊成就了我：奧運冠軍張家朗",
+        "都市人的瑜伽：創造個人的療癒",
+        "養生‧養顏-讓女人年輕10年",
+        "無難度燜燒杯料理",
+        "小學生小食盒",
+        "低班：如果我養了一隻……",
+        "阿媽這杯茶",
+        "輕鬆點吧！",
+        "瘦身，也要補身──60個低卡食譜",
+        "Q小子笑話大全(1)",
+        "父母這樣做，成就正面自信孩子！",
+        "新丁潮爸湊仔奮戰手記",
+        "運動陷阱",
+        "壞姿勢──脊醫話你知30個最易被忽略的痛症元兇",
+        "我不怕膽固醇",
+        "人生悟語—劉再復新文體沉思錄（卷二—紅樓悟語）",
+        "三國無常",
+        "中國現代小說史 (第二版)",
+        "人生悟語—劉再復新文體沉思錄（卷一—三書悟語）",
+        "且聽下回分解──阿濃談中國古典小說"
+    ]);
 
     const currentLevel = useState('currentLevel',() => "sing-0");
 
@@ -150,10 +187,53 @@ export const useGame = () => {
         }
     }
 
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return [...array];
+    }
+    
+    const makeSubLevelOptions = computed(() => {
+        // get all answer of current sublevel
+        const answer:Option[] = subLevelObject.value.answer.map((answer) => {
+            return {
+                label: answer,
+                correct: true,
+                hue: randomColor()
+            }
+        });
+        const randomNumber = Math.floor(Math.random() * otherBooks.value.length);
+        // generate two random number between 0 to otherBooks.length
+        const wrongAnswer1:Option = {
+            label:otherBooks.value[randomNumber],
+            correct:false,
+            hue: randomColor()
+        };
+        
+        // combine answer and otherBooks and shuffle
+        const options = shuffle([...answer,
+                {
+                    label:otherBooks.value[randomNumber],
+                    correct:false,
+                    hue: randomColor()
+                },
+                {
+                    label:otherBooks.value[randomNumber + 1],
+                    correct:false,
+                    hue: randomColor()
+                }]
+        );
+        return options;
+    })
+
     return {
         levelObject,
         nextLevel,
         currentLevel,
         subLevelObject,
+        otherBooks,
+        makeSubLevelOptions,
     }
 }

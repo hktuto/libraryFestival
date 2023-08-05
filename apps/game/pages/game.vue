@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { levelObject, subLevelObject } = useGame()
+const { levelObject, makeSubLevelOptions } = useGame()
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const { levelObject, subLevelObject } = useGame()
             <img :src="levelObject.img" alt="character" />
         </div>
         <div class="bottomContainer">
-          <GameSublevel :answers="subLevelObject.answer" />
+          <GameSublevel :answers="makeSubLevelOptions" />
         </div>
     </div>
 
