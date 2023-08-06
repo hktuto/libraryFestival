@@ -4,12 +4,13 @@ import {randomColor} from "../utils/color";
 export type Option = {
     label: string,
     correct: boolean,
-    hue: number
+    hue: number,
+    selected: boolean
 }
 
 
 export const useGame = () => {
-
+    const router = useRouter()
     const players = useState('players',() => (["sing","jenny","Tai Keung","Hailey"]));
     const levels = useState('levels',() => ({
         'sing':{
@@ -58,7 +59,7 @@ export const useGame = () => {
                     answer:[
                         "人民幣國際化的新進展：香港交易所的離岸金融產品創新",
                         "亂世黃金 ",
-                        "獨步股壇 「投機之王」狙擊價格方程式(導讀版",
+                        "獨步股壇 「投機之王」狙擊價格方程式",
                     ]
                 },
                 {
@@ -121,7 +122,7 @@ export const useGame = () => {
                 },
                 {
                     answer:[
-                        "古典音樂十五講（修訂版）",
+                        "古典音樂十五講",
                         "情迷現代主義",
                         "第四十五屆青年文學獎得獎作品集",
                     ]
@@ -131,33 +132,33 @@ export const useGame = () => {
     }));
 
     const otherBooks = useState('otherBooks',() => [
-        "微表情心理學：<br />入門觀察攻略",
-        "你是誰？我是誰？ <br />解讀人心的筆跡秘密",
+        "微表情心理學：入門觀察攻略",
+        "你是誰？我是誰？ 解讀人心的筆跡秘密",
         "好孕天天練",
         "香港談食錄：中餐百味",
         "給生活多一顆糖",
         "世界名人故事繪本",
         "不一樣的星級住家飯",
-        "劍擊成就了我：<br />奧運冠軍張家朗",
-        "都市人的瑜伽：<br />創造個人的療癒",
-        "養生‧養顏-<br />讓女人年輕10年",
+        "劍擊成就了我：奧運冠軍張家朗",
+        "都市人的瑜伽：創造個人的療癒",
+        "養生‧養顏-讓女人年輕10年",
         "無難度燜燒杯料理",
         "小學生小食盒",
-        "低班：<br />如果我養了一隻……",
+        "低班：如果我養了一隻……",
         "阿媽這杯茶",
         "輕鬆點吧！",
         "瘦身，也要補身──60個低卡食譜",
         "Q小子笑話大全(1)",
-        "父母這樣做，<br />成就正面自信孩子！",
-        "新丁潮爸<br />湊仔奮戰手記",
+        "父母這樣做，成就正面自信孩子！",
+        "新丁潮爸湊仔奮戰手記",
         "運動陷阱",
-        "壞姿勢──脊醫話你知<br />30個最易被忽略的<br />痛症元兇",
+        "壞姿勢──脊醫話你知30個最易被忽略的痛症元兇",
         "我不怕膽固醇",
-        "人生悟語—劉再復新文體沉思錄<br />（卷二—紅樓悟語）",
+        "人生悟語—劉再復新文體沉思錄（卷二—紅樓悟語）",
         "三國無常",
-        "中國現代小說史<br /> (第二版)",
-        "人生悟語—劉再復新文體沉思錄<br />（卷一—三書悟語）",
-        "且聽下回分解──<br />阿濃談中國古典小說"
+        "中國現代小說史 (第二版)",
+        "人生悟語—劉再復新文體沉思錄（卷一—三書悟語）",
+        "且聽下回分解──阿濃談中國古典小說"
     ]);
 
     const currentLevel = useState('currentLevel',() => "sing-0");
@@ -173,6 +174,10 @@ export const useGame = () => {
         return levels.value[level].subLevels[subLevel];
     });
 
+    function isLastSubLevel():boolean {
+        const [level,subLevel] = currentLevel.value.split('-');
+        return Number(subLevel) === levels.value[level].subLevels.length -1;
+    }
     function nextLevel(){
         const [level,subLevel] = currentLevel.value.split('-');
         if(subLevel < levels.value[level].subLevels.length - 1){
@@ -182,7 +187,10 @@ export const useGame = () => {
             if(nextLevel < players.value.length){
                 currentLevel.value = `${players.value[nextLevel]}-0`;
             }else {
-                currentLevel.value = "end";
+                router.push({
+                    path: '/booklist'
+                })
+                currentLevel.value = "sing-0";
             }
         }
     }
@@ -195,38 +203,36 @@ export const useGame = () => {
         return [...array];
     }
     
-    const makeSubLevelOptions = computed(() => {
+    function makeSubLevelOptions() {
         // get all answer of current sublevel
         const answer:Option[] = subLevelObject.value.answer.map((answer) => {
             return {
                 label: answer,
                 correct: true,
-                hue: randomColor()
+                hue: randomColor(),
+                selected: false,
             }
         });
         const randomNumber = Math.floor(Math.random() * otherBooks.value.length);
         // generate two random number between 0 to otherBooks.length
-        const wrongAnswer1:Option = {
-            label:otherBooks.value[randomNumber],
-            correct:false,
-            hue: randomColor()
-        };
+
         
         // combine answer and otherBooks and shuffle
-        const options = shuffle([...answer,
+        return shuffle([...answer,
                 {
                     label:otherBooks.value[randomNumber],
                     correct:false,
-                    hue: randomColor()
+                    hue: randomColor(),
+                    selected: false,
                 },
                 {
                     label:otherBooks.value[randomNumber + 1],
                     correct:false,
-                    hue: randomColor()
+                    hue: randomColor(),
+                    selected: false,
                 }]
         );
-        return options;
-    })
+    }
 
     return {
         levelObject,
@@ -235,5 +241,6 @@ export const useGame = () => {
         subLevelObject,
         otherBooks,
         makeSubLevelOptions,
+        isLastSubLevel,
     }
 }

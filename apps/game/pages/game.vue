@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 const { levelObject, makeSubLevelOptions } = useGame()
+const isSuccess = ref(false);
+
+function successChanged(bool){
+  isSuccess.value = bool
+}
 </script>
 
 <template>
@@ -12,12 +17,12 @@ const { levelObject, makeSubLevelOptions } = useGame()
             <img src="/images/logo_purple.svg" alt="logo" />
             <span class="characterDesc">{{ levelObject.description }}</span>
         </div>
-        <div class="character">
+        <div :class="{character:true, isSuccess}">
             <img :src="levelObject.img" alt="character" />
+            <div class="successDesc" v-if="isSuccess">{{ levelObject.success }}</div>
         </div>
-        <div class="bottomContainer">
-          <GameSublevel :answers="makeSubLevelOptions" />
-        </div>
+        
+          <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>
     </div>
 
 </template>
@@ -27,21 +32,7 @@ const { levelObject, makeSubLevelOptions } = useGame()
 .pageContainer{
   background: #FFEBDB;
 }
-.bottomContainer{
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    bottom: 0;
-    
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    .optionsContainer{
-        overflow: visible;
-    }
-    .selectedContainer{
-        background: #EBCFAC;
-    }
-}
+
 .logo{
     position: absolute;
     left: 24px;
@@ -77,8 +68,26 @@ const { levelObject, makeSubLevelOptions } = useGame()
     background: transparent;
     display: flex;
     justify-content: center;
+    align-items: center;
+    
+    
+    &.isSuccess{
+      animation:none;
+     
+      justify-content: flex-start;
+      img{
+        transform: scale(1.2);
+      }
+    }
     img {
         height:100%;
+      transform: scale(1);
+      transition: all 0.2s ease-in-out;
+    }
+    .successDesc{
+      padding: 24px;
+      font-size: 3rem;
+      color: #F26921;
     }
 }
 @keyframes characterMove {
