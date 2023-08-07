@@ -63,7 +63,7 @@ function successChanged(bool){
     height:70%;
     width: 100%;
     left: 0;
-    top: 30%;
+    top: 20%;
     animation: characterMove 15s ease-in-out infinite;
     background: transparent;
     display: flex;
@@ -73,8 +73,9 @@ function successChanged(bool){
     
     &.isSuccess{
       animation:none;
-     
       justify-content: flex-start;
+      align-items: flex-start;
+      top: 40%;
       img{
         transform: scale(1.2);
       }
@@ -83,6 +84,7 @@ function successChanged(bool){
         height:100%;
       transform: scale(1);
       transition: all 0.2s ease-in-out;
+      transform-origin: bottom center;
     }
     .successDesc{
       padding: 24px;
