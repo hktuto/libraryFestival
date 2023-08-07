@@ -65,10 +65,10 @@ watch(currentLevel, () => {
   --book-size: 250px;
   position: absolute;
   width: 100%;
-  height: 50%;
+  max-height: 50%;
   bottom: 0;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 250px;
   .optionsContainer{
     overflow: visible;
   }
@@ -88,7 +88,7 @@ watch(currentLevel, () => {
     position: relative;
     justify-content: flex-start;
     align-items: flex-end;
-    min-height: calc(var(--book-size) + 20px);
+    min-height: calc(var(--book-size) + 35px);
    
  }
  .selectedContainer{
@@ -104,7 +104,7 @@ watch(currentLevel, () => {
    overflow-y: hidden;
    .selectedBook{
      padding: 12px;
-     width: 120px;
+     width: 220px;
      height: 200px;
      background: hsl( var(--hue), 70%, 50%);
      display: grid;
@@ -113,6 +113,15 @@ watch(currentLevel, () => {
      color: #fff;
      font-size: 1.2rem;
      position: relative;
+     &:before {
+      content: "";
+      widthL:100%;
+      height: 4px;
+      background: rgba(255,255,255,.3);
+     }
+     @media (max-width: 768px) {
+       width: 150px;
+     }
    }
    &.isSuccess{
      display:none;

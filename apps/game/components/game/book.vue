@@ -39,7 +39,7 @@ function toggleSelected() {
     left: 10%;
     width: 80%;
     height: 5px;
-    background: hsl( min( calc(var(--hue) + 20), 360 ), 50%, 60%);
+    background: rgba(255,255,255,.3);
   }
 }
 .bookHeader{
@@ -79,7 +79,7 @@ function toggleSelected() {
     transition: all .2s ease-in-out;
     &:hover{
         z-index: 2;
-        transform: translateY(-20px);
+        transform: translateY(-5px);
         .checkBox {
             display: flex;
         }
@@ -94,6 +94,10 @@ function toggleSelected() {
    padding: 12px;
     writing-mode: vertical-rl;
     color: #fff;
+    word-break: break-all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 </style>
 
