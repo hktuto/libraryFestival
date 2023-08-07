@@ -78,18 +78,24 @@ function successChanged(bool){
       top: 40%;
       img{
         transform: scale(1.2);
+        @media( max-width: 480px){
+          height: 50%;
+        }
       }
     }
     img {
         height:100%;
-      transform: scale(1);
-      transition: all 0.2s ease-in-out;
-      transform-origin: bottom center;
+        transform: scale(1);
+        transition: all 0.2s ease-in-out;
+        transform-origin: bottom center;
     }
     .successDesc{
       padding: 24px;
       font-size: 3rem;
       color: #F26921;
+      @media( max-width: 480px){
+        font-size: 1.2rem;
+        }
     }
 }
 @keyframes characterMove {

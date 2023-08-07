@@ -69,6 +69,9 @@ watch(currentLevel, () => {
   bottom: 0;
   display: grid;
   grid-template-rows: 1fr 250px;
+  @media (max-width: 768px){
+    --book-size: 160px;
+  }
   .optionsContainer{
     overflow: visible;
   }
@@ -95,7 +98,7 @@ watch(currentLevel, () => {
    background: #EBCFAC;
    display: flex;
    flex-flow: row nowrap;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: flex-start;
    padding: 12px;
    gap: 12px;
@@ -107,20 +110,24 @@ watch(currentLevel, () => {
      width: 220px;
      height: 200px;
      background: hsl( var(--hue), 70%, 50%);
-     display: grid;
+     display: flex;
+     flex-flow: column nowrap;
      align-items: flex-start;
+     justify-content: flex-start;
      box-shadow: 0 0 10px rgba(0,0,0,.2);
      color: #fff;
      font-size: 1.2rem;
      position: relative;
      &:before {
       content: "";
-      widthL:100%;
+      width:100%;
       height: 4px;
       background: rgba(255,255,255,.3);
+      display: block;
      }
      @media (max-width: 768px) {
        width: 150px;
+       font-size: 1rem;
      }
    }
    &.isSuccess{
@@ -128,7 +135,7 @@ watch(currentLevel, () => {
    }
  }
  .betweenImg{
-   max-height: 200px;
+   max-height: var(--book-size);
  }
  .closeIcon{
    position: absolute;
