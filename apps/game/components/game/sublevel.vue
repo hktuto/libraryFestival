@@ -55,7 +55,7 @@ watch(currentLevel, () => {
         <img  class="closeIcon" src="/images/close.svg" width="24px" />
       </div>
     </div>
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">確定</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ isSuccess ? "下一個夢想家" : " 確定" }}</div>
   </div>
 </template>
 
