@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { levelObject, makeSubLevelOptions, subLevelNumber } = useGame()
+const { levelObject, makeSubLevelOptions, subLevelNumber, previousLevel } = useGame()
 const isSuccess = ref(false);
 
 function successChanged(bool){
@@ -14,18 +14,19 @@ function successChanged(bool){
             <img src="/images/shelf_bg2.png" />
         </div>
         <div class="logo">
+            <div class="previousLevelBtn" @click="previousLevel">返回</div>
             <img src="/images/logo_purple.svg" alt="logo" />
             <span class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
         </div>
-        <div class="subLevelBg">
-            {{ subLevelNumber === 0 ? "第一關" : subLevelNumber < 2 ? "第二關" : "第三關" }}
-        </div>
+       
+        
         <div :class="{character:true, isSuccess}">
             <img :src="levelObject.img" alt="character" />
             <div class="successDesc" v-if="isSuccess">{{ levelObject.success }}</div>
         </div>
         
-          <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>
+        <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>
+        
     </div>
 
 </template>
@@ -45,6 +46,11 @@ function successChanged(bool){
     width: 60%;
     min-width: 200px;
     max-width: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
     img{
         width: 100%;
     }
@@ -68,21 +74,7 @@ function successChanged(bool){
     }
 }
 
-.subLevelBg{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 50%;
-    display: flex;
 
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: flex-end;    
-    z-index: -1;
-    color: rgba(161, 154, 126, 0.2);
-    font-size: 5rem;
-}
 
 .character{
     position: absolute;
@@ -95,7 +87,9 @@ function successChanged(bool){
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    @media( max-width: 768px){
+        top: 40%;
+    }
     
     &.isSuccess{
       animation:none;
@@ -137,5 +131,16 @@ function successChanged(bool){
     100% {
         transform: translateX(30%) scaleX(-1);
     }
+}
+
+.previousLevelBtn{
+    width: auto;
+   padding: 6px 12px;
+   background: #0d930d;
+   color: #fff;
+   border-radius: 12px;
+   box-shadow: 0 0 5px rgba(0,0,0,0.3);
+   cursor: pointer;
+   font-size: .8rem;
 }
 </style>

@@ -203,7 +203,7 @@ export const useGame = () => {
             name:'大強',
             description:"夢想進入數碼世界，利用AI人工智能，開拓元宇宙的無極限可能。",
             success:'很好，你已經幫助大強向着夢想行近一大步！',
-            finish:"九本可以幫助你害踐夢想，成為一位Al人工智能重家的好書：",
+            finish:"九本可以幫助你實踐夢想，成為一位Al人工智能專家的好書：",
             img:"/character/Tai Keung.png",
             subLevels:[
                 {
@@ -495,6 +495,24 @@ export const useGame = () => {
         );
     }
 
+    function previousLevel(){
+        const [level,subLevel] = currentLevel.value.split('-');
+        if(subLevel > 0){
+            currentLevel.value = `${level}-${Number(subLevel) - 1}`;
+        }else {
+            const previousLevel = players.value.indexOf(level) - 1;
+            if(previousLevel >= 0){
+                const [level,subLevel] = currentLevel.value.split('-');
+                currentLevel.value = `${players.value[previousLevel]}-${levels.value[players.value[previousLevel]].subLevels.length - 1}`;
+            }else {
+                router.push({
+                    path: '/'
+                })
+                currentLevel.value = "sing-0";
+            }
+        }
+    }
+
     return {
         levels,
         levelObject,
@@ -505,5 +523,6 @@ export const useGame = () => {
         makeSubLevelOptions,
         isLastSubLevel,
         subLevelNumber,
+        previousLevel
     }
 }

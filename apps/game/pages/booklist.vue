@@ -49,6 +49,7 @@ const { levels } = useGame()
             </div>
         </div>
         <h1>下次圖書館見！</h1>
+        <div class="previousLevelBtn" @click="$router.push({path:'/'})">再玩一次</div>
     </div>
 </template>
 
@@ -138,5 +139,15 @@ button{
         color: #fff;
         text-decoration: none;
     }
+}
+.previousLevelBtn{
+    margin: 24px auto;
+    padding: 6px 12px;
+   background: #0d930d;
+   color: #fff;
+   border-radius: 12px;
+   box-shadow: 0 0 5px rgba(0,0,0,0.3);
+   cursor: pointer;
+   font-size: 1.2rem;
 }
 </style>

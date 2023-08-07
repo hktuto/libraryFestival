@@ -2,7 +2,7 @@
 import {randomColor} from "../../utils/color";
 import {Option} from "../../composables/game";
 import { set } from "@vueuse/core";
-const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel } = useGame()
+const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
 const answers = ref<any[]>([])
@@ -48,7 +48,7 @@ watch(currentLevel, () => {
   isSuccess.value = false;
   emit('reset');
   answers.value = makeSubLevelOptions()
-  randomBook.value = [0,1,2,3,4].map( i => ({
+  randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
     slide :Math.floor(Math.random() * 12) % 10,
     scale : Math.random() * (1.2 - 0.8) + 0.8
   }))
@@ -63,7 +63,6 @@ watch(currentLevel, () => {
 onMounted(() => {
   if(optionsEl.value){
     setTimeout(() => {
-
       optionsEl.value.scrollLeft = 0;
       startInterval.value = setInterval(scrollForward, 10);
     }, 50)
@@ -74,26 +73,39 @@ onMounted(() => {
 
 <template>
   <div :class="{bottomContainer:true,isSuccess}">
+    
+    <BookShelf class="backgroundShelf" :divided="3.5"  />
     <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in answers" :key="answer">
           <GameBook :data="answer" @selectedChange="selectedChange" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
+          <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />
         </template>
       <img v-once v-for="i in 3" :key="1"   class="betweenImg"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
     </div>
     <div :class="{selectedContainer:true, isSuccess}">
+      <div v-if="!isSuccess" class="subLevelBg">
+            {{  subLevelNumber === 0 ? "第一關" : subLevelNumber < 2 ? "第二關" : "第三關" }}
+        </div>
       <div class="selectedBook" v-for="item in selected" :key="item.label" :style="`--hue:${item.hue}`" @click="selectedChange(item)">
         <div class="bookTitle" v-html="item.label"></div>
         <img  class="closeIcon" src="/images/close.svg" width="24px" />
       </div>
     </div>
+    
     <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ isSuccess ? "下一位夢想家" : " 確定" }}</div>
   </div>
 </template>
 
 
  <style scoped lang="scss">
+ .backgroundShelf{
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index: -1;
+}
 .bottomContainer{
   --book-size: 250px;
   position: absolute;
@@ -138,6 +150,7 @@ onMounted(() => {
    min-height: 120px;
    overflow-x: scroll;
    overflow-y: hidden;
+   position: relative;
    .selectedBook{
      padding: 12px;
      width: 220px;
@@ -186,5 +199,20 @@ onMounted(() => {
    color: #fff;
    border-radius: 6px;
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+   cursor: pointer;
  }
+
+ .subLevelBg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    display: flex;
+
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-end; 
+    color: rgba(161, 154, 126, 0.2);
+    font-size: 5rem;
+}
  </style>
