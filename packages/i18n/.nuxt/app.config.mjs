@@ -1,5 +1,5 @@
 
-import { defuFn } from '/Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/defu/dist/defu.mjs'
+import { defuFn } from '/Users/seantsang/Documents/working/libraryFestival/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 

@@ -74,7 +74,7 @@ function toggleSelected() {
     transform-origin: bottom center;
     cursor: pointer;
     position: relative;
-    max-height: 180px;
+    max-height: var(--book-size);
     transform: translateY(0px);
     transition: all .2s ease-in-out;
     &:hover{

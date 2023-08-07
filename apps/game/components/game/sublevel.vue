@@ -62,6 +62,7 @@ watch(currentLevel, () => {
 
  <style scoped lang="scss">
 .bottomContainer{
+  --book-size: 250px;
   position: absolute;
   width: 100%;
   height: 50%;
@@ -87,7 +88,7 @@ watch(currentLevel, () => {
     position: relative;
     justify-content: flex-start;
     align-items: flex-end;
-    min-height: 220px;
+    min-height: calc(var(--book-size) + 20px);
    
  }
  .selectedContainer{
