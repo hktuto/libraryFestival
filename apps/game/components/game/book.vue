@@ -66,17 +66,20 @@ function toggleSelected() {
 }
 .book{
     background: hsl( var(--hue), 70%, 50%);
-    display: flex;
-    flex-flow: column nowrap;
+    
     flex: 0 0 auto;
-    justify-content: flex-start;
-    align-items: stretch;
     transform-origin: bottom center;
     cursor: pointer;
     position: relative;
     max-height: var(--book-size);
     transform: translateY(0px);
     transition: all .2s ease-in-out;
+    min-height: calc( var(--book-size) * 0.7);
+    border-radius: 4px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
     &:hover{
         z-index: 2;
         transform: translateY(-5px);
@@ -98,6 +101,7 @@ function toggleSelected() {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 0 auto;
  }
 </style>
 

@@ -9,7 +9,7 @@
       <div class="titleContainer">
         <img src="/images/logoHK.svg" />
         <div class="intro">
-          夢想唔係齋想，好好讀書，可以幫大家圓夢。請幫以下四位朋友揀啱好書。
+          夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為以下四位朋友選擇合適主題的書籍，以幫助他們達成夢想。
         </div>
       </div>
       <BookRow width="30" />

@@ -4,13 +4,13 @@ const { levels } = useGame()
 
 <template>
     <div class="pageContainer">
+        <h1>可以幫助你行近四大夢想的好書</h1>
         <div v-for="char in levels" :key="char.name" class="char">
             <div class="imgContainer">
                
                 <img :src="char.img" alt="character" />
                 <div class="info">
-                    <div class="name">{{ char.name }}</div>
-                    <div class="desc">{{  char.description }}</div>
+                    <div class="desc">{{  char.finish }}</div>
                 </div>
             </div>
             <div class="bookList">
@@ -48,11 +48,17 @@ const { levels } = useGame()
                 </template>
             </div>
         </div>
+        <h1>下次圖書館見！</h1>
     </div>
 </template>
 
 
 <style lang="scss" scoped >
+h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    text-align: center;
+}
 .pageContainer{
     overflow: auto;
     display: flex;
@@ -79,8 +85,11 @@ const { levels } = useGame()
     .info{
         margin-top: 40px;
         padding: 12px;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #fff;
         .name{
-            font-size: 1.2rem;
+            
         }
     }
     // background: #eee;;

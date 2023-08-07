@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { levelObject, makeSubLevelOptions } = useGame()
+const { levelObject, makeSubLevelOptions, subLevelNumber } = useGame()
 const isSuccess = ref(false);
 
 function successChanged(bool){
@@ -15,7 +15,10 @@ function successChanged(bool){
         </div>
         <div class="logo">
             <img src="/images/logo_purple.svg" alt="logo" />
-            <span class="characterDesc">{{ levelObject.description }}</span>
+            <span class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
+        </div>
+        <div class="subLevelBg">
+            {{ subLevelNumber === 0 ? "第一關" : subLevelNumber < 2 ? "第二關" : "第三關" }}
         </div>
         <div :class="{character:true, isSuccess}">
             <img :src="levelObject.img" alt="character" />
@@ -30,7 +33,9 @@ function successChanged(bool){
 
 <style scoped lang="scss">
 .pageContainer{
-  background: #FFEBDB;
+//   background: #FFEBDB;
+  background-image: radial-gradient( #f7efe0 0%, #f0d2ba 100%);
+  isolation: isolate;
 }
 
 .logo{
@@ -42,6 +47,11 @@ function successChanged(bool){
     max-width: 400px;
     img{
         width: 100%;
+    }
+    .big{
+        font-size: 1.2rem;
+        font-weight: 700;
+        color:  #8D288F;
     }
 }
 .shelfBg{
@@ -56,6 +66,22 @@ function successChanged(bool){
     img {
         height: 100%;
     }
+}
+
+.subLevelBg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-end;    
+    z-index: -1;
+    color: rgba(161, 154, 126, 0.2);
+    font-size: 5rem;
 }
 
 .character{

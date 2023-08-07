@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {randomColor} from "../../utils/color";
 import {Option} from "../../composables/game";
+import { set } from "@vueuse/core";
 const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
@@ -24,6 +25,24 @@ function submit(){
   }
 }
 
+const currentPos =ref(0);
+const startInterval = ref();
+const endInterval = ref();
+const optionsEl = ref();
+function scrollForward(){
+  optionsEl.value.scrollLeft += 5;
+  if(optionsEl.value.scrollLeft >= optionsEl.value.scrollWidth - optionsEl.value.clientWidth -10){
+    clearInterval(startInterval.value);
+    endInterval.value = setInterval(scrollBackward, 10);
+  }
+}
+
+function scrollBackward(){
+  optionsEl.value.scrollLeft -= 5;
+  if(optionsEl.value.scrollLeft <= 0){
+    clearInterval(endInterval.value);
+  }
+}
 
 watch(currentLevel, () => {
   isSuccess.value = false;
@@ -33,15 +52,29 @@ watch(currentLevel, () => {
     slide :Math.floor(Math.random() * 12) % 10,
     scale : Math.random() * (1.2 - 0.8) + 0.8
   }))
+  if(optionsEl.value){
+    optionsEl.value.scrollLeft = 0;
+    startInterval.value = setInterval(scrollForward, 10);
+  }
 },{
   immediate:true
+})
+
+onMounted(() => {
+  if(optionsEl.value){
+    setTimeout(() => {
+
+      optionsEl.value.scrollLeft = 0;
+      startInterval.value = setInterval(scrollForward, 10);
+    }, 50)
+  }
 })
 
 </script>
 
 <template>
   <div :class="{bottomContainer:true,isSuccess}">
-    <div  class="booksOptions">
+    <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in answers" :key="answer">
           <GameBook :data="answer" @selectedChange="selectedChange" />
@@ -55,7 +88,7 @@ watch(currentLevel, () => {
         <img  class="closeIcon" src="/images/close.svg" width="24px" />
       </div>
     </div>
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ isSuccess ? "下一個夢想家" : " 確定" }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ isSuccess ? "下一位夢想家" : " 確定" }}</div>
   </div>
 </template>
 
