@@ -26,6 +26,8 @@ h1{
 }
 .pageContainer{
     padding: 24px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     overflow: auto;
 }
 .levelsContainer{
