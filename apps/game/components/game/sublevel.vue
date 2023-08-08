@@ -94,7 +94,7 @@ onMounted(() => {
       </div>
     </div>
     
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel && isSuccess === 'Hailey-2' ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' && isSuccess  ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
   </div>
 </template>
 
