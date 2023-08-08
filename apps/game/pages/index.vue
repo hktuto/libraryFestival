@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const router = useRouter()
 function startGame() {
-  router.push('/game')
+  router.push('/intro')
 }
 </script>
 

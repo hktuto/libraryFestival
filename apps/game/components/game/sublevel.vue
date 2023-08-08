@@ -2,7 +2,7 @@
 import {randomColor} from "../../utils/color";
 import {Option} from "../../composables/game";
 import { set } from "@vueuse/core";
-const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber } = useGame()
+const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber, } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
 const answers = ref<any[]>([])
@@ -94,7 +94,7 @@ onMounted(() => {
       </div>
     </div>
     
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ isSuccess ? "下一位夢想家" : " 確定" }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
   </div>
 </template>
 
