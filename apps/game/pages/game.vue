@@ -16,7 +16,7 @@ function successChanged(bool){
         <div class="logo">
             <div class="previousLevelBtn" @click="previousLevel">返回</div>
             <img src="/images/logo_purple.svg" alt="logo" />
-            <!-- <span class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span> -->
+            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
         </div>
        
         

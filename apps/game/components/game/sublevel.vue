@@ -30,15 +30,15 @@ const startInterval = ref();
 const endInterval = ref();
 const optionsEl = ref();
 function scrollForward(){
-  optionsEl.value.scrollLeft += 5;
+  optionsEl.value.scrollLeft += 20;
   if(optionsEl.value.scrollLeft >= optionsEl.value.scrollWidth - optionsEl.value.clientWidth -10){
     clearInterval(startInterval.value);
-    endInterval.value = setInterval(scrollBackward, 10);
+    endInterval.value = setInterval(scrollBackward, 30);
   }
 }
 
 function scrollBackward(){
-  optionsEl.value.scrollLeft -= 5;
+  optionsEl.value.scrollLeft -= 20;
   if(optionsEl.value.scrollLeft <= 0){
     clearInterval(endInterval.value);
   }
@@ -54,7 +54,7 @@ watch(currentLevel, () => {
   }))
   if(optionsEl.value){
     optionsEl.value.scrollLeft = 0;
-    startInterval.value = setInterval(scrollForward, 10);
+    startInterval.value = setInterval(scrollForward, 30);
   }
 },{
   immediate:true
@@ -64,7 +64,7 @@ onMounted(() => {
   if(optionsEl.value){
     setTimeout(() => {
       optionsEl.value.scrollLeft = 0;
-      startInterval.value = setInterval(scrollForward, 10);
+      startInterval.value = setInterval(scrollForward, 30);
     }, 50)
   }
 })
@@ -94,7 +94,7 @@ onMounted(() => {
       </div>
     </div>
     
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel && isSuccess === 'Hailey-2' ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
   </div>
 </template>
 
