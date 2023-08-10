@@ -96,6 +96,7 @@ function toggleSelected() {
  .bookName {
    padding: 12px;
     writing-mode: vertical-rl;
+    text-orientation: upright;
     color: #fff;
     word-break: break-all;
     display: flex;
