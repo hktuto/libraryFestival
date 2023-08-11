@@ -32,6 +32,7 @@ function toggleSelected() {
   height: 12px;
   width: 100%;
   position: relative;
+  flex: 1 0 12px;
   &:after {
     content: "";
     display: block;
@@ -74,12 +75,12 @@ function toggleSelected() {
     max-height: var(--book-size);
     transform: translateY(0px);
     transition: all .2s ease-in-out;
-    min-height: calc( var(--book-size) * 0.7);
+    min-height: calc( var(--book-size) * 0.5);
     border-radius: 4px;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     &:hover{
         z-index: 2;
         transform: translateY(-5px);
@@ -102,7 +103,6 @@ function toggleSelected() {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 0 auto;
  }
 </style>
 

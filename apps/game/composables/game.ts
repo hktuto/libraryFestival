@@ -162,7 +162,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3660911&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "獨步股壇 「投機之王」狙擊價格方程式(導讀版)",
+                            "label": "獨步股壇 「投機之王」狙擊價格方程式",
                             "year": "2022",
                             "publisher": "天窗出版",
                             "author": "西‧李佛摩 (Jesse Livermore)",
@@ -228,7 +228,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683982&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "元宇宙：圖說元宇宙＋設計元宇宙 （套裝）",
+                            "label": "元宇宙：圖說元宇宙＋設計元宇宙",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "子彌實驗室  ",
@@ -335,7 +335,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "水墨設計 設計水墨 Ink design Design ink",
+                            "label": "水墨設計 設計水墨",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "靳埭強",
@@ -343,7 +343,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3685736&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "生活是設計的全部 Design is All About Life",
+                            "label": "生活是設計的全部",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "高少康 林慧遠",
@@ -363,7 +363,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "古典音樂十五講（修訂版）",
+                            "label": "古典音樂十五講",
                             "year": "2021",
                             "publisher": "香港中文大學出版社",
                             "author": "李歐梵",
@@ -408,17 +408,16 @@ export const useGame = () => {
         "低班：如果我養了一隻……",
         "阿媽這杯茶",
         "輕鬆點吧！",
-        "瘦身，也要補身──60個低卡食譜",
+        "瘦身，也要補身 ─ 60個低卡食譜",
         "Q小子笑話大全(1)",
         "父母這樣做，成就正面自信孩子！",
         "新丁潮爸湊仔奮戰手記",
         "運動陷阱",
-        "壞姿勢──脊醫話你知30個最易被忽略的痛症元兇",
+        "壞姿勢──脊醫話你知三十個最易被忽略的痛症元兇",
         "我不怕膽固醇",
-        "人生悟語—劉再復新文體沉思錄（卷二—紅樓悟語）",
+        "人生悟語—劉再復新文體沉思錄 卷二—紅樓悟語",
         "三國無常",
-        "中國現代小說史 (第二版)",
-        "人生悟語—劉再復新文體沉思錄（卷一—三書悟語）",
+        "中國現代小說史",
         "且聽下回分解──阿濃談中國古典小說"
     ]);
 
