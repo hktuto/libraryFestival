@@ -24,7 +24,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "中國海洋夢：蛟龍潛海",
+                            "label": "中國海洋夢 蛟龍潛海",
                             "year": "2022",
                             "publisher": "中華教育",
                             "author": "鍾林姣",
@@ -32,7 +32,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3657297&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "極地旅遊系列2： 南極企鵝北極熊",
+                            "label": "極地旅遊系列2 南極企鵝北極熊",
                             "year": "2019",
                             "publisher": "天地圖書有限公司",
                             "author": "黃莉娜",
@@ -40,7 +40,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3568311&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "奇幻科學大探險5：能源保衞戰",
+                            "label": "奇幻科學大探險5 能源保衞戰",
                             "year": "2018",
                             "publisher": "中華教育",
                             "author": "宋海東工作室",
@@ -52,7 +52,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "絲綢之路 : 條條絲路通亞歐",
+                            "label": "絲綢之路 條條絲路通亞歐",
                             "year": "2021",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "檀傳寶",
@@ -80,7 +80,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "登山學做人 ",
+                            "label": "登山學做人",
                             "year": "2021",
                             "publisher": "藍藍的天",
                             "author": "曾志成",
@@ -88,7 +88,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683704&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "活着回來 - 一個香港人由非洲出發的單車之旅",
+                            "label": "活着回來 ｜ 一個香港人由非洲出發的單車之旅",
                             "year": "2016",
                             "publisher": "一丁文化",
                             "author": "雷靖梵",
@@ -96,7 +96,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3454376&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "天問 : 宇宙真貌的探索",
+                            "label": "天問 宇宙真貌的探索",
                             "year": "2017",
                             "publisher": "牛津大學出版社（中國）",
                             "author": "陳天機",
@@ -118,7 +118,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "小理財大經濟：小學生的趣致財務智慧",
+                            "label": "小理財大經濟 小學生的趣致財務智慧",
                             "year": "2020",
                             "publisher": "跨版生活圖書出版",
                             "author": "李雪熒，謝燕舞",
@@ -126,7 +126,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3597897&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "奇龍族學園：理財能力大升級",
+                            "label": "奇龍族學園 理財能力大升級",
                             "year": "2020",
                             "publisher": "新雅文化事業有限公司",
                             "author": "馮漢賢，黃書熙",
@@ -146,7 +146,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "人民幣國際化的新進展：香港交易所的離岸金融產品創新",
+                            "label": "人民幣國際化的新進展 香港交易所的離岸金融產品創新",
                             "year": "2018",
                             "publisher": "商務印書館(香港)有限公司",
                             "author": "巴曙松 BaShusong",
@@ -174,7 +174,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "新世代洞悉先機——曾淵滄投資七大智慧",
+                            "label": "新世代洞悉先機 ｜ 曾淵滄投資七大智慧",
                             "year": "2022",
                             "publisher": "天窗出版",
                             "author": "曾淵滄",
@@ -228,7 +228,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683982&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "元宇宙：圖說元宇宙＋設計元宇宙",
+                            "label": "元宇宙 圖說元宇宙＋設計元宇宙",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "子彌實驗室  ",
@@ -249,7 +249,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3679292&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "後就業社會 : 誰是科技貴族?誰的人工智能?",
+                            "label": "後就業社會 誰是科技貴族?誰的人工智能?",
                             "year": "2018",
                             "publisher": "印象文字",
                             "author": "鄒崇銘, 韓江雪",
@@ -285,7 +285,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3570570&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "STEM學習大策略──啟發孩子的科創思維",
+                            "label": "STEM學習大策略 ｜ 啟發孩子的科創思維",
                             "year": "2019",
                             "publisher": "皇冠出版社(香港)",
                             "author": "黃金耀",
@@ -351,7 +351,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3685255&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "日日好玩：玩好設計",
+                            "label": "日日好玩 玩好設計",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "邱汛瑜",
