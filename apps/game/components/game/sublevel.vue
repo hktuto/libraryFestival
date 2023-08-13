@@ -78,7 +78,7 @@ onMounted(() => {
     <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in answers" :key="answer">
-          <GameBook :data="answer" @selectedChange="selectedChange" />
+          <GameBook :data="answer" @selectedChange="selectedChange"  />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />
         </template>

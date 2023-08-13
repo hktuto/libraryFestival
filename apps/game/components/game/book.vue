@@ -2,7 +2,8 @@
 import {Option} from "../../composables/game";
 
 const props = defineProps<{
-    data: Option
+    data: Option,
+    eng: boolean
 }>();
 const emit = defineEmits<{
     selectedChange: (value: Option) => void
@@ -15,7 +16,7 @@ function toggleSelected() {
 </script>
 
 <template>
-    <div :class="{book:true, selected:data.selected}" :style="`--hue:${data.hue}`" @click="toggleSelected(data)" >
+    <div :class="{book:true, selected:data.selected, eng}" :style="`--hue:${data.hue}`" @click="toggleSelected(data)" >
         
         <div v-if="data.selected" class="checkBox">
           <img class="closeIcon" src="/images/selected.svg" style="width:24px;height:24px;" />
@@ -91,6 +92,37 @@ function toggleSelected() {
     &.selected {
       .checkBox {
         display: flex;
+      }
+    }
+    &.eng {
+      display: grid;
+      grid-template-columns: 12px 1fr 12px;
+      min-height: auto;
+      max-width: var(--book-size);
+      .bookName {
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+        word-break: break-all;
+        padding: 12px 0;
+      }
+      .bookHeader, .bookBottom{
+        width: 12px;
+        height: 100%;
+        &:after{
+          top: 10%;
+          width: 3px;
+          height: 80%;
+        }
+      }
+      .bookHeader{
+          &:after {
+            left: 5px;
+          }
+      }
+      .bookBottom{
+        &:after {
+          left: 3px;
+        }
       }
     }
 }
