@@ -25,6 +25,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "中國海洋夢 蛟龍潛海",
+                            name: "中國海洋夢 蛟龍潛海",
                             "year": "2022",
                             "publisher": "中華教育",
                             "author": "鍾林姣",
@@ -33,6 +34,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "極地旅遊系列2 南極企鵝北極熊",
+                            "name": "極地旅遊系列2 南極企鵝北極熊",
                             "year": "2019",
                             "publisher": "天地圖書有限公司",
                             "author": "黃莉娜",
@@ -41,6 +43,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "奇幻科學大探險5 能源保衞戰",
+                            "name": "奇幻科學大探險5 能源保衞戰",
                             "year": "2018",
                             "publisher": "中華教育",
                             "author": "宋海東工作室",
@@ -53,6 +56,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "絲綢之路 條條絲路通亞歐",
+                            "name": "絲綢之路 條條絲路通亞歐",
                             "year": "2021",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "檀傳寶",
@@ -61,6 +65,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "三個人在南極尋找北極熊",
+                            "name": "三個人在南極尋找北極熊",
                             "year": "2008",
                             "publisher": "天窗出版",
                             "author": "李孝良, 鄧展翔, 張偉賢",
@@ -69,6 +74,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "足足五萬年",
+                            "name": "足足五萬年",
                             "year": "2013",
                             "publisher": "皇冠出版社(香港)",
                             "author": "項明生",
@@ -81,6 +87,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "登山學做人",
+                            "name": "登山學做人",
                             "year": "2021",
                             "publisher": "藍藍的天",
                             "author": "曾志成",
@@ -89,6 +96,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "活着回來 ｜ 一個香港人由非洲出發的單車之旅",
+                            "name": "活着回來 —— 一個香港人由非洲出發的單車之旅",
                             "year": "2016",
                             "publisher": "一丁文化",
                             "author": "雷靖梵",
@@ -97,6 +105,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "天問 宇宙真貌的探索",
+                            "name": "天問 宇宙真貌的探索",
                             "year": "2017",
                             "publisher": "牛津大學出版社（中國）",
                             "author": "陳天機",
@@ -119,6 +128,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "小理財大經濟 小學生的趣致財務智慧",
+                            "name": "小理財大經濟 小學生的趣致財務智慧",
                             "year": "2020",
                             "publisher": "跨版生活圖書出版",
                             "author": "李雪熒，謝燕舞",
@@ -127,6 +137,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "奇龍族學園 理財能力大升級",
+                            "name": "奇龍族學園 理財能力大升級",
                             "year": "2020",
                             "publisher": "新雅文化事業有限公司",
                             "author": "馮漢賢，黃書熙",
@@ -135,6 +146,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "歷史裡的現代經濟學",
+                            "name": "歷史裡的現代經濟學",
                             "year": "2019",
                             "publisher": "香港中和出版有限公司",
                             "author": "汪凌燕，汪通",
@@ -147,6 +159,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "人民幣國際化的新進展 香港交易所的離岸金融產品創新",
+                            "name": "人民幣國際化的新進展 香港交易所的離岸金融產品創新",
                             "year": "2018",
                             "publisher": "商務印書館(香港)有限公司",
                             "author": "巴曙松 BaShusong",
@@ -155,6 +168,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "亂世黃金 ",
+                            "name": "亂世黃金 ",
                             "year": "2021",
                             "publisher": "天窗出版",
                             "author": "林祖、平步青",
@@ -163,6 +177,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "獨步股壇 「投機之王」狙擊價格方程式",
+                            "name": "獨步股壇 「投機之王」狙擊價格方程式",
                             "year": "2022",
                             "publisher": "天窗出版",
                             "author": "西‧李佛摩 (Jesse Livermore)",
@@ -175,6 +190,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "新世代洞悉先機 ｜ 曾淵滄投資七大智慧",
+                            "name": "新世代洞悉先機 —— 曾淵滄投資七大智慧",
                             "year": "2022",
                             "publisher": "天窗出版",
                             "author": "曾淵滄",
@@ -182,7 +198,8 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3668356&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "發掘超強港股 ",
+                            "label": "發掘超強港股",
+                            "name": "發掘超強港股",
                             "year": "2021",
                             "publisher": "天窗出版",
                             "author": "弩飛",
@@ -191,6 +208,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "股票勝經",
+                            "name": "股票勝經",
                             "year": "2018",
                             "publisher": "天窗出版",
                             "author": "龔成",
@@ -213,6 +231,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "圖說元宇宙",
+                            "name": "圖說元宇宙",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "須彌著 孫垚繪",
@@ -221,6 +240,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "元宇宙超入門",
+                            "name": "元宇宙超入門",
                             "year": "2022",
                             "publisher": "商務印書館(香港)有限公司",
                             "author": "方軍  ",
@@ -229,6 +249,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "元宇宙 圖說元宇宙＋設計元宇宙",
+                            "name": "元宇宙 圖說元宇宙＋設計元宇宙",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "子彌實驗室  ",
@@ -242,6 +263,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "科技發展與資訊素養",
+                            "name": "科技發展與資訊素養",
                             "year": "2020",
                             "publisher": "天窗出版",
                             "author": "黃錦輝  ",
@@ -250,6 +272,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "後就業社會 誰是科技貴族?誰的人工智能?",
+                            "name": "後就業社會 誰是科技貴族?誰的人工智能?",
                             "year": "2018",
                             "publisher": "印象文字",
                             "author": "鄒崇銘, 韓江雪",
@@ -258,6 +281,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "我們的孩子可以比AI更聰明嗎？",
+                            "name": "我們的孩子可以比AI更聰明嗎？",
                             "year": "2022",
                             "publisher": "紅出版 (青森文化)",
                             "author": "費以民博士",
@@ -270,6 +294,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "數碼力大提升",
+                            "name": "數碼力大提升",
                             "year": "2020",
                             "publisher": "天窗出版",
                             "author": "湛家揚博士",
@@ -278,6 +303,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "你未來就緒嗎？",
+                            "name": "你未來就緒嗎？",
                             "year": "2019",
                             "publisher": "信報出版社",
                             "author": "鄧淑明",
@@ -286,6 +312,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "STEM學習大策略 ｜ 啟發孩子的科創思維",
+                            "name": "STEM學習大策略 —— 啟發孩子的科創思維",
                             "year": "2019",
                             "publisher": "皇冠出版社(香港)",
                             "author": "黃金耀",
@@ -308,6 +335,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "創作，你也能",
+                            "name": "創作，你也能",
                             "year": "2020",
                             "publisher": "初文出版社",
                             "author": "蔡益懷",
@@ -316,6 +344,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "中華文化論衡",
+                            "name": "中華文化論衡",
                             "year": "2022",
                             "publisher": "商務印書館(香港)有限公司",
                             "author": "杜若鴻",
@@ -324,6 +353,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "城市如何文化",
+                            "name": "城市如何文化",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "茹國烈",
@@ -336,6 +366,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "水墨設計 設計水墨",
+                            "name": "水墨設計 設計水墨",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "靳埭強",
@@ -344,6 +375,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "生活是設計的全部",
+                            "name": "生活是設計的全部",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "高少康 林慧遠",
@@ -352,6 +384,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "日日好玩 玩好設計",
+                            "name": "日日好玩 玩好設計",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "邱汛瑜",
@@ -364,6 +397,7 @@ export const useGame = () => {
                     answer:[
                         {
                             "label": "古典音樂十五講",
+                            "name": "古典音樂十五講",
                             "year": "2021",
                             "publisher": "香港中文大學出版社",
                             "author": "李歐梵",
@@ -372,6 +406,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "情迷現代主義",
+                            "name": "情迷現代主義",
                             "year": "2019",
                             "publisher": "牛津大學出版社（中國）",
                             "author": "李歐梵",
@@ -380,6 +415,7 @@ export const useGame = () => {
                         },
                         {
                             "label": "第四十五屆青年文學獎得獎作品集",
+                            "name": "第四十五屆青年文學獎得獎作品集",
                             "year": "2021",
                             "publisher": "突破出版社",
                             "author": "青年文學獎協會",
@@ -393,32 +429,32 @@ export const useGame = () => {
     }));
 
     const otherBooks = useState('otherBooks',() => [
-        "微表情心理學：入門觀察攻略",
+        "微表情心理學 入門觀察攻略",
         "你是誰？我是誰？ 解讀人心的筆跡秘密",
         "好孕天天練",
         "香港談食錄：中餐百味",
         "給生活多一顆糖",
         "世界名人故事繪本",
         "不一樣的星級住家飯",
-        "劍擊成就了我：奧運冠軍張家朗",
-        "都市人的瑜伽：創造個人的療癒",
+        "劍擊成就了我 奧運冠軍張家朗",
+        "都市人的瑜伽 創造個人的療癒",
         "養生‧養顏-讓女人年輕10年",
         "無難度燜燒杯料理",
         "小學生小食盒",
-        "低班：如果我養了一隻……",
+        "低班 如果我養了一隻……",
         "阿媽這杯茶",
         "輕鬆點吧！",
         "瘦身，也要補身 ─ 60個低卡食譜",
-        "Q小子笑話大全(1)",
+        "Q小子笑話大全1",
         "父母這樣做，成就正面自信孩子！",
         "新丁潮爸湊仔奮戰手記",
         "運動陷阱",
-        "壞姿勢──脊醫話你知三十個最易被忽略的痛症元兇",
+        "壞姿勢 ｜ 脊醫話你知三十個最易被忽略的痛症元兇",
         "我不怕膽固醇",
         "人生悟語—劉再復新文體沉思錄 卷二—紅樓悟語",
         "三國無常",
         "中國現代小說史",
-        "且聽下回分解──阿濃談中國古典小說"
+        "且聽下回分解 ｜ 阿濃談中國古典小說"
     ]);
 
     const currentLevel = useState('currentLevel',() => "sing-0");

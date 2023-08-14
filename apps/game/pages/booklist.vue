@@ -18,7 +18,7 @@ const { levels } = useGame()
                     <div v-for="book in books.answer" :key="book.label" class="bookName" >
                         <div class="item">
                             <div class="label">書名</div>
-                            <div class="name">{{ book.label }}</div>
+                            <div class="name">{{ book.name }}</div>
                         </div>
                         <!-- <div class="item">
                             <div class="label">出版年份</div>
@@ -48,7 +48,7 @@ const { levels } = useGame()
                 </template>
             </div>
         </div>
-        <h1>下次圖書館見！</h1>
+        <h1 class="nextTime">下次圖書館見！</h1>
         <div class="previousLevelBtn" @click="$router.push({path:'/'})">再玩一次</div>
     </div>
 </template>
@@ -59,6 +59,10 @@ h1 {
     color: #fff;
     font-size: 2.2rem;
     text-align: center;
+}
+.nextTime{
+    font-size: 3rem;
+    margin: 6px auto;
 }
 .pageContainer{
     overflow: auto;
@@ -146,13 +150,13 @@ button{
     }
 }
 .previousLevelBtn{
-    margin: 24px auto;
-    padding: 6px 12px;
+    margin: 6px auto 54px auto;
+    padding: 12px 24px;
    background: #0d930d;
    color: #fff;
-   border-radius: 12px;
+   border-radius: 30px;
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
    cursor: pointer;
-   font-size: 1.2rem;
+   font-size: 1.6rem;
 }
 </style>
