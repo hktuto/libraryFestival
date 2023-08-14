@@ -41,8 +41,8 @@ function successChanged(bool){
 
 .logo{
     position: absolute;
-    left: 24px;
-    top: 24px;
+    left: 32px;
+    top: 32px;
     width: 60%;
     min-width: 200px;
     max-width: 400px;
@@ -138,12 +138,12 @@ function successChanged(bool){
 
 .previousLevelBtn{
     width: auto;
-   padding: 6px 12px;
+   padding: 8px 24px;
    background: #0d930d;
    color: #fff;
-   border-radius: 12px;
+   border-radius: 24px;
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
    cursor: pointer;
-   font-size: .8rem;
+   font-size: 1.2rem;
 }
 </style>

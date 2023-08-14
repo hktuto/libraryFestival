@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+SC:wght@100;300;500;700;900&family=Noto+Sans+TC:wght@100;300;500;700;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+SC:wght@100;300;500;700;900&family=Noto+Sans+TC:wght@100;300;500;700;900&display=swap');
 
 html {
   width: 100%;
@@ -7,7 +7,7 @@ html {
   place-items: center;
   padding: 0;
   margin:0;
-  font-family:'Noto Sans SC', 'Noto Sans TC', sans-serif;
+  font-family:sans-serif;
   background: radial-gradient( #FAA42A, #D05029);
 }
 body {

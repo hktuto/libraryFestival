@@ -74,7 +74,7 @@ onMounted(() => {
 <template>
   <div :class="{bottomContainer:true,isSuccess}">
     
-    <BookShelf class="backgroundShelf" :divided="3.5"  />
+    <BookShelf class="backgroundShelf" :divided="3.5" style="opacity:0.8;filter:blur(5px)" />
     <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in answers" :key="answer">
@@ -102,7 +102,7 @@ onMounted(() => {
  <style scoped lang="scss">
  .backgroundShelf{
     position: absolute;
-    top: 0;
+    top: -20px;
     left:0;
     z-index: -1;
 }
@@ -192,13 +192,13 @@ onMounted(() => {
  }
  .submitBtn{
    position: absolute;
-   bottom: 24px;
+   bottom: 32px;
    right: 36px;
    padding: 12px 24px;
    font-size: 1.5rem;
    background: #0d930d;
    color: #fff;
-   border-radius: 6px;
+   border-radius: 24px;
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
    cursor: pointer;
  }

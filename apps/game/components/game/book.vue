@@ -27,9 +27,9 @@ function toggleSelected() {
         <div v-if="data.selected" class="checkBox">
           <img class="closeIcon" src="/images/selected.svg" style="width:24px;height:24px;" />
         </div>
-        <div class="bookHeader" ></div>
+        <!-- <div class="bookHeader" ></div> -->
         <div class="bookName" v-html="data.label"></div>
-        <div class="bookBottom" ></div>
+        <!-- <div class="bookBottom" ></div> -->
     </div>
     <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
     <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
@@ -116,36 +116,51 @@ function toggleSelected() {
     }
     &.eng {
       display: grid;
-      grid-template-columns: 12px 1fr 12px;
+      grid-template-columns: 1fr;
       min-height: auto;
+      min-width: 140px;
       // max-width: var(--book-size);
       .bookName {
         writing-mode: horizontal-tb;
         text-orientation: mixed;
         // word-break: break-all;
-        padding: 12px 0;
+        padding: 12px 24px;
         word-wrap: break-word;
         word-break: keep-all;
-      }
-      .bookHeader, .bookBottom{
-        width: 12px;
-        height: 100%;
-        &:after{
-          top: 10%;
-          width: 3px;
+        &:after, &:before{
+          content: "";
+          position: absolute;
+          width: 5px;
           height: 80%;
+          top: 10%;
+          background: rgba(255,255,255,.3);
         }
-      }
-      .bookHeader{
-          &:after {
-            left: 5px;
-          }
-      }
-      .bookBottom{
         &:after {
-          left: 3px;
+          right: 5px;
+        }
+        &:before {
+          left: 5px;
         }
       }
+      // .bookHeader, .bookBottom{
+      //   width: 12px;
+      //   height: 100%;
+      //   &:after{
+      //     top: 10%;
+      //     width: 3px;
+      //     height: 80%;
+      //   }
+      // }
+      // .bookHeader{
+      //     &:after {
+      //       left: 5px;
+      //     }
+      // }
+      // .bookBottom{
+      //   &:after {
+      //     left: 3px;
+      //   }
+      // }
     }
 }
  .bookName {
