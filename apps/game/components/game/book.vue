@@ -58,6 +58,8 @@ function toggleSelected() {
   display: flex;
     flex-flow: column nowrap;
     gap: 0;
+    justify-content: flex-end;
+    align-items: center;
 }
 .bookHeader{
     &:after {
@@ -159,6 +161,8 @@ function toggleSelected() {
 
  .rotateImg{
   width:100%;
+  min-width: 200px;
+  max-width: 250px;
  }
 </style>
 
