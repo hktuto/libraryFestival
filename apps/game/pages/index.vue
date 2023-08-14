@@ -36,11 +36,11 @@ function startGame() {
   background: #50B848;
   padding: 12px 24px;
   border-radius: 40px;
-  width: 200px;
+  // width: 200px;
   color: #fff;
-  font-size: 2rem;
+  font-size: 2.5rem;
   position: absolute;
-  bottom: 24px;
+  bottom: 48px;
   cursor: pointer;
   left: calc(50vw - 100px);
 }

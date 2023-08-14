@@ -72,4 +72,7 @@ button{
     border-radius: 40px;
     font-size: 2rem;
 }
+.levelName{
+    font-size: 2rem;;
+}
 </style>

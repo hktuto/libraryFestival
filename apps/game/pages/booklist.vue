@@ -20,7 +20,7 @@ const { levels } = useGame()
                             <div class="label">書名</div>
                             <div class="name">{{ book.label }}</div>
                         </div>
-                        <div class="item">
+                        <!-- <div class="item">
                             <div class="label">出版年份</div>
                             <div class="year">{{  book.year }}</div>
                         </div>
@@ -31,7 +31,7 @@ const { levels } = useGame()
                         <div class="item">
                             <div class="label">作者</div>
                             <div class="author">{{  book.author }}</div>
-                        </div>
+                        </div> -->
                         <div class="actions">
                             <button class="actionBtn" v-if="book.ebook" >
                                 <a :href="book.ebook" target="_blank">
@@ -65,6 +65,7 @@ h1 {
     display: flex;
     flex-flow: column nowrap;
     gap: 24px;
+    
 }
 .imgContainer{
     position: absolute;
@@ -101,6 +102,8 @@ h1 {
     grid-template-columns: 1fr;
     gap: 24px;
     position: relative;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .bookList{
@@ -108,6 +111,8 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 12px;
     padding: 300px 24px 24px 24px;
+    max-width: 960px;
+    margin: 0 auto;
 }
 .bookName{
     padding: 12px;

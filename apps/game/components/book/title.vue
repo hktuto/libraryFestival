@@ -26,7 +26,7 @@
   align-items:  flex-end;
   position: relative;
   @media( max-width: 640px) {
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
   }
   .titleContainer{
     margin-inline: 24px;
@@ -38,19 +38,20 @@
     gap: 12px;
     padding-bottom: 24px;
     .intro{
-      font-size: 1rem;
-      text-align: center;
+      font-size: 1.5rem;
+      text-align: justify;
       word-break: break-all;
       color: #fff;
-      width: 70%;
+      width: 100%;
       padding-inline: 24px;
       @media( max-width: 640px) {
         width: 100%;
+        font-size: 1.2rem;
       }
     }
     img{
       height: 70%;
-      max-height: 400px;
+      max-height: 200px;
     }
   }
 }

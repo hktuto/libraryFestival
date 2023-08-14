@@ -54,8 +54,11 @@ function successChanged(bool){
     img{
         width: 100%;
     }
-    .big{
+    .characterDesc{
         font-size: 1.2rem;
+    }
+    .big{
+        font-size: 1.8rem;
         font-weight: 700;
         color:  #8D288F;
     }

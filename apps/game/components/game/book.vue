@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {Option} from "../../composables/game";
-
+const showError = ref(false);
 const props = defineProps<{
     data: Option,
     eng: boolean
@@ -9,7 +9,10 @@ const emit = defineEmits<{
     selectedChange: (value: Option) => void
 }>();
 function toggleSelected() {
-  if(!props.data.correct) return;
+  if(!props.data.correct){
+    showError.value = true;
+    return;
+  } 
   emit('selectedChange', props.data);
 }
 
@@ -17,7 +20,9 @@ function toggleSelected() {
 
 <template>
     <div :class="{book:true, selected:data.selected, eng}" :style="`--hue:${data.hue}`" @click="toggleSelected(data)" >
-        
+        <div v-if="showError" class="checkBox show">
+          <img class="closeIcon" src="/images/close.svg" style="width:24px;height:24px;" />
+        </div>
         <div v-if="data.selected" class="checkBox">
           <img class="closeIcon" src="/images/selected.svg" style="width:24px;height:24px;" />
         </div>
@@ -65,6 +70,9 @@ function toggleSelected() {
     font-weight: bold;
     display: none;
     z-index: 2;
+    &.show {
+      display: flex;
+    }
 }
 .book{
     background: hsl( var(--hue), 70%, 50%);

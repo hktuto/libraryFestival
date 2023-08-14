@@ -90,7 +90,7 @@ onMounted(() => {
         </div>
       <div class="selectedBook" v-for="item in selected" :key="item.label" :style="`--hue:${item.hue}`" @click="selectedChange(item)">
         <div class="bookTitle" v-html="item.label"></div>
-        <img  class="closeIcon" src="/images/close.svg" width="24px" />
+        <img  class="closeIcon" src="/images/selected.svg" width="24px" />
       </div>
     </div>
     
@@ -143,7 +143,7 @@ onMounted(() => {
    background: #EBCFAC;
    display: flex;
    flex-flow: row nowrap;
-   justify-content: flex-start;
+   justify-content: center;
    align-items: flex-start;
    padding: 12px;
    gap: 12px;
@@ -162,7 +162,7 @@ onMounted(() => {
      justify-content: flex-start;
      box-shadow: 0 0 10px rgba(0,0,0,.2);
      color: #fff;
-     font-size: 1.2rem;
+     font-size: 1.5rem;
      position: relative;
      &:before {
       content: "";
@@ -173,7 +173,7 @@ onMounted(() => {
      }
      @media (max-width: 768px) {
        width: 150px;
-       font-size: 1rem;
+       font-size: 1.2rem;
      }
    }
    &.isSuccess{
