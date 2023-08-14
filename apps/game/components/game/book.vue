@@ -19,7 +19,8 @@ function toggleSelected() {
 </script>
 
 <template>
-    <div :class="{book:true, selected:data.selected, eng}" :style="`--hue:${data.hue}`" @click="toggleSelected(data)" >
+  <div class="bookContainer" >
+    <div :class="{book:true, selected:data.selected, eng}"  :style="`--hue:${data.hue}`" @click="toggleSelected(data)" >
         <div v-if="showError" class="checkBox show">
           <img class="closeIcon" src="/images/close.svg" style="width:24px;height:24px;" />
         </div>
@@ -29,6 +30,10 @@ function toggleSelected() {
         <div class="bookHeader" ></div>
         <div class="bookName" v-html="data.label"></div>
         <div class="bookBottom" ></div>
+    </div>
+    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
+    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
+      <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
     </div>
 </template>
 
@@ -48,6 +53,11 @@ function toggleSelected() {
     height: 5px;
     background: rgba(255,255,255,.3);
   }
+}
+.bookContainer {
+  display: flex;
+    flex-flow: column nowrap;
+    gap: 0;
 }
 .bookHeader{
     &:after {
@@ -106,12 +116,14 @@ function toggleSelected() {
       display: grid;
       grid-template-columns: 12px 1fr 12px;
       min-height: auto;
-      max-width: var(--book-size);
+      // max-width: var(--book-size);
       .bookName {
         writing-mode: horizontal-tb;
         text-orientation: mixed;
-        word-break: break-all;
+        // word-break: break-all;
         padding: 12px 0;
+        word-wrap: break-word;
+        word-break: keep-all;
       }
       .bookHeader, .bookBottom{
         width: 12px;
@@ -143,6 +155,10 @@ function toggleSelected() {
     display: flex;
     justify-content: center;
     align-items: center;
+ }
+
+ .rotateImg{
+  width:100%;
  }
 </style>
 

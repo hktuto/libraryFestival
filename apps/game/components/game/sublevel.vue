@@ -49,7 +49,7 @@ watch(currentLevel, () => {
   emit('reset');
   answers.value = makeSubLevelOptions()
   randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
-    slide :Math.floor(Math.random() * 12) % 10,
+    slide :Math.floor(Math.random() * 4) % 10,
     scale : Math.random() * (1.2 - 0.8) + 0.8
   }))
   if(optionsEl.value){
@@ -78,7 +78,7 @@ onMounted(() => {
     <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in answers" :key="answer">
-          <GameBook :data="answer" @selectedChange="selectedChange"  />
+          <GameBook :data="answer" @selectedChange="selectedChange"  :eng="true"/>
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />
         </template>
@@ -192,9 +192,10 @@ onMounted(() => {
  }
  .submitBtn{
    position: absolute;
-   bottom: 10px;
-   right: 10px;
-   padding: 6px 12px;
+   bottom: 24px;
+   right: 36px;
+   padding: 12px 24px;
+   font-size: 1.5rem;
    background: #0d930d;
    color: #fff;
    border-radius: 6px;
@@ -214,5 +215,9 @@ onMounted(() => {
     align-items: flex-end; 
     color: rgba(161, 154, 126, 0.2);
     font-size: 5rem;
+}
+
+.rotate{
+  transform: rotate(90deg);
 }
  </style>
