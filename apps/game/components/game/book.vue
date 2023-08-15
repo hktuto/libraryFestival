@@ -31,9 +31,9 @@ function toggleSelected() {
         <div class="bookName" v-html="data.label"></div>
         <!-- <div class="bookBottom" ></div> -->
     </div>
-    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
-    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
-      <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  />
+    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
+    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
+      <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
     </div>
 </template>
 
@@ -176,7 +176,7 @@ function toggleSelected() {
 
  .rotateImg{
   width:100%;
-  min-width: 200px;
+  min-width: 160px;
   max-width: 250px;
  }
 </style>
