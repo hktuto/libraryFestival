@@ -114,6 +114,7 @@ onMounted(() => {
   bottom: 0;
   display: grid;
   grid-template-rows: 1fr 250px;
+  overflow: visible;
   @media (max-width: 768px){
     --book-size: 160px;
   }
