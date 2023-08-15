@@ -33,7 +33,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3657297&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "南極企鵝北極熊：皇帝企鵝、北極熊和豎琴海豹的生態記錄",
+                            "label": "南極企鵝北極熊：<br/>皇帝企鵝、北極熊和<br/>豎琴海豹的生態記錄",
                             "name": "南極企鵝北極熊：皇帝企鵝、北極熊和豎琴海豹的生態記錄",
                             "year": "2019",
                             "publisher": "天地圖書有限公司",
@@ -55,7 +55,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "絲綢之路 : 條條絲路通亞歐",
+                            "label": "絲綢之路 : <br/>條條絲路通亞歐",
                             "name": "絲綢之路 : 條條絲路通亞歐",
                             "year": "2021",
                             "publisher": "中華書局(香港)有限公司",
@@ -95,7 +95,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683704&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "活著回來：一個香港人由非洲出發的單車之旅",
+                            "label": "活著回來：<br/>一個香港人由非洲出發的單車之旅",
                             "name": "活著回來：一個香港人由非洲出發的單車之旅",
                             "year": "2016",
                             "publisher": "一丁文化",
@@ -127,7 +127,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "小理財大經濟：小學生的趣致財務智慧",
+                            "label": "小理財大經濟：<br/>小學生的趣致財務智慧",
                             "name": "小理財大經濟：小學生的趣致財務智慧",
                             "year": "2020",
                             "publisher": "跨版生活圖書出版",
@@ -145,7 +145,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3608918&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "歷史裡的現代經濟學",
+                            "label": "歷史裡的<br/>現代經濟學",
                             "name": "歷史裡的現代經濟學",
                             "year": "2019",
                             "publisher": "香港中和出版有限公司",
@@ -158,7 +158,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "人民幣國際化的新進展：香港交易所的離岸金融產品創新",
+                            "label": "人民幣國際化的新進展：<br/>香港交易所的離岸金融產品創新",
                             "name": "人民幣國際化的新進展：香港交易所的離岸金融產品創新",
                             "year": "2018",
                             "publisher": "商務印書館(香港)有限公司",
@@ -176,7 +176,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3660911&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "獨步股壇：「投機之王」狙擊價格方程式",
+                            "label": "獨步股壇：<br/>「投機之王」狙擊價格方程式",
                             "name": "獨步股壇：「投機之王」狙擊價格方程式",
                             "year": "2022",
                             "publisher": "天窗出版",
@@ -189,7 +189,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "新世代洞悉先機：曾淵滄投資七大智慧",
+                            "label": "新世代洞悉先機：<br/>曾淵滄投資七大智慧",
                             "name": "新世代洞悉先機：曾淵滄投資七大智慧",
                             "year": "2022",
                             "publisher": "天窗出版",
@@ -248,7 +248,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683982&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "元宇宙. 圖說元宇宙",
+                            "label": "元宇宙. <br/>圖說元宇宙",
                             "name": "元宇宙. 圖說元宇宙",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
@@ -262,7 +262,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "科技發展與資訊素養",
+                            "label": "科技發展與<br/>資訊素養",
                             "name": "科技發展與資訊素養",
                             "year": "2020",
                             "publisher": "天窗出版",
@@ -271,7 +271,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3679292&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "後就業社會：誰是科技貴族？誰的人工智能？",
+                            "label": "後就業社會：<br/>誰是科技貴族？誰的人工智能？",
                             "name": "後就業社會：誰是科技貴族？誰的人工智能？",
                             "year": "2018",
                             "publisher": "印象文字",
@@ -280,7 +280,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3538362&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "我們的孩子可以比AI更聰明嗎？",
+                            "label": "我們的孩子<br/>可以比AI更聰明嗎？",
                             "name": "我們的孩子可以比AI更聰明嗎？",
                             "year": "2022",
                             "publisher": "紅出版 (青森文化)",
@@ -311,7 +311,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3570570&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "STEM學習大策略：啟發孩子的科創思維",
+                            "label": "STEM學習大策略：<br/>啟發孩子的科創思維",
                             "name": "STEM學習大策略：啟發孩子的科創思維",
                             "year": "2019",
                             "publisher": "皇冠出版社(香港)",
@@ -365,7 +365,7 @@ export const useGame = () => {
                 {
                     answer:[
                         {
-                            "label": "水墨設計‧設計水墨：兩地三代創意三重奏",
+                            "label": "水墨設計‧設計水墨：<br/>兩地三代創意三重奏",
                             "name": "水墨設計‧設計水墨：兩地三代創意三重奏",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
@@ -383,7 +383,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3685255&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "日日好玩：玩好設計",
+                            "label": "日日好玩：<br/>玩好設計",
                             "name": "日日好玩：玩好設計",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
@@ -414,7 +414,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3273703&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "第四十五屆青年文學獎得獎作品集‧1，小說、新詩",
+                            "label": "第四十五屆<br/>青年文學獎得獎作品集‧1，<br/>小說、新詩",
                             "name": "第四十五屆青年文學獎得獎作品集‧1，小說、新詩",
                             "year": "2021",
                             "publisher": "突破出版社",
@@ -429,32 +429,32 @@ export const useGame = () => {
     }));
 
     const otherBooks = useState('otherBooks',() => [
-        "微表情心理學：入門觀察攻略",
-        "你是誰？我是誰？解讀人心的筆跡秘密",
+        "微表情心理學：<br/>入門觀察攻略",
+        "你是誰？我是誰？<br/>解讀人心的筆跡秘密",
         "好孕天天練",
-        "香港談食錄：中餐百味",
+        "香港談食錄：<br/>中餐百味",
         "給生活多一顆糖",
         "世界名人故事繪本",
         "不一樣的星級住家飯",
-        "劍擊成就了我：奧運冠軍張家朗",
-        "都市人的瑜伽：創造個人的療癒",
-        "養生‧養顏：讓女人年輕10年的45個好習慣",
+        "劍擊成就了我：<br/>奧運冠軍張家朗",
+        "都市人的瑜伽：<br/>創造個人的療癒",
+        "養生‧養顏：<br/>讓女人年輕10年的45個好習慣",
         "無難度燜燒杯料理",
         "小學生小食盒",
         "如果我養了一隻……",
        "阿媽這杯茶",
        "輕鬆點吧！",
-        "瘦身，也要補身：60個低卡食譜",
-        "Q小子笑話大全‧1",
+        "瘦身，也要補身：<br/>60個低卡食譜",
+        "Q小子<br/>笑話大全‧1",
         "父母這樣做，成就正面自信孩子！",
         "新丁潮爸湊仔奮戰手記",
         "運動陷阱",
-        "壞姿勢：脊醫話你知30個最易被忽略的痛症元兇",
+        "壞姿勢：脊醫話你知30<br/>個最易被忽略的痛症元兇",
         "我不怕膽固醇",
-        "人生悟語：劉再復新文體沉思錄‧卷2，紅樓悟語",
+        "人生悟語：<br/>劉再復新文體沉思錄‧<br/>卷2，紅樓悟語",
         "三國無常",
         "中國現代小說史",
-        "人生悟語：劉再復新文體沉思錄‧卷1，三書悟語",
+        "人生悟語：<br/>劉再復新文體沉思錄‧<br/>卷1，三書悟語",
         "且聽下回分解",
     ]);
 
