@@ -31,9 +31,10 @@ function toggleSelected() {
         <div class="bookName" v-html="data.label"></div>
         <!-- <div class="bookBottom" ></div> -->
     </div>
-    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
-    <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
-      <img class="rotateImg" v-once  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
+    <template v-once v-for="i in new Array(Number((Math.random() * (1 - 4) + 4).toFixed(0)))">
+
+      <img class="rotateImg"  :src="`/images/books/r${Math.floor(Math.random() * 4) % 10}.svg`"  :style="`width:${Math.random() * (100 - 60) + 60}%; margin-left:${Math.random() * (20 - -20) + -20}px`"/>
+    </template>
     </div>
 </template>
 
