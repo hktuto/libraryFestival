@@ -415,7 +415,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3273703&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "第四十五屆<br/>青年文學獎<br/>得獎作品集‧1，小說、新詩",
+                            "label": "第四十五屆青年文學獎<br/>得獎作品集‧1，小說、新詩",
                             "name": "第四十五屆青年文學獎得獎作品集‧1，小說、新詩",
                             "year": "2021",
                             "publisher": "突破出版社",

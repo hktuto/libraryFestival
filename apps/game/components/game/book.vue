@@ -121,6 +121,7 @@ function toggleSelected() {
       grid-template-columns: 1fr;
       min-height: auto;
       min-width: 140px;
+      width: max-content;
       // max-width: var(--book-size);
       .bookName {
         writing-mode: horizontal-tb;
