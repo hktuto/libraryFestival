@@ -29,6 +29,10 @@ const startInterval = ref();
 const endInterval = ref();
 const optionsEl = ref();
 function scrollForward(){
+  if(!optionsEl.value) {
+    clearInterval(startInterval.value);
+    return;
+  }
   optionsEl.value.scrollLeft += 20;
   if(optionsEl.value.scrollLeft >= optionsEl.value.scrollWidth - optionsEl.value.clientWidth -10){
     clearInterval(startInterval.value);
@@ -37,6 +41,10 @@ function scrollForward(){
 }
 
 function scrollBackward(){
+  if(!optionsEl.value) {
+    clearInterval(endInterval.value);
+    return;
+  }
   optionsEl.value.scrollLeft -= 20;
   if(optionsEl.value.scrollLeft <= 0){
     clearInterval(endInterval.value);
