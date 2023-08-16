@@ -26,7 +26,7 @@
   align-items:  flex-end;
   position: relative;
   @media( max-width: 640px) {
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
   }
   .titleContainer{
     margin-inline: 24px;
@@ -50,8 +50,8 @@
       }
     }
     img{
-      height: 70%;
-      max-height: 200px;
+      width: 100%;
+      max-width: 600px;
     }
   }
 }
