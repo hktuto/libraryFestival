@@ -89,7 +89,7 @@ onMounted(() => {
             {{  subLevelNumber === 0 ? "第一關" : subLevelNumber < 2 ? "第二關" : "第三關" }}
         </div>
       <div class="selectedBook" v-for="item in selected" :key="item.label" :style="`--hue:${item.hue}`" @click="selectedChange(item)">
-        <div class="bookTitle" v-html="item.label"></div>
+        <div class="bookTitle" >{{ item.name }}</div>
         <img  class="closeIcon" src="/images/selected.svg" width="24px" />
       </div>
     </div>

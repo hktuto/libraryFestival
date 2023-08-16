@@ -248,8 +248,8 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3683982&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "元宇宙. <br/>圖說元宇宙",
-                            "name": "元宇宙. 圖說元宇宙",
+                            "label": "元宇宙‧ <br/>圖說元宇宙",
+                            "name": "元宇宙‧ 圖說元宇宙",
                             "year": "2022",
                             "publisher": "三聯書店(香港)有限公司",
                             "author": "子彌實驗室  ",
@@ -299,7 +299,7 @@ export const useGame = () => {
                             "publisher": "天窗出版",
                             "author": "湛家揚博士",
                             "ebook": "https://joyread.club/book/62ac504a745c424bd5a76a22",
-                            "book": "https://webcat.hkpl.gov.hk/search/query?term_1=%E6%95%B8%E7%A2%BC%E5%8A%9B%E5%A4%A7%E6%8F%90%E5%8D%87&theme=WEB"
+                            "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3616551&fromLocationLink=false&theme=WEB"
                         },
                         {
                             "label": "你未來就緒嗎？",
@@ -414,7 +414,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3273703&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "第四十五屆<br/>青年文學獎得獎作品集‧1，<br/>小說、新詩",
+                            "label": "第四十五屆<br/>青年文學獎得獎作品集‧1，小說、新詩",
                             "name": "第四十五屆青年文學獎得獎作品集‧1，小說、新詩",
                             "year": "2021",
                             "publisher": "突破出版社",
@@ -509,6 +509,7 @@ export const useGame = () => {
         const answer:Option[] = subLevelObject.value.answer.map((answer) => {
             return {
                 label: answer.label,
+                name: answer.name,
                 correct: true,
                 hue: randomColor(),
                 selected: false,
