@@ -5,7 +5,7 @@ import { set } from "@vueuse/core";
 const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber,currentSubLevelAnswer } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
-const loading = ref(false);
+const ready = ref(false);
 const randomBook = ref([]);
 function selectedChange(obj:Option) {
   // find obj in answers and 
@@ -51,18 +51,29 @@ function scrollBackward(){
   }
 }
 
-watch(currentLevel, () => {
+watch(currentLevel, async() => {
+  ready.value = false;
   isSuccess.value = false;
   emit('reset');
-  makeSubLevelOptions()
-  randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
-    slide :Math.floor(Math.random() * 4) % 10,
-    scale : Math.random() * (1.2 - 0.8) + 0.8
-  }))
-  if(optionsEl.value){
-    optionsEl.value.scrollLeft = 0;
-    startInterval.value = setInterval(scrollForward, 30);
-  }
+  await makeSubLevelOptions()
+  
+  nextTick(() => {
+
+    randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
+      slide :Math.floor(Math.random() * 4) % 10,
+      scale : Math.random() * (1.2 - 0.8) + 0.8
+    }))
+   
+    ready.value = true;
+    nextTick(() => {
+
+      if(optionsEl.value){
+        optionsEl.value.scrollLeft = 0;
+        startInterval.value = setInterval(scrollForward, 30);
+      }
+    })
+  });
+  
 },{
   immediate:true
 })
@@ -82,7 +93,7 @@ onMounted(() => {
   <div :class="{bottomContainer:true,isSuccess}">
     
     <BookShelf class="backgroundShelf" :divided="3.5" style="opacity:0.8;filter:blur(5px)" />
-    <div ref="optionsEl" class="booksOptions">
+    <div v-if="ready" ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
         <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer">
           <GameBook :data="answer" @selectedChange="selectedChange"  :eng="true"/>

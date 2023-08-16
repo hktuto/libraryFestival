@@ -533,7 +533,7 @@ export const useGame = () => {
                 hue: randomColor(),
                 selected: false,
             }]
-    );;
+        );
     }
 
     function previousLevel(){
