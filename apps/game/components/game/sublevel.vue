@@ -2,19 +2,18 @@
 import {randomColor} from "../../utils/color";
 import {Option} from "../../composables/game";
 import { set } from "@vueuse/core";
-const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber, } = useGame()
+const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber,currentSubLevelAnswer } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
-const answers = ref<any[]>([])
 const loading = ref(false);
 const randomBook = ref([]);
 function selectedChange(obj:Option) {
   // find obj in answers and 
-  const index = answers.value.findIndex( item => item.label === obj.label);
-  answers.value[index].selected = !answers.value[index].selected
+  const index = currentSubLevelAnswer.value.findIndex( item => item.label === obj.label);
+  currentSubLevelAnswer.value[index].selected = !currentSubLevelAnswer.value[index].selected
 }
 
-const selected = computed(() => answers.value.filter(item => item.selected))
+const selected = computed(() => currentSubLevelAnswer.value.filter(item => item.selected))
 
 function submit(){
   if(!isSuccess.value && isLastSubLevel()){
@@ -47,7 +46,7 @@ function scrollBackward(){
 watch(currentLevel, () => {
   isSuccess.value = false;
   emit('reset');
-  answers.value = makeSubLevelOptions()
+  makeSubLevelOptions()
   randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
     slide :Math.floor(Math.random() * 4) % 10,
     scale : Math.random() * (1.2 - 0.8) + 0.8
@@ -77,7 +76,7 @@ onMounted(() => {
     <BookShelf class="backgroundShelf" :divided="3.5" style="opacity:0.8;filter:blur(5px)" />
     <div ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
-        <template  v-for="(answer, index) in answers" :key="answer">
+        <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer">
           <GameBook :data="answer" @selectedChange="selectedChange"  :eng="true"/>
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />

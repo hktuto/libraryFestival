@@ -3,6 +3,7 @@ import {randomColor} from "../utils/color";
 
 export type Option = {
     label: string,
+    name: string,
     correct: boolean,
     hue: number,
     selected: boolean
@@ -414,7 +415,7 @@ export const useGame = () => {
                             "book": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3273703&fromLocationLink=false&theme=WEB"
                         },
                         {
-                            "label": "第四十五屆<br/>青年文學獎得獎作品集‧1，小說、新詩",
+                            "label": "第四十五屆<br/>青年文學獎<br/>得獎作品集‧1，小說、新詩",
                             "name": "第四十五屆青年文學獎得獎作品集‧1，小說、新詩",
                             "year": "2021",
                             "publisher": "突破出版社",
@@ -427,7 +428,7 @@ export const useGame = () => {
             ]
         }
     }));
-
+    const currentSubLevelAnswer = useState('currentSubLevelAnswer',() => ([]))
     const otherBooks = useState('otherBooks',() => [
         "微表情心理學：<br/>入門觀察攻略",
         "你是誰？我是誰？<br/>解讀人心的筆跡秘密",
@@ -518,22 +519,21 @@ export const useGame = () => {
         const randomNumber = Math.floor(Math.random() * otherBooks.value.length);
         // generate two random number between 0 to otherBooks.length
 
-        
-        // combine answer and otherBooks and shuffle
-        return shuffle([...answer,
-                {
-                    label:otherBooks.value[randomNumber],
-                    correct:false,
-                    hue: randomColor(),
-                    selected: false,
-                },
-                {
-                    label:otherBooks.value[randomNumber + 1],
-                    correct:false,
-                    hue: randomColor(),
-                    selected: false,
-                }]
-        );
+
+        currentSubLevelAnswer.value = shuffle([...answer,
+            {
+                label:otherBooks.value[randomNumber],
+                correct:false,
+                hue: randomColor(),
+                selected: false,
+            },
+            {
+                label:otherBooks.value[randomNumber + 1],
+                correct:false,
+                hue: randomColor(),
+                selected: false,
+            }]
+    );;
     }
 
     function previousLevel(){
@@ -564,6 +564,7 @@ export const useGame = () => {
         makeSubLevelOptions,
         isLastSubLevel,
         subLevelNumber,
-        previousLevel
+        previousLevel,
+        currentSubLevelAnswer
     }
 }
