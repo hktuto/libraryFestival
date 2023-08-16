@@ -429,7 +429,7 @@ export const useGame = () => {
         }
     }));
     const currentSubLevelAnswer = useState('currentSubLevelAnswer',() => ([]))
-    const otherBooks = useState('otherBooks',() => [
+    const otherBooks = [
         "微表情心理學：<br/>入門觀察攻略",
         "你是誰？我是誰？<br/>解讀人心的筆跡秘密",
         "好孕天天練",
@@ -457,7 +457,7 @@ export const useGame = () => {
         "中國現代小說史",
         "人生悟語：<br/>劉再復新文體沉思錄‧<br/>卷1，三書悟語",
         "且聽下回分解",
-    ]);
+    ];
 
     const currentLevel = useState('currentLevel',() => "sing-0");
 
@@ -516,19 +516,19 @@ export const useGame = () => {
                 selected: false,
             }
         });
-        const randomNumber = Math.floor(Math.random() * otherBooks.value.length);
+        const randomNumber = Math.floor(Math.random() * otherBooks.length);
         // generate two random number between 0 to otherBooks.length
 
 
         currentSubLevelAnswer.value = shuffle([...answer,
             {
-                label:otherBooks.value[randomNumber],
+                label:otherBooks[randomNumber],
                 correct:false,
                 hue: randomColor(),
                 selected: false,
             },
             {
-                label:otherBooks.value[randomNumber + 1],
+                label:otherBooks[randomNumber + 1],
                 correct:false,
                 hue: randomColor(),
                 selected: false,

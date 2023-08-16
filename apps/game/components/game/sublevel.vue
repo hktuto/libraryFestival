@@ -56,7 +56,16 @@ watch(currentLevel, async() => {
   isSuccess.value = false;
   emit('reset');
   await makeSubLevelOptions()
-  
+  let missing = false;
+  for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
+    if(!currentSubLevelAnswer.value[i].label) {
+      missing = true;
+      console.log(currentSubLevelAnswer.value, currentSubLevelAnswer.value[i]);
+    }
+  }
+  if(missing) {
+    makeSubLevelOptions();
+  }
   nextTick(() => {
 
     randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
@@ -95,7 +104,7 @@ onMounted(() => {
     <BookShelf class="backgroundShelf" :divided="3.5" style="opacity:0.8;filter:blur(5px)" />
     <div v-if="ready" ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
-        <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer">
+        <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer.label">
           <GameBook :data="answer" @selectedChange="selectedChange"  :eng="true"/>
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />

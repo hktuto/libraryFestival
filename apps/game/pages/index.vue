@@ -42,6 +42,6 @@ function startGame() {
   position: absolute;
   bottom: 48px;
   cursor: pointer;
-  left: calc(50vw - 100px);
+  left: calc(50% - 100px);
 }
 </style>
