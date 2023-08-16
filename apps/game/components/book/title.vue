@@ -1,5 +1,8 @@
 <script setup>
-
+const {t} = useLang({
+  descriptionHK:"夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為以下四位朋友選擇合適主題的書籍，以幫助他們達成夢想。",
+  descriptionEN:"Dreams may seem out of reach, but with the right books, knowledge can be gained and dreams can be achieved. Please choose the right books for the following four friends to help them achieve their dreams.",
+})
 </script>
 
 <template>
@@ -9,7 +12,7 @@
       <div class="titleContainer">
         <img src="/images/logoHK.svg" />
         <div class="intro">
-          夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為以下四位朋友選擇合適主題的書籍，以幫助他們達成夢想。
+          {{  t('description') }}
         </div>
       </div>
       <BookRow width="30" />

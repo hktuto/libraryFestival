@@ -5,5 +5,6 @@ export default defineNuxtConfig({
     devtools: {
         enabled: true,
     },
-    css:['~/assets/app.scss']
+    css:['~/assets/app.scss'],
+    extends:['../../packages/i18n'],
 })

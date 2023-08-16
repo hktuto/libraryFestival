@@ -3,6 +3,11 @@ const router = useRouter()
 function startGame() {
   router.push('/intro')
 }
+
+const {t} = useLang({
+  titleHK: '開卷有益',
+  titleEN: 'Bookworm',
+})
 </script>
 
 <template>
@@ -13,7 +18,7 @@ function startGame() {
     <BookTitle />
     <BookShelf :divided="3.5"  />
     <!-- <BookShelf /> -->
-    <button class="startButton" @click="startGame">開卷有益</button>
+    <button class="startButton" @click="startGame">{{ t('title') }}</button>
   </div>
 </div>
 </template>
