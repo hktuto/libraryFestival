@@ -116,7 +116,11 @@ h1 {
     gap: 12px;
     padding: 300px 24px 24px 24px;
     max-width: 960px;
+    width: 100%;
     margin: 0 auto;
+    @media( max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
 }
 .bookName{
     padding: 12px;
