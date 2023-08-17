@@ -64,21 +64,13 @@ function scrollBackward(){
   }
 }
 
+
 watch(currentLevel, async() => {
   ready.value = false;
   isSuccess.value = false;
   emit('reset');
   await makeSubLevelOptions()
-  let missing = false;
-  for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
-    if(!currentSubLevelAnswer.value[i].label) {
-      missing = true;
-      console.log(currentSubLevelAnswer.value, currentSubLevelAnswer.value[i]);
-    }
-  }
-  if(missing) {
-    makeSubLevelOptions();
-  }
+  
   nextTick(() => {
 
     randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
@@ -134,7 +126,7 @@ onMounted(() => {
       </div>
     </div>
     
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' && isSuccess  ? t('bookListHK') : isSuccess ? t('next') : t('confirm') }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' && isSuccess  ? t('bookList') : isSuccess ? t('next') : t('confirm') }}</div>
   </div>
 </template>
 
@@ -178,6 +170,7 @@ onMounted(() => {
     justify-content: flex-start;
     align-items: flex-end;
     min-height: calc(var(--book-size) + 35px);
+    padding-top:40px;
    
  }
  .selectedContainer{

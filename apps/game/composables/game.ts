@@ -2,7 +2,8 @@ import {randomColor} from "../utils/color";
 
 
 export type Option = {
-    label: string,
+    labelHK: string,
+    labelEN: string,
     name: string,
     correct: boolean,
     hue: number,
@@ -509,8 +510,8 @@ export const useGame = () => {
                         {
                             "labelHK": "水墨設計‧設計水墨：<br/>兩地三代創意三重奏",
                             "labelEN": "Street Art",
-                            "namHKe": "水墨設計‧設計水墨：兩地三代創意三重奏",
-                            "namENe": "Street Art",
+                            "nameHK": "水墨設計‧設計水墨：兩地三代創意三重奏",
+                            "nameEN": "Street Art",
                             "year": "2022",
                             "publisher": "中華書局(香港)有限公司",
                             "author": "靳埭強",
@@ -696,7 +697,7 @@ export const useGame = () => {
         return [...array];
     }
     
-    function makeSubLevelOptions() {
+    async function makeSubLevelOptions() {
         // get all answer of current sublevel
         const answer:Option[] = subLevelObject.value.answer.map((answer) => {
             return {
@@ -709,8 +710,7 @@ export const useGame = () => {
         const randomNumber = Math.floor(Math.random() * (currentLang.value === 'EN'  ? otherBooksEN.length : otherBooks.length));
         // generate two random number between 0 to otherBooks.length
 
-        console.log(currentLang.value)
-
+        let missing = false;
         currentSubLevelAnswer.value = shuffle([...answer,
             {
                 labelHK: currentLang.value === 'EN' ? otherBooksEN[randomNumber] : otherBooks[randomNumber],
@@ -727,7 +727,19 @@ export const useGame = () => {
                 selected: false,
             }]
         );
-        console.log(currentSubLevelAnswer.value)
+
+        for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
+            if(!currentSubLevelAnswer.value[i].labelHK) {
+              missing = true;
+            }
+          }
+        if(missing) {
+            console.log("Missing");
+            await makeSubLevelOptions();
+        }else{
+
+            return true;
+        }
     }
 
     function previousLevel(){

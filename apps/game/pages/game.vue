@@ -32,7 +32,7 @@ const {t, tObj, currentLang} = useLang({
             <div class="successDesc" v-if="isSuccess">{{ tObj('success', levelObject)  }}</div>
         </div>
         
-        <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>
+        <GameSublevel :answers="makeSubLevelOptions()" @success="successChanged(true)" @reset="successChanged(false)"/>
         
     </div>
 
