@@ -59,7 +59,7 @@ export const useGame = () => {
                         },
                         {
                             "labelHK": "能源保衞戰",
-                            "labelEN": "Explorers of the Coldest Places on Earth",
+                            "labelEN": "Explorers of the Coldest Places <br/>on Earth",
                             "nameHK": "能源保衞戰",
                             "nameEN": "Explorers of the Coldest Places on Earth",
                             "year": "2018",
@@ -132,7 +132,7 @@ export const useGame = () => {
                         },
                         {
                             "labelHK": "活著回來：<br/>一個香港人由非洲出發的單車之旅",
-                            "labelEN": "Jungle (Movie Tie-In Edition): A Harrowing True Story of Survival in the Amazon",
+                            "labelEN": "Jungle (Movie Tie-In Edition): <br/>A Harrowing True Story of Survival in the Amazon",
                             "nameHK": "活著回來：一個香港人由非洲出發的單車之旅",
                             "nameEN": "Jungle (Movie Tie-In Edition): A Harrowing True Story of Survival in the Amazon",
                             "year": "2016",
@@ -145,7 +145,7 @@ export const useGame = () => {
                         },
                         {
                             "labelHK": "天問：宇宙真貌的探索",
-                            "labelEN": "Braver than You Think : Around the World on the Trip of My (Mother's) Life",
+                            "labelEN": "Braver than You Think : <br/>Around the World on the Trip of My (Mother's) Life",
                             "nameHK": "天問：宇宙真貌的探索",
                             "nameEN": "Braver than You Think : Around the World on the Trip of My (Mother's) Life",
                             "year": "2017",
@@ -330,7 +330,7 @@ export const useGame = () => {
                             "ebookHK": "https://hkpl.nblib.com/product/1231",
                             "ebookEN": "https://libbyapp.com/search/hkpl/search/query-AI/page-1/5128885",
                             "bookHK": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3675000&fromLocationLink=false&theme=WEB",
-                            "bookEN": "https://libbyapp.com/search/hkpl/search/query-AI/page-1/5128885"
+                            "bookEN": "https://webcat.hkpl.gov.hk/lib/item?id=chamo:3612296&fromLocationLink=false&theme=WEB"
                         },
                         {
                             "labelHK": "元宇宙超入門",
@@ -629,7 +629,7 @@ export const useGame = () => {
         "This Is Happiness",
         "The Happy Camper",
         "School of Laughs",
-        "Don't Behave Like You Live in a Cave",
+        "Don't Behave Like You Live <br/>in a Cave",
         "Get Organized Without Losing It", 
         "Laugh Out Loud",
         "Johnny Boo Finds a Clue?",
@@ -707,9 +707,8 @@ export const useGame = () => {
                 selected: false,
             }
         });
-        const randomNumber = Math.floor(Math.random() * (currentLang.value === 'EN'  ? otherBooksEN.length : otherBooks.length));
+        const randomNumber = Math.floor(Math.random() * (1 - 23) + 23);
         // generate two random number between 0 to otherBooks.length
-
 
         currentSubLevelAnswer.value = shuffle([...answer,
             {

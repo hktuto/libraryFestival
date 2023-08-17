@@ -23,7 +23,7 @@ const {t, tObj, currentLang} = useLang({
             
         <div class="logo">
             <img :src="currentLang === 'EN' ? '/images/logo_purpleEN.svg': '/images/logo_purple.svg'" alt="logo" />
-            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ tObj('name', levelObject) }}</span>{{ tObj('description', levelObject) }}</span>
+            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ tObj('name', levelObject) }}{{ currentLang === 'EN' ? "'s" : "" }}</span>{{ tObj('description', levelObject) }}</span>
         </div>
        
         

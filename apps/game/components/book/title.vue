@@ -43,7 +43,7 @@ const {t,  currentLang} = useLang({
     .intro{
       font-size: 1.5rem;
       text-align: justify;
-      word-break: break-all;
+      word-break: break-word;
       color: #fff;
       width: 100%;
       padding-inline: 24px;

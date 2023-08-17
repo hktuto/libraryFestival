@@ -178,7 +178,7 @@ onMounted(() => {
     justify-content: flex-start;
     align-items: flex-end;
     min-height: calc(var(--book-size) + 35px);
-    padding-top:40px;
+    padding-top:45px;
    
  }
  .selectedContainer{

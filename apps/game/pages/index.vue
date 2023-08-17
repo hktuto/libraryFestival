@@ -18,7 +18,10 @@ const {t} = useLang({
     <BookTitle />
     <BookShelf :divided="3.5"  />
     <!-- <BookShelf /> -->
-    <button class="startButton" @click="startGame">{{ t('title') }}</button>
+    <div class="startButtonContainer">
+
+      <button class="startButton" @click="startGame">{{ t('title') }}</button>
+    </div>
   </div>
 </div>
 </template>
@@ -36,6 +39,15 @@ const {t} = useLang({
 .bookRow {
   margin-bottom: 24px;
 }
+.startButtonContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  position: absolute;
+  bottom: 48px;
+}
 .startButton{
   border: 1px solid #fff;
   background: #50B848;
@@ -44,8 +56,7 @@ const {t} = useLang({
   // width: 200px;
   color: #fff;
   font-size: 2.5rem;
-  position: absolute;
-  bottom: 48px;
+  
   cursor: pointer;
   // left: calc(50% - 100px);
 }

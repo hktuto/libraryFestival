@@ -4,7 +4,7 @@ const {t, tObj} = useLang({
     titleHK:"可以幫助你達成夢想的書籍",
     titleEN:"Good Books that could help you make your dreams come true",
     nameHK:"書名",
-    nameEN:"Name",
+    nameEN:"Book Title",
     eBookHK:"電子書",
     eBookEN:"eBook",
     bookHK:"實體書",
@@ -12,7 +12,7 @@ const {t, tObj} = useLang({
     againHK:"再玩一次",
     againEN:"Play Again",
     seeYouHK: "下次圖書館見！",
-    seeYouEN: "See you next time!",
+    seeYouEN: "See you in the Libraries",
 })
 </script>
 
@@ -21,7 +21,6 @@ const {t, tObj} = useLang({
         <h1>{{ t('title') }}</h1>
         <div v-for="char in levels" :key="char.name" class="char">
             <div class="imgContainer">
-               
                 <img :src="char.img" alt="character" />
                 <div class="info">
                     <div class="desc">{{ tObj('finish', char) }}</div>
