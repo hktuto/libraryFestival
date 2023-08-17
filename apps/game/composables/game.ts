@@ -697,7 +697,7 @@ export const useGame = () => {
         return [...array];
     }
     
-    async function makeSubLevelOptions() {
+    function makeSubLevelOptions() {
         // get all answer of current sublevel
         const answer:Option[] = subLevelObject.value.answer.map((answer) => {
             return {
@@ -710,7 +710,7 @@ export const useGame = () => {
         const randomNumber = Math.floor(Math.random() * (currentLang.value === 'EN'  ? otherBooksEN.length : otherBooks.length));
         // generate two random number between 0 to otherBooks.length
 
-        let missing = false;
+
         currentSubLevelAnswer.value = shuffle([...answer,
             {
                 labelHK: currentLang.value === 'EN' ? otherBooksEN[randomNumber] : otherBooks[randomNumber],
@@ -727,19 +727,6 @@ export const useGame = () => {
                 selected: false,
             }]
         );
-
-        for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
-            if(!currentSubLevelAnswer.value[i].labelHK) {
-              missing = true;
-            }
-          }
-        if(missing) {
-            console.log("Missing");
-            await makeSubLevelOptions();
-        }else{
-
-            return true;
-        }
     }
 
     function previousLevel(){

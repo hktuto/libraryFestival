@@ -64,13 +64,21 @@ function scrollBackward(){
   }
 }
 
-
 watch(currentLevel, async() => {
   ready.value = false;
   isSuccess.value = false;
   emit('reset');
-  await makeSubLevelOptions()
-  
+  makeSubLevelOptions()
+  let missing = false;
+  for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
+    if(!currentSubLevelAnswer.value[i].labelHK) {
+      missing = true;
+      console.log(currentSubLevelAnswer.value, currentSubLevelAnswer.value[i]);
+    }
+  }
+  if(missing) {
+    makeSubLevelOptions();
+  }
   nextTick(() => {
 
     randomBook.value = [0,1,2,3,4,6,7,8,9].map( i => ({
