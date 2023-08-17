@@ -5,6 +5,12 @@ const isSuccess = ref(false);
 function successChanged(bool){
   isSuccess.value = bool
 }
+const {t, tObj, currentLang} = useLang({
+    backHK:"返回",
+    backEN:"Back",
+})
+
+
 </script>
 
 <template>
@@ -12,18 +18,18 @@ function successChanged(bool){
         <div class="shelfBg">
             <img src="/images/shelf_bg1.png" />
             <img src="/images/shelf_bg2.png" />
-            <div class="previousLevelBtn" @click="previousLevel">返回</div>
+            <div class="previousLevelBtn" @click="previousLevel">{{ t('back') }}</div>
         </div>
             
         <div class="logo">
-            <img src="/images/logo_purple.svg" alt="logo" />
-            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
+            <img :src="currentLang === 'EN' ? '/images/logo_purpleEN.svg': '/images/logo_purple.svg'" alt="logo" />
+            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ tObj('name', levelObject) }}</span>{{ tObj('description', levelObject) }}</span>
         </div>
        
         
         <div :class="{character:true, isSuccess}">
             <img :src="levelObject.img" alt="character" />
-            <div class="successDesc" v-if="isSuccess">{{ levelObject.success }}</div>
+            <div class="successDesc" v-if="isSuccess">{{ tObj('success', levelObject)  }}</div>
         </div>
         
         <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>

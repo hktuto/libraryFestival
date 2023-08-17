@@ -1,7 +1,7 @@
 <script setup>
-const {t} = useLang({
+const {t,  currentLang} = useLang({
   descriptionHK:"夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為以下四位朋友選擇合適主題的書籍，以幫助他們達成夢想。",
-  descriptionEN:"Dreams may seem out of reach, but with the right books, knowledge can be gained and dreams can be achieved. Please choose the right books for the following four friends to help them achieve their dreams.",
+  descriptionEN:"Dream seems unattainable but once you find a good read to enhance your knowledge, your dream will come true. Please choose a suitable good read for the 4 people below to make their dreams come true.",
 })
 </script>
 
@@ -10,7 +10,7 @@ const {t} = useLang({
     <div class="titleRow">
       <BookRow width="30" class="end"/>
       <div class="titleContainer">
-        <img src="/images/logoHK.svg" />
+        <img :src="currentLang === 'EN' ? '/images/logoEN.svg' : '/images/logoHK.svg'" />
         <div class="intro">
           {{  t('description') }}
         </div>

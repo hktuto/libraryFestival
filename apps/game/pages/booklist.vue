@@ -1,24 +1,38 @@
 <script lang="ts" setup>
 const { levels } = useGame()
+const {t, tObj} = useLang({
+    titleHK:"可以幫助你達成夢想的書籍",
+    titleEN:"Good Books that could help you make your dreams come true",
+    nameHK:"書名",
+    nameEN:"Name",
+    eBookHK:"電子書",
+    eBookEN:"eBook",
+    bookHK:"實體書",
+    bookEN:"Book",
+    againHK:"再玩一次",
+    againEN:"Play Again",
+    seeYouHK: "下次圖書館見！",
+    seeYouEN: "See you next time!",
+})
 </script>
 
 <template>
     <div class="pageContainer">
-        <h1>可以幫助你達成夢想的書籍</h1>
+        <h1>{{ t('title') }}</h1>
         <div v-for="char in levels" :key="char.name" class="char">
             <div class="imgContainer">
                
                 <img :src="char.img" alt="character" />
                 <div class="info">
-                    <div class="desc">{{  char.finish }}</div>
+                    <div class="desc">{{ tObj('finish', char) }}</div>
                 </div>
             </div>
             <div class="bookList">
                 <template class="subLevel" v-for="(books,index) in char.subLevels" :key="index" >
                     <div v-for="book in books.answer" :key="book.label" class="bookName" >
                         <div class="item">
-                            <div class="label">書名</div>
-                            <div class="name">{{ book.name }}</div>
+                            <div class="label">{{ t('name') }}</div>
+                            <div class="name">{{ tObj('name', book) }}</div>
                         </div>
                         <!-- <div class="item">
                             <div class="label">出版年份</div>
@@ -33,14 +47,14 @@ const { levels } = useGame()
                             <div class="author">{{  book.author }}</div>
                         </div> -->
                         <div class="actions">
-                            <button class="actionBtn" v-if="book.ebook" >
-                                <a :href="book.ebook" target="_blank">
-                                    電子書
+                            <button class="actionBtn" v-if="tObj('ebook', book)" >
+                                <a :href="tObj('ebook', book)" target="_blank">
+                                    {{ t('eBook') }}
                                 </a>
                             </button>
-                            <button class="actionBtn" v-if="book.book" >
-                                <a :href="book.book" target="_blank">
-                                    實體書
+                            <button class="actionBtn" v-if="tObj('book', book)" >
+                                <a :href="tObj('book', book)" target="_blank">
+                                    {{ t('book') }}
                                 </a>
                             </button>
                         </div>
@@ -48,8 +62,8 @@ const { levels } = useGame()
                 </template>
             </div>
         </div>
-        <h1 class="nextTime">下次圖書館見！</h1>
-        <div class="previousLevelBtn" @click="$router.push({path:'/'})">再玩一次</div>
+        <h1 class="nextTime">{{ t('seeYou') }}</h1>
+        <div class="previousLevelBtn" @click="$router.push({path:'/'})">{{ t('again') }}</div>
     </div>
 </template>
 

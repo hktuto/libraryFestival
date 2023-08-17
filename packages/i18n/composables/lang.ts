@@ -11,13 +11,13 @@ export const useLang = (obj:any) => {
     const displayLang = computed(() => locales.filter(item => item.key !== currentLang.value));
     const routeDefaultLang = computed(() => {
         if(route.query.lang) {
-            if(route.query.lang === "TC") {
+            if(route.query.lang.toLowerCase() === "tc") {
                 return 'HK'
             }
-            if(route.query.lang === "SC") {
+            if(route.query.lang.toLowerCase() === "sc") {
                 return 'CN'
             }
-            if(route.query.lang === "EN") {
+            if(route.query.lang.toLowerCase() === "en") {
                 return 'EN'
             }
         }
@@ -91,15 +91,14 @@ export const useLang = (obj:any) => {
     
 
     onMounted(() => {
-        console.log(route.query.lang)
         if(route.query.lang) {
-            if(route.query.lang === "TC") {
+            if(route.query.lang.toLowerCase() === "tc") {
                 changeLocale('HK')
             }
-            if(route.query.lang === "SC") {
+            if(route.query.lang.toLowerCase() === "sc") {
                 changeLocale('CN')
             }
-            if(route.query.lang === "EN") {
+            if(route.query.lang.toLowerCase() === "en") {
                 changeLocale('EN')
             }
         } else {

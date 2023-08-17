@@ -6,7 +6,7 @@ function startGame() {
 
 const {t} = useLang({
   titleHK: '開卷有益',
-  titleEN: 'Bookworm',
+  titleEN: 'Reading is always Rewarding',
 })
 </script>
 
@@ -47,6 +47,6 @@ const {t} = useLang({
   position: absolute;
   bottom: 48px;
   cursor: pointer;
-  left: calc(50% - 100px);
+  // left: calc(50% - 100px);
 }
 </style>
