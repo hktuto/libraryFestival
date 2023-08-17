@@ -10,7 +10,7 @@ const client_manifest = {
     "css": [
       "error-404.37afb329.css"
     ],
-    "file": "error-404.80796bab.js",
+    "file": "error-404.e004cc20.js",
     "imports": [
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
@@ -33,7 +33,7 @@ const client_manifest = {
     "css": [
       "error-500.b7351e05.css"
     ],
-    "file": "error-500.7fd56d89.js",
+    "file": "error-500.b801d59d.js",
     "imports": [
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
@@ -59,7 +59,7 @@ const client_manifest = {
     "dynamicImports": [
       "virtual:nuxt:/Users/seantsang/Documents/libraryFestival/apps/game/.nuxt/error-component.mjs"
     ],
-    "file": "entry.4da6be06.js",
+    "file": "entry.d04aec46.js",
     "isEntry": true,
     "src": "../../node_modules/nuxt/dist/app/entry.js"
   },
@@ -72,21 +72,21 @@ const client_manifest = {
     "module": true,
     "file": "_plugin-vue_export-helper.c27b6911.js"
   },
-  "_game.79e47477.js": {
+  "_game.ac62bea7.js": {
     "resourceType": "script",
     "module": true,
-    "file": "game.79e47477.js",
+    "file": "game.ac62bea7.js",
     "imports": [
       "../../node_modules/nuxt/dist/app/entry.js"
     ]
   },
-  "_shelf.9a015150.js": {
+  "_shelf.7c2517db.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "shelf.9933c4bd.css"
     ],
-    "file": "shelf.9a015150.js",
+    "file": "shelf.7c2517db.js",
     "imports": [
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
@@ -98,75 +98,75 @@ const client_manifest = {
   },
   "pages/booklist.css": {
     "resourceType": "style",
-    "file": "booklist.d5a32522.css",
+    "file": "booklist.f299159d.css",
     "src": "pages/booklist.css"
   },
   "pages/booklist.vue": {
     "resourceType": "script",
     "module": true,
     "css": [
-      "booklist.d5a32522.css"
+      "booklist.f299159d.css"
     ],
-    "file": "booklist.23e110d5.js",
+    "file": "booklist.df213ad7.js",
     "imports": [
-      "_game.79e47477.js",
+      "_game.ac62bea7.js",
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/booklist.vue"
   },
-  "booklist.d5a32522.css": {
-    "file": "booklist.d5a32522.css",
+  "booklist.f299159d.css": {
+    "file": "booklist.f299159d.css",
     "resourceType": "style"
   },
   "pages/game.css": {
     "resourceType": "style",
-    "file": "game.43722512.css",
+    "file": "game.9d66dcf2.css",
     "src": "pages/game.css"
   },
   "pages/game.vue": {
     "resourceType": "script",
     "module": true,
     "css": [
-      "game.43722512.css"
+      "game.9d66dcf2.css"
     ],
-    "file": "game.94c5ccac.js",
+    "file": "game.412aec69.js",
     "imports": [
-      "_shelf.9a015150.js",
+      "_shelf.7c2517db.js",
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js",
-      "_game.79e47477.js"
+      "_game.ac62bea7.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/game.vue"
   },
-  "game.43722512.css": {
-    "file": "game.43722512.css",
+  "game.9d66dcf2.css": {
+    "file": "game.9d66dcf2.css",
     "resourceType": "style"
   },
   "pages/index.css": {
     "resourceType": "style",
-    "file": "index.b166c094.css",
+    "file": "index.3c5d27bf.css",
     "src": "pages/index.css"
   },
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
     "css": [
-      "index.b166c094.css"
+      "index.3c5d27bf.css"
     ],
-    "file": "index.b3315249.js",
+    "file": "index.fe873b46.js",
     "imports": [
-      "_shelf.9a015150.js",
+      "_shelf.7c2517db.js",
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/index.vue"
   },
-  "index.b166c094.css": {
-    "file": "index.b166c094.css",
+  "index.3c5d27bf.css": {
+    "file": "index.3c5d27bf.css",
     "resourceType": "style"
   },
   "pages/intro.css": {
@@ -180,9 +180,9 @@ const client_manifest = {
     "css": [
       "intro.261e286e.css"
     ],
-    "file": "intro.5caaa4fa.js",
+    "file": "intro.0122f222.js",
     "imports": [
-      "_game.79e47477.js",
+      "_game.ac62bea7.js",
       "../../node_modules/nuxt/dist/app/entry.js",
       "__plugin-vue_export-helper.c27b6911.js"
     ],
@@ -205,7 +205,7 @@ const client_manifest = {
       "../../node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
       "../../node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
     ],
-    "file": "error-component.041533ad.js",
+    "file": "error-component.612223e6.js",
     "imports": [
       "../../node_modules/nuxt/dist/app/entry.js"
     ],

@@ -163,8 +163,8 @@ export const useGame = () => {
         'jenny':{
             nameHK:'珍妮',
             nameEN:'Jenny',
-            descriptionHK:"夢想在金融經濟方面發展，為大家創造財富，建構美好和豐足的生活。",
-            descriptionEN:" dream of entering the financial sector to create wealth, and develop desirable and adequate standards of living for people.",
+            descriptionHK:"夢想在金融經濟方面發展，為大家創造財富，建構美好和豐足的生活。請為她挑選三本能幫助她達成夢想的書。",
+            descriptionEN:" dream is to enter the financial sector to create wealth, and develop desirable and adequate standards of living for people. Please assist her to pick 3 books that help her achieve her dream.",
             successHK:'很好，你已經幫助珍妮向着夢想行近一大步！',
             successEN:'Very good, you have done a great favour to Jenny!',
             finishHK:"九本可以幫助你實踐夢想，成為一位創富扶貧經濟學家的書籍：",
@@ -307,8 +307,8 @@ export const useGame = () => {
         'Tai Keung':{
             nameHK:'大強',
             nameEN:'Tai Keung',
-            descriptionHK:"夢想進入數碼世界，利用AI人工智能，開拓元宇宙的無極限可能。",
-            descriptionEN:" dream of entering the digital world, and utilise artificial intelligence to access the infinite possibilities of metaverse.",
+            descriptionHK:"夢想進入數碼世界，利用AI人工智能，開拓元宇宙的無極限可能。請為他挑選三本能幫助他達成夢想的書。",
+            descriptionEN:" dream is to enter the digital world, and utilise artificial intelligence to access the infinite possibilities of metaverse. Please assist him to pick 3 books that help him achieve his dream.",
             successHK:'很好，你已經幫助大強向着夢想行近一大步！',
             successEN:'Very good, you have done a great favour to Tai Keung!',
             finishHK:"九本可以幫助你實踐夢想，成為一位Al人工智能專家的書籍：",
@@ -452,8 +452,8 @@ export const useGame = () => {
         'Hailey':{
             nameHK:'希希',
             nameEN:'Hailey',
-            descriptionHK:"夢想成為一位文化藝術創作人。",
-            descriptionEN:" dream of being a creator in culture and arts.",
+            descriptionHK:"夢想成為一位文化藝術創作人。請為她挑選三本能幫助她達成夢想的書。",
+            descriptionEN:" dream is to become a creator in culture and arts. Please assist her to pick 3 books that help her achieve her dream.",
             successHK:'很好，你已經幫助希希向着夢想行近一大步！',
             successEN:'Very good, you have done a great favour to Hailey!',
             finishHK:"九本可以幫助你實踐夢想，成為一位文化藝術創作人的書籍：",
