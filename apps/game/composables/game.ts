@@ -18,7 +18,7 @@ export const useGame = () => {
             name:'阿星',
             description:'的夢想是成為一名海陸空宇宙探險家，請為他挑選三本能幫助他達成夢想的書。',
             success:'很好，你已經幫助阿星向着夢想行近一大步！',
-            finish:"九本可以幫助你實踐夢想，成為一位海陸空宇宙探險家的好書：",
+            finish:"九本可以幫助你實踐夢想，成為一位海陸空宇宙探險家的書籍：",
             intro:"夢想成為海陸空宇宙探險家",
             img:"/character/sing.png",
             subLevels:[
@@ -121,7 +121,7 @@ export const useGame = () => {
             name:'珍妮',
             description:"夢想在金融經濟方面發展，為大家創造財富，建構美好和豐足的生活。",
             success:'很好，你已經幫助珍妮向着夢想行近一大步！',
-            finish:"九本可以幫助你實踐夢想，成為一位創富扶貧經濟學家的好書：",
+            finish:"九本可以幫助你實踐夢想，成為一位創富扶貧經濟學家的書籍：",
             intro:"夢想成為金融經濟學家",
             img:"/character/jenny.png",
             subLevels:[
@@ -224,7 +224,7 @@ export const useGame = () => {
             name:'大強',
             description:"夢想進入數碼世界，利用AI人工智能，開拓元宇宙的無極限可能。",
             success:'很好，你已經幫助大強向着夢想行近一大步！',
-            finish:"九本可以幫助你實踐夢想，成為一位Al人工智能專家的好書：",
+            finish:"九本可以幫助你實踐夢想，成為一位Al人工智能專家的書籍：",
             intro:"夢想成為AI人工智能專家",
             img:"/character/Tai Keung.png",
             subLevels:[
@@ -328,7 +328,7 @@ export const useGame = () => {
             name:'希希',
             description:"夢想成為一位文化藝術創作人。",
             success:'很好，你已經幫助希希向着夢想行近一大步！',
-            finish:"九本可以幫助你實踐夢想，成為一位文化藝術創作人的好書：",
+            finish:"九本可以幫助你實踐夢想，成為一位文化藝術創作人的書籍：",
             intro:"夢想成為文化藝術創作人",
             img:"/character/Hailey.png",
             subLevels:[

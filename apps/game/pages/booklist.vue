@@ -4,7 +4,7 @@ const { levels } = useGame()
 
 <template>
     <div class="pageContainer">
-        <h1>可以幫助你行近四大夢想的好書</h1>
+        <h1>可以幫助你達成夢想的書籍</h1>
         <div v-for="char in levels" :key="char.name" class="char">
             <div class="imgContainer">
                

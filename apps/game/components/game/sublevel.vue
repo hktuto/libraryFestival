@@ -134,13 +134,13 @@ onMounted(() => {
     z-index: -1;
 }
 .bottomContainer{
-  --book-size: 250px;
+  --book-size: 160px;
   position: absolute;
   width: 100%;
   max-height: 50%;
   bottom: 0;
   display: grid;
-  grid-template-rows: 1fr 250px;
+  grid-template-rows: 1fr 320px;
   overflow: visible;
   @media (max-width: 768px){
     --book-size: 160px;
@@ -169,19 +169,22 @@ onMounted(() => {
  }
  .selectedContainer{
    background: #EBCFAC;
-   display: flex;
-   flex-flow: row nowrap;
+   display: grid;
+   grid-template-columns: repeat(3, 150px);
+   grid-template-rows: 1fr;
    justify-content: center;
    align-items: flex-start;
    padding: 12px;
    gap: 12px;
    min-height: 120px;
-   overflow-x: scroll;
-   overflow-y: hidden;
+   overflow: scroll;
    position: relative;
+   @media (max-width: 768px) {
+    justify-content: flex-start;
+   }
    .selectedBook{
      padding: 12px;
-     width: 220px;
+    //  width: 200px;
      height: 200px;
      background: hsl( var(--hue), 70%, 50%);
      display: flex;
@@ -190,7 +193,7 @@ onMounted(() => {
      justify-content: flex-start;
      box-shadow: 0 0 10px rgba(0,0,0,.2);
      color: #fff;
-     font-size: 1.5rem;
+     font-size: 1rem;
      position: relative;
      &:before {
       content: "";
@@ -198,10 +201,6 @@ onMounted(() => {
       height: 4px;
       background: rgba(255,255,255,.3);
       display: block;
-     }
-     @media (max-width: 768px) {
-       width: 150px;
-       font-size: 1.2rem;
      }
    }
    &.isSuccess{

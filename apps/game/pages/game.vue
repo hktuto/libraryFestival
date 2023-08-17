@@ -12,9 +12,10 @@ function successChanged(bool){
         <div class="shelfBg">
             <img src="/images/shelf_bg1.png" />
             <img src="/images/shelf_bg2.png" />
-        </div>
-        <div class="logo">
             <div class="previousLevelBtn" @click="previousLevel">返回</div>
+        </div>
+            
+        <div class="logo">
             <img src="/images/logo_purple.svg" alt="logo" />
             <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
         </div>
@@ -67,13 +68,14 @@ function successChanged(bool){
     position: absolute;
     right: 0;
     top: 24px;
-    height: 10vh;
-    width: 40%;
+    height: auto;
+    width: 35%;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
     img {
-        height: 100%;
+        width: 100%;
+        max-width: 120px;
     }
 }
 
@@ -145,5 +147,8 @@ function successChanged(bool){
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
    cursor: pointer;
    font-size: 1.2rem;
+   position: absolute;
+   bottom: -60px;
+   right:24px;
 }
 </style>
