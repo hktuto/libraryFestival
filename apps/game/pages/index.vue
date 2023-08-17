@@ -50,3 +50,11 @@ const {t} = useLang({
   // left: calc(50% - 100px);
 }
 </style>
+
+<style lang="scss" scoped>
+html:lang(en){
+  .startButton{
+    font-size: 2rem;
+  }
+}
+</style>
