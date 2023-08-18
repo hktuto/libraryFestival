@@ -1,6 +1,6 @@
 <script setup>
 const {t,  currentLang} = useLang({
-  descriptionHK:"夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為以下四位朋友選擇合適主題的書籍，以幫助他們達成夢想。",
+  descriptionHK:"夢想看似遙不可及，但只要閱讀合適好書，豐富知識，夢想終可成真。請為四位朋友選擇合適主題的書籍，以幫助他們達成夢想。",
   descriptionEN:"Dream seems unattainable but once you find a good read to enhance your knowledge, your dream will come true. Please choose a suitable good read for the 4 people below to make their dreams come true.",
 })
 </script>
