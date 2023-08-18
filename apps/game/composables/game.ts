@@ -134,7 +134,7 @@ export const useGame = () => {
                             "labelHK": "活著回來：<br/>一個香港人由非洲出發的單車之旅",
                             "labelEN": "Jungle : <br/>A Harrowing True Story of Survival in the Amazon",
                             "nameHK": "活著回來：一個香港人由非洲出發的單車之旅",
-                            "nameEN": "Jungle (Movie Tie-In Edition): A Harrowing True Story of Survival in the Amazon",
+                            "nameEN": "Jungle : A Harrowing True Story of Survival in the Amazon",
                             "year": "2016",
                             "publisher": "一丁文化",
                             "author": "雷靖梵",
