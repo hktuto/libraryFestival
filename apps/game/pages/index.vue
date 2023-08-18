@@ -65,7 +65,7 @@ const {t} = useLang({
 <style lang="scss" scoped>
 html:lang(en){
   .startButton{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 </style>

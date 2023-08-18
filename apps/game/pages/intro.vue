@@ -3,7 +3,7 @@ const {levels} = useGame()
 
 const {t, tObj} = useLang({
     introHK:"請為四位朋友在書架上挑選適合的書籍:",
-    introEN:"Please choose some suitable good books for the 4 dreamers below:",
+    introEN:"Please choose suitable good books for the 4 dreamers below:",
     startHK: "開始",
     startEN: "Start",
 })

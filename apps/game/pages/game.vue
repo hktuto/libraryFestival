@@ -158,3 +158,13 @@ const {t, tObj, currentLang} = useLang({
    right:24px;
 }
 </style>
+
+<style lang="scss">
+html:lang(en){
+    .logo{
+        img{
+            width: 90%;
+        }
+    }
+}
+</style>

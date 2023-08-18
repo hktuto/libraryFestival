@@ -122,7 +122,7 @@ const { tObj } = useLang({})
       min-height: auto;
       min-width: 140px;
       width: max-content;
-      max-width: 280px;
+      max-width: 290px;
       // max-width: var(--book-size);
       .bookName {
         writing-mode: horizontal-tb;
