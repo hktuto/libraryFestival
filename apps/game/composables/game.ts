@@ -625,7 +625,7 @@ export const useGame = () => {
         "且聽下回分解",
     ];
     const otherBooksEN = [
-        'Go Get "Em, Tiger!',
+        "Go Get 'Em, Tiger!",
         "This Is Happiness",
         "The Happy Camper",
         "School of Laughs",
