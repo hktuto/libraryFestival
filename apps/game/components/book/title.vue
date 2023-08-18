@@ -51,6 +51,10 @@ const {t,  currentLang} = useLang({
         width: 100%;
         font-size: 1.2rem;
       }
+      @media( max-width: 374px) {
+        width: 100%;
+        font-size: 1rem;
+      }
     }
     img{
       width: 100%;

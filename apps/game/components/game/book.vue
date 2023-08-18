@@ -182,7 +182,7 @@ const { tObj } = useLang({})
   width:100%;
   min-width: 160px;
   max-width: 250px;
-  max-height: 50px;
+  max-height: 40px;
  }
 </style>
 
