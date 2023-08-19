@@ -1,25 +1,25 @@
-globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/node-fetch-native/dist/polyfill.mjs';
+globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/node-fetch-native/dist/polyfill.mjs';
 import { Server } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { provider, isWindows } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/std-env/dist/index.mjs';
-import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1, createError } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/h3/dist/index.mjs';
-import { createRenderer } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { stringify, uneval } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/devalue/index.js';
-import { createFetch as createFetch$1, Headers } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/ofetch/dist/node.mjs';
-import destr from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/destr/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/hookable/dist/index.mjs';
-import { snakeCase } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/scule/dist/index.mjs';
-import { klona } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/ohash/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/ufo/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/unstorage/drivers/fs.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/seantsang/Documents/working/libraryFestival/node_modules/radix3/dist/index.mjs';
+import { provider, isWindows } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/std-env/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1, createError } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/h3/dist/index.mjs';
+import { createRenderer } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { stringify, uneval } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/devalue/index.js';
+import { createFetch as createFetch$1, Headers } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/ofetch/dist/node.mjs';
+import destr from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/destr/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/hookable/dist/index.mjs';
+import { snakeCase } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/scule/dist/index.mjs';
+import { klona } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/defu/dist/defu.mjs';
+import { hash } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/ohash/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/ufo/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/unstorage/drivers/fs.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/seantsang/Documents/work/library_festival/library-festival-web/node_modules/radix3/dist/index.mjs';
 
 const inlineAppConfig = {};
 
@@ -41,7 +41,14 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "gtag": {
+      "id": "",
+      "config": {},
+      "initialConsent": true,
+      "loadingStrategy": "defer"
+    }
+  }
 };
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _inlineRuntimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
@@ -108,7 +115,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"/Users/seantsang/Documents/working/libraryFestival/apps/game/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game/server/assets"}];
 
 const assets = createStorage();
 
@@ -120,10 +127,10 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/seantsang/Documents/working/libraryFestival/apps/game","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/seantsang/Documents/working/libraryFestival/apps/game/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/seantsang/Documents/working/libraryFestival/apps/game/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/seantsang/Documents/working/libraryFestival/apps/game/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -530,11 +537,11 @@ const errorHandler = (async function errorhandler(error, event) {
   event.node.res.end(await res.text());
 });
 
-const _lazy_HVP1hT = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_s3YWqB = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_HVP1hT, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_HVP1hT, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_s3YWqB, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_s3YWqB, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -675,7 +682,7 @@ function publicAssetsURL(...path) {
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('/Users/seantsang/Documents/working/libraryFestival/apps/game/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('/Users/seantsang/Documents/work/library_festival/library-festival-web/apps/game/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getStaticRenderedHead = () => Promise.resolve().then(function () { return _virtual__headStatic$1; }).then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
 const getSPARenderer = lazyCachedFunction(async () => {

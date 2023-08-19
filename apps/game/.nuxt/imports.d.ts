@@ -7,4 +7,7 @@ export { useGame } from '../composables/game';
 export { randomColor } from '../utils/color';
 export { useLang } from '../../../packages/i18n/composables/lang';
 export { getStrapiData, JTPYStr, FTPYStr } from '../../../packages/i18n/utils/helpers';
+export { useGtag } from '../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtag';
+export { useGtagConsent } from '../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtagConsent';
+export { useTrackEvent } from '../../../node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent';
 export { definePageMeta } from '../../../node_modules/nuxt/dist/pages/runtime/composables';

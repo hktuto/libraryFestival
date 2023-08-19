@@ -10,4 +10,5 @@ export default defineNuxtConfig({
     gtag: {
         id: process.env.google_analytics_id
       },
+      extends:['../../packages/i18n'],
 })

@@ -98,6 +98,8 @@ declare global {
   const useError: typeof import('../../../../node_modules/nuxt/dist/app')['useError']
   const useFetch: typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']
   const useGame: typeof import('../../composables/game')['useGame']
+  const useGtag: typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtag')['useGtag']
+  const useGtagConsent: typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtagConsent')['useGtagConsent']
   const useHead: typeof import('@unhead/vue')['useHead']
   const useHeadSafe: typeof import('@unhead/vue')['useHeadSafe']
   const useLang: typeof import('../../../../packages/i18n/composables/lang')['useLang']
@@ -120,6 +122,7 @@ declare global {
   const useServerSeoMeta: typeof import('@unhead/vue')['useServerSeoMeta']
   const useSlots: typeof import('vue')['useSlots']
   const useState: typeof import('../../../../node_modules/nuxt/dist/app')['useState']
+  const useTrackEvent: typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent')['useTrackEvent']
   const useTransitionState: typeof import('vue')['useTransitionState']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
@@ -238,6 +241,8 @@ declare module 'vue' {
     readonly useError: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']>
     readonly useGame: UnwrapRef<typeof import('../../composables/game')['useGame']>
+    readonly useGtag: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtag')['useGtag']>
+    readonly useGtagConsent: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtagConsent')['useGtagConsent']>
     readonly useHead: UnwrapRef<typeof import('@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('@unhead/vue')['useHeadSafe']>
     readonly useLang: UnwrapRef<typeof import('../../../../packages/i18n/composables/lang')['useLang']>
@@ -260,6 +265,7 @@ declare module 'vue' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('@unhead/vue')['useServerSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useState']>
+    readonly useTrackEvent: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent')['useTrackEvent']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
@@ -372,6 +378,8 @@ declare module '@vue/runtime-core' {
     readonly useError: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useFetch']>
     readonly useGame: UnwrapRef<typeof import('../../composables/game')['useGame']>
+    readonly useGtag: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtag')['useGtag']>
+    readonly useGtagConsent: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useGtagConsent')['useGtagConsent']>
     readonly useHead: UnwrapRef<typeof import('@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('@unhead/vue')['useHeadSafe']>
     readonly useLang: UnwrapRef<typeof import('../../../../packages/i18n/composables/lang')['useLang']>
@@ -394,6 +402,7 @@ declare module '@vue/runtime-core' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('@unhead/vue')['useServerSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app')['useState']>
+    readonly useTrackEvent: UnwrapRef<typeof import('../../../../node_modules/nuxt-gtag/dist/runtime/composables/useTrackEvent')['useTrackEvent']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
