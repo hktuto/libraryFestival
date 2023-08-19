@@ -42,6 +42,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "google_analytics_id": "",
     "gtag": {
       "id": "",
       "config": {},

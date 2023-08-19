@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     },
     css:['~/assets/app.scss'],
     modules:['nuxt-gtag', ],
+    runtimeConfig:{
+        public: {
+            google_analytics_id: process.env.google_analytics_id,
+        }
+    },
     gtag: {
         id: process.env.google_analytics_id
       },
