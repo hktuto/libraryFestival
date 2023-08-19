@@ -5,5 +5,9 @@ export default defineNuxtConfig({
     devtools: {
         enabled: true,
     },
-    css:['~/assets/app.scss']
+    css:['~/assets/app.scss'],
+    modules:['nuxt-gtag', ],
+    gtag: {
+        id: process.env.google_analytics_id
+      },
 })

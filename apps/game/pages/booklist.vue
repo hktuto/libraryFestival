@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 const { levels } = useGame()
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival game',
+  screen_name: 'Book List'
+})
 </script>
 
 <template>

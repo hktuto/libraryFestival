@@ -5,6 +5,11 @@ const isSuccess = ref(false);
 function successChanged(bool){
   isSuccess.value = bool
 }
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival game',
+  screen_name: 'Game'
+})
 </script>
 
 <template>

@@ -3,6 +3,11 @@ const router = useRouter()
 function startGame() {
   router.push('/intro')
 }
+const gtag = useGtag()
+gtag('event', 'screen_view', {
+  app_name: 'Library Festival game',
+  screen_name: 'Home'
+})
 </script>
 
 <template>
