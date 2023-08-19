@@ -123,6 +123,13 @@ export const useMenu =() => {
             children: []
         },
         {
+            labelEN: "Mini Game",
+            labelHK: "小遊戲",
+            url:"https://game.libraryfestival.gov.hk/",
+            opened:false,
+            children: []
+        },
+        {
             labelEN: "Mobile App Stickers",
             labelHK: "手機貼圖",
             url:"/page/mobile-app-stickers",
@@ -137,7 +144,7 @@ export const useMenu =() => {
             children: []
         },
     ])) ;
-
+    const { currentLang } = useLang({})
     function itemClicked(item:MenuItem) {
         if(item.children.length > 0) {
             item.opened = !item.opened;
@@ -146,7 +153,7 @@ export const useMenu =() => {
         if(item.url) {
             if(item.url.startsWith('https')) {
                 // open in new tab
-                window.open(item.url, '_blank')
+                window.open(item.url + `?lang=${currentLang.value}`, '_blank')
             } else {
                 router.push(item.url)
             }

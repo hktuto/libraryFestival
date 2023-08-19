@@ -12,13 +12,17 @@ const {public:{strapi:{url}}} = useRuntimeConfig();
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 
 const spaceBetween = 10;
-
+const { currentLang} = useLang({})
 const router = useRouter()
 function slideClickHandler(item:any) {
   if(item.url) {
-    router.push({
-      path: item.url
-    })
+    if(item.url.includes('http')){
+      window.open(item.url+ `?lang=${currentLang.value}`, '_blank')
+    }else{
+      router.push({
+        path: item.url
+      })
+    }
   }
 }
 
