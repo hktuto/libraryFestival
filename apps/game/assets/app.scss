@@ -10,6 +10,9 @@ html {
   font-family:sans-serif;
   background: radial-gradient( #FAA42A, #D05029);
 }
+html:lang(en) {
+  font-size: 14px;
+}
 body {
  max-width: 1920px;
 //  max-height: 768px;

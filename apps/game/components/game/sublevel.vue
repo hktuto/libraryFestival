@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {randomColor} from "../../utils/color";
 import {Option} from "../../composables/game";
-import { set } from "@vueuse/core";
+
 const { isLastSubLevel, makeSubLevelOptions, currentLevel, nextLevel, subLevelNumber,currentSubLevelAnswer } = useGame()
 const emit = defineEmits(['success', 'reset'])
 const isSuccess = ref(false);
@@ -9,7 +9,7 @@ const ready = ref(false);
 const randomBook = ref([]);
 function selectedChange(obj:Option) {
   // find obj in answers and 
-  const index = currentSubLevelAnswer.value.findIndex( item => item.label === obj.label);
+  const index = currentSubLevelAnswer.value.findIndex( item => item.labelHK === obj.labelHK);
   currentSubLevelAnswer.value[index].selected = !currentSubLevelAnswer.value[index].selected
 }
 
@@ -23,7 +23,20 @@ function submit(){
     nextLevel()
   }
 }
-
+const { t, tObj } = useLang({
+  confirmHK:"確定",
+  confirmEN:"Confirm",
+  bookListHK:"書單",
+  bookListEN:"Book List",
+  level1HK:"第一關",
+  level1EN:"Level 1",
+  level2HK:"第二關",
+  level2EN:"Level 2",
+  level3HK:"第三關",
+  level3EN:"Level 3",
+  nextHK:"下一位夢想家",
+  nextEN:"Next Dreamer",
+}) 
 const currentPos =ref(0);
 const startInterval = ref();
 const endInterval = ref();
@@ -55,10 +68,10 @@ watch(currentLevel, async() => {
   ready.value = false;
   isSuccess.value = false;
   emit('reset');
-  await makeSubLevelOptions()
+  makeSubLevelOptions()
   let missing = false;
   for(let i = 0; i < currentSubLevelAnswer.value.length; i++){
-    if(!currentSubLevelAnswer.value[i].label) {
+    if(!currentSubLevelAnswer.value[i].labelHK) {
       missing = true;
       console.log(currentSubLevelAnswer.value, currentSubLevelAnswer.value[i]);
     }
@@ -104,7 +117,7 @@ onMounted(() => {
     <BookShelf class="backgroundShelf" :divided="3.5" style="opacity:0.8;filter:blur(5px)" />
     <div v-if="ready" ref="optionsEl" class="booksOptions">
         <img v-once  class="betweenImg" v-for="i in 3" :key="1"  :src="`/images/books/${Math.floor(Math.random() * 12) % 10 }.svg`" :style="`--scale:${Math.random() * (1.2 - 0.8) + 0.8}`" />
-        <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer.label">
+        <template  v-for="(answer, index) in currentSubLevelAnswer" :key="answer.labelHK">
           <GameBook :data="answer" @selectedChange="selectedChange"  :eng="true"/>
           <img class="betweenImg"  :src="`/images/books/${randomBook[index].slide}.svg`" :style="`--scale:${randomBook[index].scale}`" />
           <img class="betweenImg"  :src="`/images/books/${randomBook[index+1].slide}.svg`" :style="`--scale:${randomBook[index+1].scale}`" />
@@ -113,15 +126,15 @@ onMounted(() => {
     </div>
     <div :class="{selectedContainer:true, isSuccess}">
       <div v-if="!isSuccess" class="subLevelBg">
-            {{  subLevelNumber === 0 ? "第一關" : subLevelNumber < 2 ? "第二關" : "第三關" }}
+            {{  subLevelNumber === 0 ? t('level1') : subLevelNumber < 2 ? t('level2') : t('level3') }}
         </div>
       <div class="selectedBook" v-for="item in selected" :key="item.label" :style="`--hue:${item.hue}`" @click="selectedChange(item)">
-        <div class="bookTitle" >{{ item.name }}</div>
+        <div class="bookTitle" >{{ tObj('name', item) }}</div>
         <img  class="closeIcon" src="/images/selected.svg" width="24px" />
       </div>
     </div>
     
-    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' && isSuccess  ? '書單' : isSuccess ? "下一位夢想家" : " 確定" }}</div>
+    <div v-if="selected.length === 3 || isSuccess " class="submitBtn" @click="submit">{{ currentLevel === 'Hailey-2' && isSuccess  ? t('bookList') : isSuccess ? t('next') : t('confirm') }}</div>
   </div>
 </template>
 
@@ -134,13 +147,13 @@ onMounted(() => {
     z-index: -1;
 }
 .bottomContainer{
-  --book-size: 250px;
+  --book-size: 160px;
   position: absolute;
   width: 100%;
   max-height: 50%;
   bottom: 0;
   display: grid;
-  grid-template-rows: 1fr 250px;
+  grid-template-rows: 1fr 320px;
   overflow: visible;
   @media (max-width: 768px){
     --book-size: 160px;
@@ -165,23 +178,27 @@ onMounted(() => {
     justify-content: flex-start;
     align-items: flex-end;
     min-height: calc(var(--book-size) + 35px);
+    padding-top:50px;
    
  }
  .selectedContainer{
    background: #EBCFAC;
-   display: flex;
-   flex-flow: row nowrap;
+   display: grid;
+   grid-template-columns: repeat(3, 150px);
+   grid-template-rows: 1fr;
    justify-content: center;
    align-items: flex-start;
    padding: 12px;
    gap: 12px;
    min-height: 120px;
-   overflow-x: scroll;
-   overflow-y: hidden;
+   overflow: scroll;
    position: relative;
+   @media (max-width: 768px) {
+    justify-content: flex-start;
+   }
    .selectedBook{
      padding: 12px;
-     width: 220px;
+    //  width: 200px;
      height: 200px;
      background: hsl( var(--hue), 70%, 50%);
      display: flex;
@@ -190,7 +207,7 @@ onMounted(() => {
      justify-content: flex-start;
      box-shadow: 0 0 10px rgba(0,0,0,.2);
      color: #fff;
-     font-size: 1.5rem;
+     font-size: 1rem;
      position: relative;
      &:before {
       content: "";
@@ -198,10 +215,6 @@ onMounted(() => {
       height: 4px;
       background: rgba(255,255,255,.3);
       display: block;
-     }
-     @media (max-width: 768px) {
-       width: 150px;
-       font-size: 1.2rem;
      }
    }
    &.isSuccess{
@@ -232,8 +245,8 @@ onMounted(() => {
  }
 
  .subLevelBg{
-    position: absolute;
-    top:0;
+    position: fixed;
+    bottom:0;
     left:0;
     width: 100%;
     display: flex;

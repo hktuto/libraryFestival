@@ -8,6 +8,10 @@ gtag('event', 'screen_view', {
   app_name: 'Library Festival game',
   screen_name: 'Home'
 })
+const {t} = useLang({
+  titleHK: '開卷有益',
+  titleEN: 'Reading is always Rewarding',
+})
 </script>
 
 <template>
@@ -18,7 +22,10 @@ gtag('event', 'screen_view', {
     <BookTitle />
     <BookShelf :divided="3.5"  />
     <!-- <BookShelf /> -->
-    <button class="startButton" @click="startGame">開卷有益</button>
+    <div class="startButtonContainer">
+
+      <button class="startButton" @click="startGame">{{ t('title') }}</button>
+    </div>
   </div>
 </div>
 </template>
@@ -36,6 +43,15 @@ gtag('event', 'screen_view', {
 .bookRow {
   margin-bottom: 24px;
 }
+.startButtonContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  position: absolute;
+  bottom: 48px;
+}
 .startButton{
   border: 1px solid #fff;
   background: #50B848;
@@ -44,9 +60,16 @@ gtag('event', 'screen_view', {
   // width: 200px;
   color: #fff;
   font-size: 2.5rem;
-  position: absolute;
-  bottom: 48px;
+  
   cursor: pointer;
-  left: calc(50% - 100px);
+  // left: calc(50% - 100px);
+}
+</style>
+
+<style lang="scss" scoped>
+html:lang(en){
+  .startButton{
+    font-size: 1.5rem;
+  }
 }
 </style>

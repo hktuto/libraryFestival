@@ -1,6 +1,14 @@
 <script lang="ts" setup>
 const {levels} = useGame()
 
+const {t, tObj} = useLang({
+    introHK:"請為四位朋友在書架上挑選適合的書籍:",
+    introEN:"Please choose suitable good books for the 4 dreamers below:",
+    startHK: "開始",
+    startEN: "Start",
+})
+
+
 const gtag = useGtag()
 gtag('event', 'screen_view', {
   app_name: 'Library Festival game',
@@ -10,7 +18,7 @@ gtag('event', 'screen_view', {
 
 <template>
     <div class="pageContainer">
-        <h1>請為以下四位朋友在書架上挑選適合的好書:</h1>
+        <h1>{{ t('intro') }}</h1>
         <div class="levelsContainer">
             <div class="level" v-for="level in levels" :key="level.id">
                 <div class="levelImg">
@@ -18,11 +26,11 @@ gtag('event', 'screen_view', {
                 </div>
                 <div class="content">
 
-                    <div class="levelName"><div class="big">{{ level.name }}</div>{{ level.intro }}</div>
+                    <div class="levelName"><div class="big">{{ tObj('name', level) }}</div>{{ tObj('intro', level)}}</div>
                 </div>
             </div>
         </div>
-        <button @click="$router.push({path:'/game'})">開始</button>
+        <button @click="$router.push({path:'/game'})">{{  t('start') }}</button>
     </div>
 </template>
 
@@ -43,13 +51,16 @@ h1{
     align-items: center;
     gap: 24px;
     padding: 24px;
+    
 }
 .level{
-    display: flex;
-    flex-flow: row nowrap;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     justify-content: flex-start;
     align-items: center;
     gap: 24px;
+    max-width:600px;
+    margin: 0 auto;
 }
 .big{
     font-size: 2rem;

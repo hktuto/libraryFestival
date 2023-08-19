@@ -10,6 +10,12 @@ gtag('event', 'screen_view', {
   app_name: 'Library Festival game',
   screen_name: 'Game'
 })
+const {t, tObj, currentLang} = useLang({
+    backHK:"返回",
+    backEN:"Back",
+})
+
+
 </script>
 
 <template>
@@ -17,20 +23,21 @@ gtag('event', 'screen_view', {
         <div class="shelfBg">
             <img src="/images/shelf_bg1.png" />
             <img src="/images/shelf_bg2.png" />
+            <div class="previousLevelBtn" @click="previousLevel">{{ t('back') }}</div>
         </div>
+            
         <div class="logo">
-            <div class="previousLevelBtn" @click="previousLevel">返回</div>
-            <img src="/images/logo_purple.svg" alt="logo" />
-            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ levelObject.name }}</span>{{ levelObject.description }}</span>
+            <img :src="currentLang === 'EN' ? '/images/logo_purpleEN.svg': '/images/logo_purple.svg'" alt="logo" />
+            <span v-if="!isSuccess" class="characterDesc"><span class="big">{{ tObj('name', levelObject) }}{{ currentLang === 'EN' ? "'s" : "" }}</span>{{ tObj('description', levelObject) }}</span>
         </div>
        
         
         <div :class="{character:true, isSuccess}">
             <img :src="levelObject.img" alt="character" />
-            <div class="successDesc" v-if="isSuccess">{{ levelObject.success }}</div>
+            <div class="successDesc" v-if="isSuccess">{{ tObj('success', levelObject)  }}</div>
         </div>
         
-        <GameSublevel :answers="makeSubLevelOptions" @success="successChanged(true)" @reset="successChanged(false)"/>
+        <GameSublevel :answers="makeSubLevelOptions()" @success="successChanged(true)" @reset="successChanged(false)"/>
         
     </div>
 
@@ -72,13 +79,14 @@ gtag('event', 'screen_view', {
     position: absolute;
     right: 0;
     top: 24px;
-    height: 10vh;
-    width: 40%;
+    height: auto;
+    width: 35%;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
     img {
-        height: 100%;
+        width: 100%;
+        max-width: 120px;
     }
 }
 
@@ -150,5 +158,18 @@ gtag('event', 'screen_view', {
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
    cursor: pointer;
    font-size: 1.2rem;
+   position: absolute;
+   bottom: -60px;
+   right:24px;
+}
+</style>
+
+<style lang="scss">
+html:lang(en){
+    .logo{
+        img{
+            width: 90%;
+        }
+    }
 }
 </style>

@@ -15,7 +15,7 @@ function toggleSelected() {
   } 
   emit('selectedChange', props.data);
 }
-
+const { tObj } = useLang({})
 </script>
 
 <template>
@@ -28,7 +28,7 @@ function toggleSelected() {
           <img class="closeIcon" src="/images/selected.svg" style="width:24px;height:24px;" />
         </div>
         <!-- <div class="bookHeader" ></div> -->
-        <div class="bookName" v-html="data.label"></div>
+        <div class="bookName" v-html="tObj('label', data)"></div>
 
         
         <!-- <div class="bookBottom" ></div> -->
@@ -122,6 +122,7 @@ function toggleSelected() {
       min-height: auto;
       min-width: 140px;
       width: max-content;
+      max-width: 290px;
       // max-width: var(--book-size);
       .bookName {
         writing-mode: horizontal-tb;
@@ -181,6 +182,7 @@ function toggleSelected() {
   width:100%;
   min-width: 160px;
   max-width: 250px;
+  max-height: 40px;
  }
 </style>
 

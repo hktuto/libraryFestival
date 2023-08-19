@@ -5,4 +5,6 @@ export { withCtx, withDirectives, withKeys, withMemo, withModifiers, withScopeId
 export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerSeoMeta, useServerHeadSafe } from '@unhead/vue';
 export { useGame } from '../composables/game';
 export { randomColor } from '../utils/color';
+export { useLang } from '../../../packages/i18n/composables/lang';
+export { getStrapiData, JTPYStr, FTPYStr } from '../../../packages/i18n/utils/helpers';
 export { definePageMeta } from '../../../node_modules/nuxt/dist/pages/runtime/composables';
