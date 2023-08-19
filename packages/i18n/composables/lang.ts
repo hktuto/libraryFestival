@@ -14,7 +14,7 @@ export const useLang = (obj:any) => {
             if(route.query.lang.toLowerCase() === "tc") {
                 return 'HK'
             }
-            if(route.query.lang.toLowerCase() === "sc") {
+            if(route.query.lang.toLowerCase() === "cn") {
                 return 'CN'
             }
             if(route.query.lang.toLowerCase() === "en") {
@@ -95,7 +95,7 @@ export const useLang = (obj:any) => {
             if(route.query.lang.toLowerCase() === "tc") {
                 changeLocale('HK')
             }
-            if(route.query.lang.toLowerCase() === "sc") {
+            if(route.query.lang.toLowerCase() === "cn") {
                 changeLocale('CN')
             }
             if(route.query.lang.toLowerCase() === "en") {
