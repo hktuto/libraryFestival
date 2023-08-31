@@ -4,7 +4,7 @@ import 'highlight.js/styles/monokai.css';
 import FeatureImage from "~/components/featureImage.vue";
 
 const {public:{strapi:{url}}} = useRuntimeConfig();
-
+const {tObj} = useLang()
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 const props = defineProps<{
   event:any
@@ -50,6 +50,14 @@ const { t } = useLang({...props.event,
       <div class="content" v-html="t('quota')"></div>
     </div>
     <EventDate :programs="event.programs" />
+    <div v-if="event.slides" class="slides">
+      <div v-for="slide in event.slides" class="slide">
+        <div class="slideImgContainer">
+          <img :src="slide.feature.data.attributes.url"/>
+        </div>
+        <div class="small">{{ tObj('title', slide) }}</div>
+      </div>
+    </div>
     <div v-if="event.remarkEN" class="eventContent">
       <div class="label"></div>
       <div class="content" v-html="t('remark')"></div>
@@ -104,5 +112,26 @@ const { t } = useLang({...props.event,
 
 .innerGrid.noPadding{
   padding:0;
+}
+
+.slides{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--app-padding);
+  @media (max-width:  960px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .slide{
+    width: 100%;
+    .slideImgContainer{
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #eee;
+    }
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }
 </style>

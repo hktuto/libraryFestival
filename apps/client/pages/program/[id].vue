@@ -4,7 +4,17 @@ const {findOne } = useStrapi()
 const { data, refresh, error } = await useAsyncData(
   'programData',
   () => findOne('events',route.params.id as any,{
-    populate: "*"
+    populate: {
+      photos:{
+        populate:"*"
+      },
+      programs:{
+        populate:"*"
+      },
+      slides: {
+        populate:"*"
+      }
+    }
   })
 )
 
