@@ -14,10 +14,12 @@ function itemClick() {
 
     showDialog.value = true;
     const gtag = useGtag()
+    const screen_name = 'video-' + props.event.attributes.title
     gtag('event', 'screen_view', {
       app_name: 'Library Festival',
-      screen_name: 'video-' + props.event.attributes.title
+      screen_name
     })
+    console.log(screen_name)
     return
   }
   router.push({
