@@ -14,7 +14,7 @@ function itemClick() {
 
     showDialog.value = true;
     const gtag = useGtag()
-    const screen_name = 'video-' + props.event.title
+    const screen_name = 'video-' + props.event.titleEN
     gtag('event', 'screen_view', {
       app_name: 'Library Festival',
       screen_name
