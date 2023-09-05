@@ -19,7 +19,6 @@ function itemClick() {
       app_name: 'Library Festival',
       screen_name
     })
-    console.log(screen_name)
     return
   }
   router.push({
