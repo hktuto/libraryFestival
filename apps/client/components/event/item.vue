@@ -11,7 +11,13 @@ const props = defineProps<{
 const { t } = useLang(props.event);
 function itemClick() {
   if(props.event.videoUrl){ 
+
     showDialog.value = true;
+    const gtag = useGtag()
+    gtag('event', 'screen_view', {
+      app_name: 'Library Festival',
+      screen_name: 'video-' + props.event.attributes.title
+    })
     return
   }
   router.push({
