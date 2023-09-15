@@ -52,9 +52,17 @@ const { t } = useLang({...props.event,
     <EventDate :programs="event.programs" />
     <div v-if="event.slides" class="slides">
       <div v-for="slide in event.slides" class="slide">
-        <div class="slideImgContainer">
-          <img :src="slide.feature.data.attributes.url"/>
-        </div>
+        <template v-if="!slide.feature.data.attributes.mime.includes('video')">
+
+          <div  class="slideImgContainer">
+            <img :src="slide.feature.data.attributes.url"/>
+          </div>
+        </template>
+        <template v-else>
+          <video class="slideVideo" preload="metadata"  controls>
+            <source :src="'https://' + slide.feature.data.attributes.url" type="video/mp4" />
+          </video>
+        </template> 
         <div class="small">{{ tObj('title', slide) }}</div>
       </div>
     </div>
@@ -133,5 +141,8 @@ const { t } = useLang({...props.event,
       object-fit: cover;
     }
   }
+}
+.slideVideo{
+  width: 100%;
 }
 </style>
