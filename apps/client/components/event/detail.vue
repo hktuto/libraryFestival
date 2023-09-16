@@ -59,7 +59,7 @@ const { t } = useLang({...props.event,
           </div>
         </template>
         <template v-else>
-          <video class="slideVideo" preload="metadata"  controls>
+          <video class="slideVideo" preload="metadata"  :poster="slide.thumbnail.data.attributes.url" controls>
             <source :src="'https://' + slide.feature.data.attributes.url" type="video/mp4" />
           </video>
         </template> 
