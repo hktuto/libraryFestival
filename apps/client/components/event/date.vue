@@ -35,15 +35,15 @@ const { t, tObj } = useLang({
 
     <div v-for="program in filterPrograms" :key="program.id" class="program" >
       <div v-if="program.nameEN" class="eventContent">
-        <div class="content mainColor" >{{tObj('name', program)}}</div>
+        <div class="content mainColor" v-html="tObj('name', program)"></div>
       </div>
       <div v-if="program.displayTimeEN" class="eventContent">
         <div class="label">{{ t('tableDate') }}</div>
-        <div class="content mainColor" >{{tObj('displayTime', program)}}</div>
+        <div class="content mainColor" v-html="tObj('displayTime', program)"></div>
       </div>
       <div v-if="program.locationEN" class="eventContent">
         <div class="label">{{ t('tableLocation') }}</div>
-        <div class="content mainColor" >{{tObj('location', program)}}</div>
+        <div class="content mainColor" v-html="tObj('location', program)"></div>
       </div>
       <div v-if="program.targetEN" class="eventContent" >
         <div class="label">{{ t('tableTarget') }}</div>
