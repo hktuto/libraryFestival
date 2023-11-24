@@ -14,11 +14,14 @@ const spaceBetween = 10;
 const { currentLang} = useLang({})
 const router = useRouter()
 function slideClickHandler(item:any) {
+  console.log(url, item[`url_${currentLang.value}`])
   if(item.url) {
     if(item.url.includes('http')){
-      window.open(item.url+ `?lang=${currentLang.value}`, '_blank')
+      const url = currentLang.value === 'EN' ? item.url :  item[`url_${currentLang.value}`] || item.url
+      window.open(url+ `?lang=${currentLang.value}`, '_blank')
     }else{
       const url = currentLang.value === 'EN' ? item.url :  item[`url_${currentLang.value}`] || item.url
+      
       router.push({
         path: url
       })
