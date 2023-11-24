@@ -8,7 +8,6 @@ const props = defineProps<{
 }>();
 
 const {public:{strapi:{url}}} = useRuntimeConfig();
-
 const displayUrl = computed(() => url.includes('localhost') ? url : "")
 
 const spaceBetween = 10;
@@ -19,8 +18,9 @@ function slideClickHandler(item:any) {
     if(item.url.includes('http')){
       window.open(item.url+ `?lang=${currentLang.value}`, '_blank')
     }else{
+      const url = currentLang.value === 'EN' ? item.url :  item[`url_${currentLang.value}`] || item.url
       router.push({
-        path: item.url
+        path: url
       })
     }
   }
